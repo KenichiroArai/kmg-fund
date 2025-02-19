@@ -134,4 +134,12 @@
             <url>https://maven.pkg.github.com/KenichiroArai/kmg-core-src</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub KenichiroArai Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/KenichiroArai/kmg-foundation-src</url>
+        </repository>
+    </distributionManagement>
 </project>
