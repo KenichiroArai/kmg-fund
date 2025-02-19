@@ -67,7 +67,7 @@ jobs:
             - name: Publish to GitHub Packages
               run: |
                   echo "GitHub Packagesへの公開を開始します..."
-                  mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/OWNER/REPOSITORY
+                  mvn deploy -DaltDeploymentRepository=github::https://maven.pkg.github.com/OWNER/REPOSITORY
                   echo "パッケージの公開が完了しました"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
