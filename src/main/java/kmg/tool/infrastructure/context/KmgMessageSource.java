@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import kmg.core.infrastructure.common.KmgMessageTypes;
+import kmg.core.infrastructure.common.KmgCommonMsgMessageTypes;
 
 /**
  * KMGメッセージリソース
@@ -21,14 +21,14 @@ public class KmgMessageSource {
     /**
      * メッセージを取得する
      *
-     * @param kmgMessageTypes
+     * @param kmgCommonMsgMessageTypes
      *                        メッセージの種類
      *
      * @return メッセージ
      */
-    public String getMessage(final KmgMessageTypes kmgMessageTypes) {
+    public String getMessage(final KmgCommonMsgMessageTypes kmgCommonMsgMessageTypes) {
 
-        final String result = this.getMessage(kmgMessageTypes, null);
+        final String result = this.getMessage(kmgCommonMsgMessageTypes, null);
         return result;
 
     }
@@ -36,16 +36,16 @@ public class KmgMessageSource {
     /**
      * メッセージを取得する
      *
-     * @param kmgMessageTypes
+     * @param kmgCommonMsgMessageTypes
      *                        メッセージの種類
      * @param args
      *                        引数
      *
      * @return メッセージ
      */
-    public String getMessage(final KmgMessageTypes kmgMessageTypes, final Object[] args) {
+    public String getMessage(final KmgCommonMsgMessageTypes kmgCommonMsgMessageTypes, final Object[] args) {
 
-        final String result = this.messageSource.getMessage(kmgMessageTypes.getCode(), args, Locale.JAPANESE);
+        final String result = this.messageSource.getMessage(kmgCommonMsgMessageTypes.getCode(), args, Locale.JAPANESE);
         return result;
 
     }
