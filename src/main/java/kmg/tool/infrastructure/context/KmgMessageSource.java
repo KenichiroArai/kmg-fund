@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
+import kmg.core.domain.types.KmgLogMessageTypes;
+import kmg.core.domain.types.KmgMsgMessageTypes;
 import kmg.core.infrastructure.common.KmgCommonMessageTypes;
 import kmg.core.infrastructure.type.KmgString;
 
@@ -77,6 +79,78 @@ public class KmgMessageSource {
         }
 
         result = message;
+        return result;
+
+    }
+
+    /**
+     * ログメッセージを取得する
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     * @param args
+     *             引数
+     *
+     * @return メッセージ
+     */
+    public String getLogMessage(final KmgLogMessageTypes type, final Object[] args) {
+
+        final String result = this.getMessage(type, args, true);
+        return result;
+
+    }
+
+    /**
+     * ログメッセージを取得する
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     *
+     * @return メッセージ
+     */
+    public String getLogMessage(final KmgLogMessageTypes type) {
+
+        final String result = this.getMessage(type, true);
+        return result;
+
+    }
+
+    /**
+     * メッセージメッセージを取得する
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     * @param args
+     *             引数
+     *
+     * @return メッセージ
+     */
+    public String getMsgMessage(final KmgMsgMessageTypes type, final Object[] args) {
+
+        final String result = this.getMessage(type, args, false);
+        return result;
+
+    }
+
+    /**
+     * メッセージメッセージを取得する
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     *
+     * @return メッセージ
+     */
+    public String getMsgMessage(final KmgMsgMessageTypes type) {
+
+        final String result = this.getMessage(type, false);
         return result;
 
     }
