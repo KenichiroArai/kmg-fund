@@ -1,4 +1,4 @@
-package kmg.tool.infrastructure.context;
+package kmg.foundation.infrastructure.context;
 
 import java.util.Locale;
 
