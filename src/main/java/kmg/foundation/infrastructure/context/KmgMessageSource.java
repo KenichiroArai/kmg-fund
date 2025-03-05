@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import kmg.core.infrastructure.common.KmgCommonLogMessageTypes;
 import kmg.core.infrastructure.common.KmgCommonMessageTypes;
-import kmg.core.infrastructure.common.KmgCommonMsgMessageTypes;
+import kmg.core.infrastructure.common.KmgCommonGenMessageTypes;
 import kmg.core.infrastructure.type.KmgString;
 
 /**
@@ -144,7 +144,7 @@ public class KmgMessageSource {
     }
 
     /**
-     * メッセージメッセージを取得する<br>
+     * 一般メッセージを取得する<br>
      * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgCommonMessageTypes, Object[], boolean)} を
      * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
      *
@@ -158,9 +158,9 @@ public class KmgMessageSource {
      * @return メッセージ。メッセージコードは埋め込まれません。
      *
      * @see #getMessage(KmgCommonMessageTypes, Object[], boolean)
-     * @see KmgCommonMsgMessageTypes
+     * @see KmgCommonGenMessageTypes
      */
-    public String getMsgMessage(final KmgCommonMsgMessageTypes type, final Object[] args) {
+    public String getMsgMessage(final KmgCommonGenMessageTypes type, final Object[] args) {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, args, false);
@@ -169,7 +169,7 @@ public class KmgMessageSource {
     }
 
     /**
-     * メッセージメッセージを取得する<br>
+     * 一般メッセージを取得する<br>
      * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgCommonMessageTypes, boolean)} を
      * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
      *
@@ -181,9 +181,9 @@ public class KmgMessageSource {
      * @return メッセージ。メッセージコードは埋め込まれません。
      *
      * @see #getMessage(KmgCommonMessageTypes, boolean)
-     * @see KmgCommonMsgMessageTypes
+     * @see KmgCommonGenMessageTypes
      */
-    public String getMsgMessage(final KmgCommonMsgMessageTypes type) {
+    public String getMsgMessage(final KmgCommonGenMessageTypes type) {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, false);
