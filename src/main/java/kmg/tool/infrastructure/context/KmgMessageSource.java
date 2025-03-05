@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import kmg.core.domain.types.KmgLogMessageTypes;
-import kmg.core.domain.types.KmgMsgMessageTypes;
+import kmg.core.infrastructure.common.KmgCommonLogMessageTypes;
 import kmg.core.infrastructure.common.KmgCommonMessageTypes;
+import kmg.core.infrastructure.common.KmgCommonMsgMessageTypes;
 import kmg.core.infrastructure.type.KmgString;
 
 /**
@@ -95,7 +95,7 @@ public class KmgMessageSource {
      *
      * @return メッセージ
      */
-    public String getLogMessage(final KmgLogMessageTypes type, final Object[] args) {
+    public String getLogMessage(final KmgCommonLogMessageTypes type, final Object[] args) {
 
         final String result = this.getMessage(type, args, true);
         return result;
@@ -112,7 +112,7 @@ public class KmgMessageSource {
      *
      * @return メッセージ
      */
-    public String getLogMessage(final KmgLogMessageTypes type) {
+    public String getLogMessage(final KmgCommonLogMessageTypes type) {
 
         final String result = this.getMessage(type, true);
         return result;
@@ -131,7 +131,7 @@ public class KmgMessageSource {
      *
      * @return メッセージ
      */
-    public String getMsgMessage(final KmgMsgMessageTypes type, final Object[] args) {
+    public String getMsgMessage(final KmgCommonMsgMessageTypes type, final Object[] args) {
 
         final String result = this.getMessage(type, args, false);
         return result;
@@ -148,7 +148,7 @@ public class KmgMessageSource {
      *
      * @return メッセージ
      */
-    public String getMsgMessage(final KmgMsgMessageTypes type) {
+    public String getMsgMessage(final KmgCommonMsgMessageTypes type) {
 
         final String result = this.getMessage(type, false);
         return result;
