@@ -160,7 +160,7 @@ public class KmgMessageSource {
      * @see #getMessage(KmgComMessageTypes, Object[], boolean)
      * @see KmgComGenMessageTypes
      */
-    public String getMsgMessage(final KmgComGenMessageTypes type, final Object[] args) {
+    public String getGenMessage(final KmgComGenMessageTypes type, final Object[] args) {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, args, false);
@@ -183,7 +183,7 @@ public class KmgMessageSource {
      * @see #getMessage(KmgComMessageTypes, boolean)
      * @see KmgComGenMessageTypes
      */
-    public String getMsgMessage(final KmgComGenMessageTypes type) {
+    public String getGenMessage(final KmgComGenMessageTypes type) {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, false);
