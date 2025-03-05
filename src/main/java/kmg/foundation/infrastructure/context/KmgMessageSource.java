@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import kmg.core.infrastructure.common.KmgCommonLogMessageTypes;
-import kmg.core.infrastructure.common.KmgCommonMessageTypes;
-import kmg.core.infrastructure.common.KmgCommonGenMessageTypes;
+import kmg.core.infrastructure.common.KmgComLogMessageTypes;
+import kmg.core.infrastructure.common.KmgComMessageTypes;
+import kmg.core.infrastructure.common.KmgComGenMessageTypes;
 import kmg.core.infrastructure.type.KmgString;
 
 /**
@@ -37,7 +37,7 @@ public class KmgMessageSource {
     /**
      * メッセージを取得する<br>
      * メッセージタイプに対応するメッセージパターンを取得し、指定されたコード埋め込みフラグに基づいてメッセージを整形します。 このメソッドは
-     * {@link #getMessage(KmgCommonMessageTypes, Object[], boolean)} を引数なしで呼び出す便利メソッドです。
+     * {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を引数なしで呼び出す便利メソッドです。
      *
      * @since 0.1.0
      *
@@ -48,9 +48,9 @@ public class KmgMessageSource {
      *
      * @return メッセージ。メッセージパターンが空の場合は空文字列を返します。
      *
-     * @see #getMessage(KmgCommonMessageTypes, Object[], boolean)
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
      */
-    public String getMessage(final KmgCommonMessageTypes type, final boolean codeEmbeddingFlag) {
+    public String getMessage(final KmgComMessageTypes type, final boolean codeEmbeddingFlag) {
 
         /* 引数なしでメッセージを取得 */
         final String result = this.getMessage(type, null, codeEmbeddingFlag);
@@ -73,7 +73,7 @@ public class KmgMessageSource {
      *
      * @return メッセージ。メッセージパターンが空の場合は空文字列を返します。
      */
-    public String getMessage(final KmgCommonMessageTypes type, final Object[] args, final boolean codeEmbeddingFlag) {
+    public String getMessage(final KmgComMessageTypes type, final Object[] args, final boolean codeEmbeddingFlag) {
 
         String result = KmgString.EMPTY;
 
@@ -97,7 +97,7 @@ public class KmgMessageSource {
 
     /**
      * ログメッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgCommonMessageTypes, Object[], boolean)} を
+     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
      * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
      *
      * @since 0.1.0
@@ -109,10 +109,10 @@ public class KmgMessageSource {
      *
      * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
      *
-     * @see #getMessage(KmgCommonMessageTypes, Object[], boolean)
-     * @see KmgCommonLogMessageTypes
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
+     * @see KmgComLogMessageTypes
      */
-    public String getLogMessage(final KmgCommonLogMessageTypes type, final Object[] args) {
+    public String getLogMessage(final KmgComLogMessageTypes type, final Object[] args) {
 
         /* コード埋め込みフラグをtrueに設定して、メッセージを取得 */
         final String result = this.getMessage(type, args, true);
@@ -122,7 +122,7 @@ public class KmgMessageSource {
 
     /**
      * ログメッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgCommonMessageTypes, boolean)} を
+     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
      * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
      *
      * @since 0.1.0
@@ -132,10 +132,10 @@ public class KmgMessageSource {
      *
      * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
      *
-     * @see #getMessage(KmgCommonMessageTypes, boolean)
-     * @see KmgCommonLogMessageTypes
+     * @see #getMessage(KmgComMessageTypes, boolean)
+     * @see KmgComLogMessageTypes
      */
-    public String getLogMessage(final KmgCommonLogMessageTypes type) {
+    public String getLogMessage(final KmgComLogMessageTypes type) {
 
         /* コード埋め込みフラグをtrueに設定して、メッセージを取得 */
         final String result = this.getMessage(type, true);
@@ -145,7 +145,7 @@ public class KmgMessageSource {
 
     /**
      * 一般メッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgCommonMessageTypes, Object[], boolean)} を
+     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
      * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
      *
      * @since 0.1.0
@@ -157,10 +157,10 @@ public class KmgMessageSource {
      *
      * @return メッセージ。メッセージコードは埋め込まれません。
      *
-     * @see #getMessage(KmgCommonMessageTypes, Object[], boolean)
-     * @see KmgCommonGenMessageTypes
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
+     * @see KmgComGenMessageTypes
      */
-    public String getMsgMessage(final KmgCommonGenMessageTypes type, final Object[] args) {
+    public String getMsgMessage(final KmgComGenMessageTypes type, final Object[] args) {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, args, false);
@@ -170,7 +170,7 @@ public class KmgMessageSource {
 
     /**
      * 一般メッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgCommonMessageTypes, boolean)} を
+     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
      * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
      *
      * @since 0.1.0
@@ -180,10 +180,10 @@ public class KmgMessageSource {
      *
      * @return メッセージ。メッセージコードは埋め込まれません。
      *
-     * @see #getMessage(KmgCommonMessageTypes, boolean)
-     * @see KmgCommonGenMessageTypes
+     * @see #getMessage(KmgComMessageTypes, boolean)
+     * @see KmgComGenMessageTypes
      */
-    public String getMsgMessage(final KmgCommonGenMessageTypes type) {
+    public String getMsgMessage(final KmgComGenMessageTypes type) {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, false);
