@@ -31,7 +31,7 @@ public final class KmgYamlUtils {
      * @return マップ形式のデータ
      *
      * @throws KmgFundException
-     *                                入出力処理に失敗した場合
+     *                          入出力処理に失敗した場合
      */
     public static Map<String, Object> load(final Path path) throws KmgFundException {
 
@@ -45,12 +45,11 @@ public final class KmgYamlUtils {
 
         } catch (final IOException e) {
 
-            // TODO KenichiroArai 2025/03/12 例外
-            final KmgFundGenMessageTypes msgType     = KmgFundGenMessageTypes.NONE;
-            final Object[]                     messageArgs = {
+            final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24000;
+            final Object[]               genMsgArgs = {
                 path.toString()
             };
-            throw new KmgFundException(msgType, messageArgs, e);
+            throw new KmgFundException(genMsgType, genMsgArgs, e);
 
         }
 
