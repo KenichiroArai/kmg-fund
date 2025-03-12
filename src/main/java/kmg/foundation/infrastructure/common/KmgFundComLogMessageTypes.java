@@ -11,7 +11,7 @@ import kmg.core.infrastructure.common.KmgComLogMessageTypes;
  *
  * @version 0.2.0
  */
-public interface KmgFoundationComLogMessageTypes extends KmgFoundationComMessageTypes, KmgComLogMessageTypes {
+public interface KmgFundComLogMessageTypes extends KmgFundComMessageTypes, KmgComLogMessageTypes {
 
     // 処理なし
 

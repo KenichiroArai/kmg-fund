@@ -3,7 +3,7 @@ package kmg.foundation.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.foundation.infrastructure.common.KmgFoundationComGenMessageTypes;
+import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
 
 /**
  * KMG 基盤一般メッセージの種類<br>
@@ -14,7 +14,7 @@ import kmg.foundation.infrastructure.common.KmgFoundationComGenMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFoundationGenMessageTypes implements KmgFoundationComGenMessageTypes {
+public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes {
 
     /* 定義：開始 */
 
@@ -38,14 +38,14 @@ public enum KmgFoundationGenMessageTypes implements KmgFoundationComGenMessageTy
      *
      * @since 0.1.0
      */
-    private static final Map<String, KmgFoundationGenMessageTypes> VALUES_MAP = new HashMap<>();
+    private static final Map<String, KmgFundGenMessageTypes> VALUES_MAP = new HashMap<>();
 
     static {
 
         /* 種類のマップにプット */
-        for (final KmgFoundationGenMessageTypes type : KmgFoundationGenMessageTypes.values()) {
+        for (final KmgFundGenMessageTypes type : KmgFundGenMessageTypes.values()) {
 
-            KmgFoundationGenMessageTypes.VALUES_MAP.put(type.get(), type);
+            KmgFundGenMessageTypes.VALUES_MAP.put(type.get(), type);
 
         }
 
@@ -86,9 +86,9 @@ public enum KmgFoundationGenMessageTypes implements KmgFoundationComGenMessageTy
      *
      * @return デフォルト値
      */
-    public static KmgFoundationGenMessageTypes getDefault() {
+    public static KmgFundGenMessageTypes getDefault() {
 
-        final KmgFoundationGenMessageTypes result = NONE;
+        final KmgFundGenMessageTypes result = NONE;
         return result;
 
     }
@@ -106,9 +106,9 @@ public enum KmgFoundationGenMessageTypes implements KmgFoundationComGenMessageTy
      *
      * @return 種類。指定無し（NONE）：キーが存在しない場合。
      */
-    public static KmgFoundationGenMessageTypes getEnum(final String key) {
+    public static KmgFundGenMessageTypes getEnum(final String key) {
 
-        KmgFoundationGenMessageTypes result = KmgFoundationGenMessageTypes.VALUES_MAP.get(key);
+        KmgFundGenMessageTypes result = KmgFundGenMessageTypes.VALUES_MAP.get(key);
 
         if (result == null) {
 
@@ -126,9 +126,9 @@ public enum KmgFoundationGenMessageTypes implements KmgFoundationComGenMessageTy
      *
      * @return 初期値
      */
-    public static KmgFoundationGenMessageTypes getInitValue() {
+    public static KmgFundGenMessageTypes getInitValue() {
 
-        final KmgFoundationGenMessageTypes result = NONE;
+        final KmgFundGenMessageTypes result = NONE;
         return result;
 
     }
@@ -141,7 +141,7 @@ public enum KmgFoundationGenMessageTypes implements KmgFoundationComGenMessageTy
      * @param displayName
      *                    表示名
      */
-    KmgFoundationGenMessageTypes(final String displayName) {
+    KmgFundGenMessageTypes(final String displayName) {
 
         this.displayName = displayName;
         this.key = super.name();

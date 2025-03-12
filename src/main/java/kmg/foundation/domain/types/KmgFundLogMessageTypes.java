@@ -3,7 +3,7 @@ package kmg.foundation.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.foundation.infrastructure.common.KmgFoundationComLogMessageTypes;
+import kmg.foundation.infrastructure.common.KmgFundComLogMessageTypes;
 
 /**
  * KMG 基盤ログメッセージの種類<br>
@@ -14,7 +14,7 @@ import kmg.foundation.infrastructure.common.KmgFoundationComLogMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFoundationLogMessageTypes implements KmgFoundationComLogMessageTypes {
+public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
 
     /* 定義：開始 */
 
@@ -158,14 +158,14 @@ public enum KmgFoundationLogMessageTypes implements KmgFoundationComLogMessageTy
      *
      * @since 0.1.0
      */
-    private static final Map<String, KmgFoundationLogMessageTypes> VALUES_MAP = new HashMap<>();
+    private static final Map<String, KmgFundLogMessageTypes> VALUES_MAP = new HashMap<>();
 
     static {
 
         /* 種類のマップにプット */
-        for (final KmgFoundationLogMessageTypes type : KmgFoundationLogMessageTypes.values()) {
+        for (final KmgFundLogMessageTypes type : KmgFundLogMessageTypes.values()) {
 
-            KmgFoundationLogMessageTypes.VALUES_MAP.put(type.get(), type);
+            KmgFundLogMessageTypes.VALUES_MAP.put(type.get(), type);
 
         }
 
@@ -206,9 +206,9 @@ public enum KmgFoundationLogMessageTypes implements KmgFoundationComLogMessageTy
      *
      * @return デフォルト値
      */
-    public static KmgFoundationLogMessageTypes getDefault() {
+    public static KmgFundLogMessageTypes getDefault() {
 
-        final KmgFoundationLogMessageTypes result = NONE;
+        final KmgFundLogMessageTypes result = NONE;
         return result;
 
     }
@@ -226,9 +226,9 @@ public enum KmgFoundationLogMessageTypes implements KmgFoundationComLogMessageTy
      *
      * @return 種類。指定無し（NONE）：キーが存在しない場合。
      */
-    public static KmgFoundationLogMessageTypes getEnum(final String key) {
+    public static KmgFundLogMessageTypes getEnum(final String key) {
 
-        KmgFoundationLogMessageTypes result = KmgFoundationLogMessageTypes.VALUES_MAP.get(key);
+        KmgFundLogMessageTypes result = KmgFundLogMessageTypes.VALUES_MAP.get(key);
 
         if (result == null) {
 
@@ -246,9 +246,9 @@ public enum KmgFoundationLogMessageTypes implements KmgFoundationComLogMessageTy
      *
      * @return 初期値
      */
-    public static KmgFoundationLogMessageTypes getInitValue() {
+    public static KmgFundLogMessageTypes getInitValue() {
 
-        final KmgFoundationLogMessageTypes result = NONE;
+        final KmgFundLogMessageTypes result = NONE;
         return result;
 
     }
@@ -261,7 +261,7 @@ public enum KmgFoundationLogMessageTypes implements KmgFoundationComLogMessageTy
      * @param displayName
      *                    表示名
      */
-    KmgFoundationLogMessageTypes(final String displayName) {
+    KmgFundLogMessageTypes(final String displayName) {
 
         this.displayName = displayName;
         this.key = super.name();

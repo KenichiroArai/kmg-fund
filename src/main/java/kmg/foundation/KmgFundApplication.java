@@ -10,7 +10,7 @@ import kmg.core.infrastructure.type.KmgString;
  * KMG基盤アプリケーション
  */
 @SpringBootApplication
-public class KmgFoundationApplication {
+public class KmgFundApplication {
 
     /**
      * エントリポイント
@@ -20,7 +20,7 @@ public class KmgFoundationApplication {
      */
     public static void main(final String[] args) {
 
-        try (final ConfigurableApplicationContext ctx = SpringApplication.run(KmgFoundationApplication.class, args)) {
+        try (final ConfigurableApplicationContext ctx = SpringApplication.run(KmgFundApplication.class, args)) {
 
             // テスト処理を実行
             KmgString str = new KmgString("TestAbc5Ttt");

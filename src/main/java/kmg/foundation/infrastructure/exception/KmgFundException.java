@@ -1,7 +1,7 @@
 package kmg.foundation.infrastructure.exception;
 
 import kmg.core.infrastructure.exception.KmgDomainException;
-import kmg.foundation.infrastructure.common.KmgFoundationComGenMessageTypes;
+import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
 
 /**
  * KMG 基盤例外<br>
@@ -12,7 +12,7 @@ import kmg.foundation.infrastructure.common.KmgFoundationComGenMessageTypes;
  *
  * @version 0.1.0
  */
-public class KmgFoundationException extends KmgDomainException {
+public class KmgFundException extends KmgDomainException {
 
     /**
      * デフォルトシリアルバージョンＵＩＤ
@@ -29,7 +29,7 @@ public class KmgFoundationException extends KmgDomainException {
      * @param messageTypes
      *                     メッセージの種類
      */
-    public KmgFoundationException(final KmgFoundationComGenMessageTypes messageTypes) {
+    public KmgFundException(final KmgFundComGenMessageTypes messageTypes) {
 
         this(messageTypes, null, null);
 
@@ -45,7 +45,7 @@ public class KmgFoundationException extends KmgDomainException {
      * @param messageArgs
      *                     メッセージの引数
      */
-    public KmgFoundationException(final KmgFoundationComGenMessageTypes messageTypes, final Object[] messageArgs) {
+    public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Object[] messageArgs) {
 
         this(messageTypes, messageArgs, null);
 
@@ -63,7 +63,7 @@ public class KmgFoundationException extends KmgDomainException {
      * @param cause
      *                     原因
      */
-    public KmgFoundationException(final KmgFoundationComGenMessageTypes messageTypes, final Object[] messageArgs,
+    public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Object[] messageArgs,
         final Throwable cause) {
 
         super(messageTypes, messageArgs, cause);
@@ -80,7 +80,7 @@ public class KmgFoundationException extends KmgDomainException {
      * @param cause
      *                     原因
      */
-    public KmgFoundationException(final KmgFoundationComGenMessageTypes messageTypes, final Throwable cause) {
+    public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Throwable cause) {
 
         this(messageTypes, null, cause);
 

@@ -11,7 +11,7 @@ import kmg.core.infrastructure.common.KmgComGenMessageTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFoundationComGenMessageTypes extends KmgFoundationComMessageTypes, KmgComGenMessageTypes {
+public interface KmgFundComGenMessageTypes extends KmgFundComMessageTypes, KmgComGenMessageTypes {
 
     // 処理なし
 

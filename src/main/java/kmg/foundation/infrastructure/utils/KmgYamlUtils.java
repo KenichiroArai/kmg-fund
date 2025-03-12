@@ -8,8 +8,8 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import kmg.foundation.domain.types.KmgFoundationGenMessageTypes;
-import kmg.foundation.infrastructure.exception.KmgFoundationException;
+import kmg.foundation.domain.types.KmgFundGenMessageTypes;
+import kmg.foundation.infrastructure.exception.KmgFundException;
 
 /**
  * KMG YAMLユーティリティ<br>
@@ -30,10 +30,10 @@ public final class KmgYamlUtils {
      *
      * @return マップ形式のデータ
      *
-     * @throws KmgFoundationException
+     * @throws KmgFundException
      *                                入出力処理に失敗した場合
      */
-    public static Map<String, Object> load(final Path path) throws KmgFoundationException {
+    public static Map<String, Object> load(final Path path) throws KmgFundException {
 
         Map<String, Object> result = null;
 
@@ -46,11 +46,11 @@ public final class KmgYamlUtils {
         } catch (final IOException e) {
 
             // TODO KenichiroArai 2025/03/12 例外
-            final KmgFoundationGenMessageTypes msgType     = KmgFoundationGenMessageTypes.NONE;
+            final KmgFundGenMessageTypes msgType     = KmgFundGenMessageTypes.NONE;
             final Object[]                     messageArgs = {
                 path.toString()
             };
-            throw new KmgFoundationException(msgType, messageArgs, e);
+            throw new KmgFundException(msgType, messageArgs, e);
 
         }
 
