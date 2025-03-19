@@ -3,6 +3,7 @@ package kmg.foundation.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
+import kmg.foundation.infrastructure.common.KmgFundComExcMessageTypes;
 import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
 
 /**
@@ -14,7 +15,7 @@ import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes {
+public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFundComExcMessageTypes {
 
     /* 定義：開始 */
 

@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
+import kmg.core.infrastructure.common.KmgComExcMessageTypes;
+import kmg.core.infrastructure.common.KmgComGenMessageTypes;
 import kmg.core.infrastructure.common.KmgComLogMessageTypes;
 import kmg.core.infrastructure.common.KmgComMessageTypes;
-import kmg.core.infrastructure.common.KmgComGenMessageTypes;
 import kmg.core.infrastructure.type.KmgString;
 
 /**
@@ -187,6 +188,54 @@ public class KmgMessageSource {
 
         /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
         final String result = this.getMessage(type, false);
+        return result;
+
+    }
+
+    /**
+     * 例外用メッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
+     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     * @param args
+     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
+     *
+     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
+     *
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
+     * @see KmgComGenMessageTypes
+     */
+    public String getExcMessage(final KmgComExcMessageTypes type, final Object[] args) {
+
+        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, args, true);
+        return result;
+
+    }
+
+    /**
+     * 例外用メッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
+     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     *
+     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
+     *
+     * @see #getMessage(KmgComMessageTypes, boolean)
+     * @see KmgComGenMessageTypes
+     */
+    public String getExcMessage(final KmgComExcMessageTypes type) {
+
+        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, true);
         return result;
 
     }

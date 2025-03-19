@@ -1,10 +1,9 @@
 package kmg.foundation.infrastructure.exception;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import kmg.core.infrastructure.exception.KmgDomainException;
-import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
+import kmg.foundation.infrastructure.common.KmgFundComExcMessageTypes;
 import kmg.foundation.infrastructure.context.KmgMessageSource;
+import kmg.foundation.infrastructure.context.SpringApplicationContextHelper;
 
 /**
  * KMG 基盤例外<br>
@@ -29,7 +28,6 @@ public class KmgFundException extends KmgDomainException {
      *
      * @since 0.1.0
      */
-    @Autowired
     private KmgMessageSource messageSource;
 
     /**
@@ -40,7 +38,7 @@ public class KmgFundException extends KmgDomainException {
      * @param messageTypes
      *                     メッセージの種類
      */
-    public KmgFundException(final KmgFundComGenMessageTypes messageTypes) {
+    public KmgFundException(final KmgFundComExcMessageTypes messageTypes) {
 
         this(messageTypes, null, null);
 
@@ -56,7 +54,7 @@ public class KmgFundException extends KmgDomainException {
      * @param messageArgs
      *                     メッセージの引数
      */
-    public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Object[] messageArgs) {
+    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs) {
 
         this(messageTypes, messageArgs, null);
 
@@ -74,7 +72,7 @@ public class KmgFundException extends KmgDomainException {
      * @param cause
      *                     原因
      */
-    public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Object[] messageArgs,
+    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs,
         final Throwable cause) {
 
         super(messageTypes, messageArgs, cause);
@@ -91,9 +89,19 @@ public class KmgFundException extends KmgDomainException {
      * @param cause
      *                     原因
      */
-    public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Throwable cause) {
+    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Throwable cause) {
 
         this(messageTypes, null, cause);
+
+    }
+
+    /**
+     * メッセージソースを作成する。
+     */
+    @Override
+    protected void createMessageSource() {
+
+        this.messageSource = SpringApplicationContextHelper.getBean(KmgMessageSource.class);
 
     }
 
@@ -105,7 +113,7 @@ public class KmgFundException extends KmgDomainException {
     @Override
     protected String createMessage() {
 
-        final String result = this.messageSource.getGenMessage(this.getMessageTypes(), this.getMessageArgs());
+        final String result = this.messageSource.getExcMessage(this.getMessageTypes(), this.getMessageArgs());
         return result;
 
     }
