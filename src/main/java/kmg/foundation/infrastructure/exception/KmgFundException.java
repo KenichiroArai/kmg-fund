@@ -1,7 +1,10 @@
 package kmg.foundation.infrastructure.exception;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import kmg.core.infrastructure.exception.KmgDomainException;
 import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
+import kmg.foundation.infrastructure.context.KmgMessageSource;
 
 /**
  * KMG 基盤例外<br>
@@ -20,6 +23,14 @@ public class KmgFundException extends KmgDomainException {
      * @since 0.1.0
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * KMGメッセージリソース
+     *
+     * @since 0.1.0
+     */
+    @Autowired
+    private KmgMessageSource messageSource;
 
     /**
      * コンストラクタ<br>
@@ -83,6 +94,19 @@ public class KmgFundException extends KmgDomainException {
     public KmgFundException(final KmgFundComGenMessageTypes messageTypes, final Throwable cause) {
 
         this(messageTypes, null, cause);
+
+    }
+
+    /**
+     * メッセージを作成し、返す。
+     *
+     * @return メッセージ
+     */
+    @Override
+    protected String createMessage() {
+
+        final String result = this.messageSource.getGenMessage(this.getMessageTypes(), this.getMessageArgs());
+        return result;
 
     }
 
