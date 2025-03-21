@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import kmg.core.infrastructure.type.KmgString;
 import kmg.core.infrastructure.types.KmgDelimiterTypes;
 import kmg.foundation.domain.types.KmgApplicationPropertyFileTypes;
+import kmg.foundation.domain.types.KmgApplicationPropertyKeyTypes;
 
 /**
  * KMG 基盤プロパティローダー Spring Bootの起動時にプロパティファイルを読み込むためのクラス
@@ -122,7 +123,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
         integratedPropertieMap.putAll(this.mainPropertieMap);
 
         /* spring.messages.basenameの値を統合する */
-        this.integrateMessageBasename(this.kmgFundPropertieMap, "spring.messages.basename");
+        this.integrateMessageBasename(this.kmgFundPropertieMap,
+            KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
 
     }
 

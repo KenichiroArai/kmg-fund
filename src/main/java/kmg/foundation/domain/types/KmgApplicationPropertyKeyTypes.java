@@ -30,6 +30,17 @@ public enum KmgApplicationPropertyKeyTypes implements KmgComTypes<String> {
      */
     NONE("指定無し", "None", "指定無し"),
 
+    /**
+     * メッセージのベース名
+     *
+     * @author KenichiroArai
+     *
+     * @since 0.3.1
+     *
+     * @version 0.3.1
+     */
+    SPRING_MESSAGES_BASENAME("メッセージのベース名", "spring.messages.basename", "メッセージのベース名を指定するプロパティキー"),
+
     /* 定義：終了 */
     ;
 
