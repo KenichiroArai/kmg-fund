@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 import kmg.core.infrastructure.type.KmgString;
 import kmg.core.infrastructure.types.KmgDelimiterTypes;
-import kmg.foundation.domain.types.KmgApplicationPropertyTypes;
+import kmg.foundation.domain.types.KmgApplicationPropertyFileTypes;
 
 /**
  * KMG 基盤プロパティローダー Spring Bootの起動時にプロパティファイルを読み込むためのクラス
@@ -68,9 +68,9 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     @Override
     public void postProcessEnvironment(final ConfigurableEnvironment environment, final SpringApplication application) {
 
-        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyTypes.APPLICATION_PROPERTIES.get(),
+        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyFileTypes.APPLICATION_PROPERTIES.get(),
             this.mainPropertieMap);
-        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyTypes.KMG_FUND_APPLICATION_PROPERTIES.get(),
+        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyFileTypes.KMG_FUND_APPLICATION_PROPERTIES.get(),
             this.kmgFundPropertieMap);
 
         // 追加プロパティの読み込み
@@ -81,7 +81,7 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
         // プロパティを環境に追加
         final PropertySource<?> propertySource = new MapPropertySource(
-            KmgApplicationPropertyTypes.KMG_APPLICATION_PROPERTIES.get(), this.integratedPropertieMap);
+            KmgApplicationPropertyFileTypes.KMG_APPLICATION_PROPERTIES.get(), this.integratedPropertieMap);
         environment.getPropertySources().addFirst(propertySource);
 
     }

@@ -6,7 +6,7 @@ import java.util.Map;
 import kmg.core.infrastructure.common.KmgComTypes;
 
 /**
- * KMG アプリケーションプロパティファイルの種類<br>
+ * KMG アプリケーションプロパティキーの種類<br>
  *
  * @author KenichiroArai
  *
@@ -15,7 +15,7 @@ import kmg.core.infrastructure.common.KmgComTypes;
  * @version 0.3.0
  */
 @SuppressWarnings("nls")
-public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
+public enum KmgApplicationPropertyKeyTypes implements KmgComTypes<String> {
 
     /* 定義：開始 */
 
@@ -30,39 +30,6 @@ public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
      */
     NONE("指定無し", "None", "指定無し"),
 
-    /**
-     * アプリケーションプロパティ
-     *
-     * @author KenichiroArai
-     *
-     * @since 0.3.0
-     *
-     * @version 0.3.0
-     */
-    APPLICATION_PROPERTIES("アプリケーションプロパティ", "application.properties", "Springアプリケーションのプロパティファイル"),
-
-    /**
-     * KMG基盤アプリケーションプロパティ
-     *
-     * @author KenichiroArai
-     *
-     * @since 0.3.0
-     *
-     * @version 0.3.0
-     */
-    KMG_FUND_APPLICATION_PROPERTIES("KMG基盤アプリケーションプロパティ", "kmg-fund-application.properties", "KMG基盤アプリケーションのプロパティファイル"),
-
-    /**
-     * KMGアプリケーションプロパティ
-     *
-     * @author KenichiroArai
-     *
-     * @since 0.3.0
-     *
-     * @version 0.3.0
-     */
-    KMG_APPLICATION_PROPERTIES("KMGアプリケーションプロパティ", "kmg-application-properties", "KMGアプリケーションのプロパティ名"),
-
     /* 定義：終了 */
     ;
 
@@ -71,14 +38,14 @@ public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
      *
      * @since 0.1.0
      */
-    private static final Map<String, KmgApplicationPropertyFileTypes> VALUES_MAP = new HashMap<>();
+    private static final Map<String, KmgApplicationPropertyKeyTypes> VALUES_MAP = new HashMap<>();
 
     static {
 
         /* 種類のマップにプット */
-        for (final KmgApplicationPropertyFileTypes type : KmgApplicationPropertyFileTypes.values()) {
+        for (final KmgApplicationPropertyKeyTypes type : KmgApplicationPropertyKeyTypes.values()) {
 
-            KmgApplicationPropertyFileTypes.VALUES_MAP.put(type.get(), type);
+            KmgApplicationPropertyKeyTypes.VALUES_MAP.put(type.get(), type);
 
         }
 
@@ -112,9 +79,9 @@ public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
      *
      * @return デフォルト値
      */
-    public static KmgApplicationPropertyFileTypes getDefault() {
+    public static KmgApplicationPropertyKeyTypes getDefault() {
 
-        final KmgApplicationPropertyFileTypes result = NONE;
+        final KmgApplicationPropertyKeyTypes result = NONE;
         return result;
 
     }
@@ -132,9 +99,9 @@ public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
      *
      * @return 種類。指定無し（NONE）：キーが存在しない場合。
      */
-    public static KmgApplicationPropertyFileTypes getEnum(final String key) {
+    public static KmgApplicationPropertyKeyTypes getEnum(final String key) {
 
-        KmgApplicationPropertyFileTypes result = KmgApplicationPropertyFileTypes.VALUES_MAP.get(key);
+        KmgApplicationPropertyKeyTypes result = KmgApplicationPropertyKeyTypes.VALUES_MAP.get(key);
 
         if (result == null) {
 
@@ -152,9 +119,9 @@ public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
      *
      * @return 初期値
      */
-    public static KmgApplicationPropertyFileTypes getInitValue() {
+    public static KmgApplicationPropertyKeyTypes getInitValue() {
 
-        final KmgApplicationPropertyFileTypes result = NONE;
+        final KmgApplicationPropertyKeyTypes result = NONE;
         return result;
 
     }
@@ -171,7 +138,7 @@ public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
      * @param detail
      *                    詳細情報
      */
-    KmgApplicationPropertyFileTypes(final String displayName, final String key, final String detail) {
+    KmgApplicationPropertyKeyTypes(final String displayName, final String key, final String detail) {
 
         this.displayName = displayName;
         this.key = key;
