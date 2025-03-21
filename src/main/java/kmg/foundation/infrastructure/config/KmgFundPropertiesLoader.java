@@ -61,8 +61,6 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     @Override
     public void postProcessEnvironment(final ConfigurableEnvironment environment, final SpringApplication application) {
 
-        System.out.println("KmgFundPropertiesLoader:start");
-
         KmgFundPropertiesLoader.fromPropertieMap("application.properties", this.mainPropertieMap);
         KmgFundPropertiesLoader.fromPropertieMap("kmg-fund-application.properties", this.kmgFundPropertieMap);
 
