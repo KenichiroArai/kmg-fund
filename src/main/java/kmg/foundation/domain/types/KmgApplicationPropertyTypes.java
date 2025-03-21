@@ -52,6 +52,17 @@ public enum KmgApplicationPropertyTypes implements KmgComTypes<String> {
      */
     KMG_FUND_APPLICATION_PROPERTIES("KMG基盤アプリケーションプロパティ", "kmg-fund-application.properties", "KMG基盤アプリケーションのプロパティファイル"),
 
+    /**
+     * KMGアプリケーションプロパティ
+     *
+     * @author KenichiroArai
+     *
+     * @since 0.3.0
+     *
+     * @version 0.3.0
+     */
+    KMG_APPLICATION_PROPERTIES("KMGアプリケーションプロパティ", "kmg-application-properties", "KMGアプリケーションのプロパティ名"),
+
     /* 定義：終了 */
     ;
 

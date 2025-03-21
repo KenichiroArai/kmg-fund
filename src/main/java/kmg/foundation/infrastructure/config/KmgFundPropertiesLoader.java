@@ -80,8 +80,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
         this.integrateProperties(this.integratedPropertieMap);
 
         // プロパティを環境に追加
-        final PropertySource<?> propertySource
-            = new MapPropertySource("kmg-application-properties", this.integratedPropertieMap);
+        final PropertySource<?> propertySource = new MapPropertySource(
+            KmgApplicationPropertyTypes.KMG_APPLICATION_PROPERTIES.get(), this.integratedPropertieMap);
         environment.getPropertySources().addFirst(propertySource);
 
     }
