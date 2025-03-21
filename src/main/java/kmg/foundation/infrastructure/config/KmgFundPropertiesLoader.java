@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
@@ -15,11 +16,39 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import kmg.core.infrastructure.type.KmgString;
+import kmg.core.infrastructure.types.KmgDelimiterTypes;
+
 /**
- * KMG基盤プロパティローダー Spring Bootの起動時にプロパティファイルを読み込むためのクラス
+ * KMG 基盤プロパティローダー Spring Bootの起動時にプロパティファイルを読み込むためのクラス
  */
 @Component
+@Order(10)
 public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
+
+    /** 統合プロパティのマップ */
+    private final Map<String, Object> integratedPropertieMap;
+
+    /** メインプロパティのマップ */
+    private final Map<String, Object> mainPropertieMap;
+
+    /** KMG基盤プロパティのマップ */
+    private final Map<String, Object> kmgFundPropertieMap;
+
+    /** 追加プロパティのマップ */
+    private final Map<String, Object> additionalPropertieMap;
+
+    /**
+     * デフォルトコンストラクタ
+     */
+    public KmgFundPropertiesLoader() {
+
+        this.integratedPropertieMap = new HashMap<>();
+        this.mainPropertieMap = new HashMap<>();
+        this.kmgFundPropertieMap = new HashMap<>();
+        this.additionalPropertieMap = new HashMap<>();
+
+    }
 
     /**
      * 環境後処理
@@ -32,8 +61,111 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     @Override
     public void postProcessEnvironment(final ConfigurableEnvironment environment, final SpringApplication application) {
 
-        // kmg-fund-application.propertiesを読み込む
-        final Resource resource = new ClassPathResource("kmg-fund-application.properties");
+        System.out.println("KmgFundPropertiesLoader:start");
+
+        KmgFundPropertiesLoader.fromPropertieMap("application.properties", this.mainPropertieMap);
+        KmgFundPropertiesLoader.fromPropertieMap("kmg-fund-application.properties", this.kmgFundPropertieMap);
+
+        // 追加プロパティの読み込み
+        this.fromAdditionalProperties(this.additionalPropertieMap);
+
+        // プロパティの統合
+        this.integrateProperties(this.integratedPropertieMap);
+
+        // プロパティを環境に追加
+        final PropertySource<?> propertySource
+            = new MapPropertySource("kmg-application-properties", this.integratedPropertieMap);
+        environment.getPropertySources().addFirst(propertySource);
+
+    }
+
+    /**
+     * 追加プロパティを読み込む<br>
+     * <p>
+     * 子クラスはこのメソッドをオーバーライドして独自のプロパティファイルを読み込み、追加プロパティのマップに設定してください。
+     * </p>
+     *
+     * @param additionalPropertieMap
+     *                               追加プロパティのマップ
+     */
+    @SuppressWarnings("hiding")
+    protected void fromAdditionalProperties(final Map<String, Object> additionalPropertieMap) {
+
+        // 処理なし
+
+    }
+
+    /**
+     * プロパティを統合する<br>
+     * <p>
+     * メインプロパティ、KMG基盤プロパティ、追加プロパティを統合します。 子クラスはこのメソッドをオーバーライドして独自の統合ロジックを実装できます。
+     * </p>
+     *
+     * @param integratedPropertieMap
+     *                               統合プロパティのマップ
+     */
+    @SuppressWarnings("hiding")
+    protected void integrateProperties(final Map<String, Object> integratedPropertieMap) {
+
+        /*
+         * メインプロパティを基準にし、"spring.messages.basename"のみ統合する。
+         */
+
+        /* メインプロパティを統合 */
+        integratedPropertieMap.putAll(this.mainPropertieMap);
+
+        /* spring.messages.basenameの値を統合する */
+        this.integrateMessageBasename(this.kmgFundPropertieMap, "spring.messages.basename");
+
+    }
+
+    /**
+     * メッセージベース名を統合する
+     *
+     * @param propertyMap
+     *                    メッセージベース名を含むプロパティマップ
+     * @param propertyKey
+     *                    統合するプロパティキー
+     */
+    private void integrateMessageBasename(final Map<String, Object> propertyMap, final String propertyKey) {
+
+        for (final String destKey : propertyMap.keySet()) {
+
+            if (!KmgString.equals(destKey, propertyKey)) {
+
+                continue;
+
+            }
+
+            final String srcValue = (String) this.integratedPropertieMap.get(destKey);
+
+            if (KmgString.isEmpty(srcValue)) {
+
+                continue;
+
+            }
+
+            final String destValue = (String) propertyMap.get(destKey);
+
+            final String intergratedValue = KmgDelimiterTypes.COMMA.join(srcValue, destValue);
+
+            this.integratedPropertieMap.put(destKey, intergratedValue);
+
+        }
+
+    }
+
+    /**
+     * リソースパスからプロパティを読み込み、マップに設定する
+     *
+     * @param resourcePath
+     *                     リソースパス
+     * @param propertieMap
+     *                     設定先のプロパティマップ
+     */
+    protected static void fromPropertieMap(final String resourcePath, final Map<String, Object> propertieMap) {
+
+        final Resource resource = new ClassPathResource(resourcePath);
 
         if (!resource.exists()) {
 
@@ -55,18 +187,11 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
         }
 
-        // PropertiesをMap<String, Object>に変換
-        final Map<String, Object> map = new HashMap<>();
-
         for (final Object key : properties.keySet()) {
 
-            map.put(key.toString(), properties.get(key));
+            propertieMap.put(key.toString(), properties.get(key));
 
         }
-
-        // プロパティを環境に追加
-        final PropertySource<?> propertySource = new MapPropertySource("kmg-application-properties", map);
-        environment.getPropertySources().addFirst(propertySource);
 
     }
 }
