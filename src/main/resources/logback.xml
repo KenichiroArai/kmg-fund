@@ -10,6 +10,9 @@
     <property name="EXCEPTION_FILENAME" value="kmg-foundation-exceptions.log" />
     <property name="EXCEPTION_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %xEx%n" />
 
+    <!-- インクルード設定と共通のアペンダー -->
+    <include file="logback-kmg-foundation-included.xml" optional="true" />
+
     <appender name="APPLIATION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR}/${LOG_FILENAME}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
