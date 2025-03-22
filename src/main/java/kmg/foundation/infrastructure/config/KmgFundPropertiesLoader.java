@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.annotation.Order;
@@ -44,13 +42,6 @@ import kmg.foundation.domain.types.KmgApplicationPropertyKeyTypes;
 @Order(10)
 public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
-    /**
-     * ロガー
-     *
-     * @since 1.0.0
-     */
-    private final Logger logger;
-
     /** 統合プロパティのマップ：全てのプロパティを統合して保持 */
     private final Map<String, Object> integratedPropertieMap;
 
@@ -70,8 +61,6 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * </p>
      */
     public KmgFundPropertiesLoader() {
-
-        this.logger = LoggerFactory.getLogger(KmgFundPropertiesLoader.class);
 
         this.integratedPropertieMap = new HashMap<>();
         this.mainPropertieMap = new HashMap<>();
@@ -102,10 +91,11 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     public void postProcessEnvironment(final ConfigurableEnvironment environment, final SpringApplication application) {
 
         /* メインプロパティファイルの読み込み */
-        this.fromPropertieMap(KmgApplicationPropertyFileTypes.APPLICATION_PROPERTIES.get(), this.mainPropertieMap);
+        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyFileTypes.APPLICATION_PROPERTIES.get(),
+            this.mainPropertieMap);
 
         /* KMG基盤プロパティファイルの読み込み */
-        this.fromPropertieMap(KmgApplicationPropertyFileTypes.KMG_FUND_APPLICATION_PROPERTIES.get(),
+        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyFileTypes.KMG_FUND_APPLICATION_PROPERTIES.get(),
             this.kmgFundPropertieMap);
 
         /* 追加プロパティの読み込み */
@@ -213,10 +203,7 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * @param propertieMap
      *                     プロパティを格納するマップ
      */
-    protected void fromPropertieMap(final String resourcePath, final Map<String, Object> propertieMap) {
-
-        System.out.println("------ print:fromPropertieMap");
-        this.logger.info("------ logger:fromPropertieMap");
+    protected static void fromPropertieMap(final String resourcePath, final Map<String, Object> propertieMap) {
 
         /* リソースの取得 */
         final Resource resource = new ClassPathResource(resourcePath);
@@ -237,7 +224,6 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
         } catch (final IOException e) {
 
-            // TODO KenichiroArai 2025/03/20 ログ出力の実装
             e.printStackTrace();
             return;
 
