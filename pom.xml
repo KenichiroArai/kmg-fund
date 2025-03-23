@@ -11,11 +11,11 @@
         <relativePath />
     </parent>
 
-    <groupId>kmg.foundation</groupId>
-    <artifactId>kmg-foundation</artifactId>
+    <groupId>kmg.fund</groupId>
+    <artifactId>kmg-fund</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
-    <name>kmg-foundation</name>
+    <name>kmg-fund</name>
     <description>KMG Foundation</description>
 
     <properties>
@@ -77,7 +77,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>kmg.foundation.KmgFoundationApplication</mainClass>
+                    <mainClass>kmg.fund.KmgFoundationApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -137,7 +137,7 @@
         <repository>
             <id>github</id>
             <name>GitHub KenichiroArai Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/KenichiroArai/kmg-core-src</url>
+            <url>https://maven.pkg.github.com/KenichiroArai/kmg-core</url>
         </repository>
     </repositories>
 
@@ -145,7 +145,7 @@
         <repository>
             <id>github</id>
             <name>GitHub KenichiroArai Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/KenichiroArai/kmg-foundation-src</url>
+            <url>https://maven.pkg.github.com/KenichiroArai/kmg-fund</url>
         </repository>
     </distributionManagement>
 </project>
