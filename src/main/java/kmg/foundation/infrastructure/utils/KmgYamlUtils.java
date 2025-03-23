@@ -3,6 +3,7 @@ package kmg.foundation.infrastructure.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.Map;
 
@@ -43,9 +44,17 @@ public final class KmgYamlUtils {
 
             result = yaml.load(inputStream);
 
-        } catch (final IOException e) {
+        } catch (final NoSuchFileException e) {
 
             final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24000;
+            final Object[]               genMsgArgs = {
+                path.toString()
+            };
+            throw new KmgFundException(genMsgType, genMsgArgs, e);
+
+        } catch (final IOException e) {
+
+            final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24001;
             final Object[]               genMsgArgs = {
                 path.toString()
             };

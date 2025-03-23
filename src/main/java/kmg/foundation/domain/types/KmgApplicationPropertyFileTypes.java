@@ -3,19 +3,19 @@ package kmg.foundation.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.foundation.infrastructure.common.KmgFundComExcMessageTypes;
-import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
+import kmg.core.infrastructure.common.KmgComTypes;
 
 /**
- * KMG 基盤一般メッセージの種類<br>
+ * KMG アプリケーションプロパティファイルの種類<br>
  *
  * @author KenichiroArai
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.3.0
  */
-public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFundComExcMessageTypes {
+@SuppressWarnings("nls")
+public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
 
     /* 定義：開始 */
 
@@ -28,32 +28,42 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
      *
      * @version 0.1.0
      */
-    NONE("指定無し"),
+    NONE("指定無し", "None", "指定無し"),
 
     /**
-     * 該当するYAMLファイルがありません。ファイルパス=[{0}]
+     * アプリケーションプロパティ
      *
      * @author KenichiroArai
      *
-     * @since 0.1.0
+     * @since 0.3.0
      *
-     * @version 0.1.0
+     * @version 0.3.0
      */
-    KMGFUND_GEN24000("該当するYAMLファイルがありません。ファイルパス=[{0}]"),
+    APPLICATION_PROPERTIES("アプリケーションプロパティ", "application.properties", "Springアプリケーションのプロパティファイル"),
 
     /**
-     * YAMLにロードするファイルの読み込みに失敗しました。ファイルパス=[{0}]
+     * KMG基盤アプリケーションプロパティ
      *
      * @author KenichiroArai
      *
-     * @since 0.1.0
+     * @since 0.3.0
      *
-     * @version 0.1.0
+     * @version 0.3.0
      */
-    KMGFUND_GEN24001("YAMLにロードするファイルの読み込みに失敗しました。ファイルパス=[{0}]"),
+    KMG_FUND_APPLICATION_PROPERTIES("KMG基盤アプリケーションプロパティ", "kmg-fund-application.properties", "KMG基盤アプリケーションのプロパティファイル"),
+
+    /**
+     * KMGアプリケーションプロパティ
+     *
+     * @author KenichiroArai
+     *
+     * @since 0.3.0
+     *
+     * @version 0.3.0
+     */
+    KMG_APPLICATION_PROPERTIES("KMGアプリケーションプロパティ", "kmg-application-properties", "KMGアプリケーションのプロパティ名"),
 
     /* 定義：終了 */
-
     ;
 
     /**
@@ -61,14 +71,14 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
      *
      * @since 0.1.0
      */
-    private static final Map<String, KmgFundGenMessageTypes> VALUES_MAP = new HashMap<>();
+    private static final Map<String, KmgApplicationPropertyFileTypes> VALUES_MAP = new HashMap<>();
 
     static {
 
         /* 種類のマップにプット */
-        for (final KmgFundGenMessageTypes type : KmgFundGenMessageTypes.values()) {
+        for (final KmgApplicationPropertyFileTypes type : KmgApplicationPropertyFileTypes.values()) {
 
-            KmgFundGenMessageTypes.VALUES_MAP.put(type.get(), type);
+            KmgApplicationPropertyFileTypes.VALUES_MAP.put(type.get(), type);
 
         }
 
@@ -82,18 +92,11 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
     private final String displayName;
 
     /**
-     * メッセージのキー
+     * キー
      *
      * @since 0.1.0
      */
     private final String key;
-
-    /**
-     * メッセージの値
-     *
-     * @since 0.1.0
-     */
-    private final String value;
 
     /**
      * 詳細情報
@@ -109,9 +112,9 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
      *
      * @return デフォルト値
      */
-    public static KmgFundGenMessageTypes getDefault() {
+    public static KmgApplicationPropertyFileTypes getDefault() {
 
-        final KmgFundGenMessageTypes result = NONE;
+        final KmgApplicationPropertyFileTypes result = NONE;
         return result;
 
     }
@@ -129,9 +132,9 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
      *
      * @return 種類。指定無し（NONE）：キーが存在しない場合。
      */
-    public static KmgFundGenMessageTypes getEnum(final String key) {
+    public static KmgApplicationPropertyFileTypes getEnum(final String key) {
 
-        KmgFundGenMessageTypes result = KmgFundGenMessageTypes.VALUES_MAP.get(key);
+        KmgApplicationPropertyFileTypes result = KmgApplicationPropertyFileTypes.VALUES_MAP.get(key);
 
         if (result == null) {
 
@@ -149,9 +152,9 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
      *
      * @return 初期値
      */
-    public static KmgFundGenMessageTypes getInitValue() {
+    public static KmgApplicationPropertyFileTypes getInitValue() {
 
-        final KmgFundGenMessageTypes result = NONE;
+        final KmgApplicationPropertyFileTypes result = NONE;
         return result;
 
     }
@@ -163,44 +166,30 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
      *
      * @param displayName
      *                    表示名
+     * @param key
+     *                    キー
+     * @param detail
+     *                    詳細情報
      */
-    KmgFundGenMessageTypes(final String displayName) {
+    KmgApplicationPropertyFileTypes(final String displayName, final String key, final String detail) {
 
         this.displayName = displayName;
-        this.key = super.name();
-        this.value = displayName;
-        this.detail = displayName;
+        this.key = key;
+        this.detail = detail;
 
     }
 
     /**
-     * メッセージのキーを返す。<br>
+     * キーを返す。<br>
      *
      * @since 0.1.0
      *
-     * @return メッセージのキー
+     * @return キー
      *
      * @see #getKey()
      */
     @Override
     public String get() {
-
-        final String result = this.getKey();
-        return result;
-
-    }
-
-    /**
-     * メッセージのキーを返す。<br>
-     *
-     * @since 0.1.0
-     *
-     * @return メッセージのキー
-     *
-     * @see #getKey()
-     */
-    @Override
-    public String getCode() {
 
         final String result = this.getKey();
         return result;
@@ -241,11 +230,11 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
     }
 
     /**
-     * メッセージのキーを返す。<br>
+     * キーを返す。<br>
      *
      * @since 0.1.0
      *
-     * @return メッセージのキー
+     * @return キー
      */
     @Override
     public String getKey() {
@@ -256,26 +245,11 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
     }
 
     /**
-     * メッセージの値を返す。
+     * キーを返す。<br>
      *
      * @since 0.1.0
      *
-     * @return メッセージの値
-     */
-    @Override
-    public String getValue() {
-
-        final String result = this.value;
-        return result;
-
-    }
-
-    /**
-     * メッセージのキーを返す。<br>
-     *
-     * @since 0.1.0
-     *
-     * @return メッセージのキー
+     * @return キー
      *
      * @see #getKey()
      */
@@ -286,5 +260,4 @@ public enum KmgFundGenMessageTypes implements KmgFundComGenMessageTypes, KmgFund
         return result;
 
     }
-
 }

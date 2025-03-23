@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.core.infrastructure.type.KmgString;
+import java.util.Properties;
 
 /**
  * KMG基盤アプリケーション
@@ -20,7 +21,13 @@ public class KmgFundApplication {
      */
     public static void main(final String[] args) {
 
-        try (final ConfigurableApplicationContext ctx = SpringApplication.run(KmgFundApplication.class, args)) {
+        // SpringApplicationの設定
+        final SpringApplication application = new SpringApplication(KmgFundApplication.class);
+        final Properties        properties  = new Properties();
+        properties.put("spring.config.name", "kmg-fund-application");
+        application.setDefaultProperties(properties);
+
+        try (final ConfigurableApplicationContext ctx = application.run(args)) {
 
             // テスト処理を実行
             KmgString str = new KmgString("TestAbc5Ttt");
