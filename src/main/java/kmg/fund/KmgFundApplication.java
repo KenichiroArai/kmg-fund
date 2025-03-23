@@ -1,11 +1,12 @@
 package kmg.fund;
 
+import java.util.Properties;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.core.infrastructure.type.KmgString;
-import java.util.Properties;
 
 /**
  * KMG基盤アプリケーション
