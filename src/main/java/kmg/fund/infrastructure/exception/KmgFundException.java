@@ -1,9 +1,9 @@
-package kmg.foundation.infrastructure.exception;
+package kmg.fund.infrastructure.exception;
 
 import kmg.core.infrastructure.exception.KmgDomainException;
-import kmg.foundation.infrastructure.common.KmgFundComExcMessageTypes;
-import kmg.foundation.infrastructure.context.KmgMessageSource;
-import kmg.foundation.infrastructure.context.SpringApplicationContextHelper;
+import kmg.fund.infrastructure.common.KmgFundComExcMessageTypes;
+import kmg.fund.infrastructure.context.KmgMessageSource;
+import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
 /**
  * KMG 基盤例外<br>

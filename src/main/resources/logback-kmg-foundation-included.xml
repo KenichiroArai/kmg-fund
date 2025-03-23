@@ -29,7 +29,7 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <logger name="kmg.foundation" level="DEBUG" additivity="false">
+    <logger name="kmg.fund" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="APPLIATION_LOG" />
     </logger>

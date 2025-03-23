@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.config;
+package kmg.fund.infrastructure.config;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 
 import kmg.core.infrastructure.type.KmgString;
 import kmg.core.infrastructure.types.KmgDelimiterTypes;
-import kmg.foundation.domain.types.KmgApplicationPropertyFileTypes;
-import kmg.foundation.domain.types.KmgApplicationPropertyKeyTypes;
+import kmg.fund.domain.types.KmgApplicationPropertyFileTypes;
+import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
 
 /**
  * KMG基盤プロパティローダー

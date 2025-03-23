@@ -1,10 +1,10 @@
-package kmg.foundation.domain.types;
+package kmg.fund.domain.types;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.foundation.infrastructure.common.KmgFundComExcMessageTypes;
-import kmg.foundation.infrastructure.common.KmgFundComGenMessageTypes;
+import kmg.fund.infrastructure.common.KmgFundComExcMessageTypes;
+import kmg.fund.infrastructure.common.KmgFundComGenMessageTypes;
 
 /**
  * KMG 基盤一般メッセージの種類<br>

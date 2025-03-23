@@ -1,4 +1,4 @@
-package kmg.foundation;
+package kmg.fund;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,9 +1,9 @@
-package kmg.foundation.domain.types;
+package kmg.fund.domain.types;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.foundation.infrastructure.common.KmgFundComLogMessageTypes;
+import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
 
 /**
  * KMG 基盤ログメッセージの種類<br>

@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.context;
+package kmg.fund.infrastructure.context;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

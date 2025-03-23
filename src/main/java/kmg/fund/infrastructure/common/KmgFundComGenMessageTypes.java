@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.common;
+package kmg.fund.infrastructure.common;
 
 import kmg.core.infrastructure.common.KmgComGenMessageTypes;
 
