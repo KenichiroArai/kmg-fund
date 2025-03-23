@@ -3,16 +3,16 @@
 <included>
     <property name="LOG_DIR" value="logs" if="${LOG_DIR:-UNSET}" />
     <property name="LOG_PATTERN"
-        value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5r [%-5p] - %m - [kmg-foundation] &lt;%C %M:%L&gt; [%t]%n%xEx"
+        value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5r [%-5p] - %m - [kmg-fund] &lt;%C %M:%L&gt; [%t]%n%xEx"
         if="${LOG_PATTERN:-UNSET}" />
     <property name="EXCEPTION_DIR" value="logs/exceptions" if="${EXCEPTION_DIR:-UNSET}" />
     <property name="EXCEPTION_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %xEx%n"
         if="${EXCEPTION_PATTERN:-UNSET}" />
 
     <appender name="KMGFUND_EXCEPTION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${EXCEPTION_DIR}/kmg-foundation-exceptions.log</file>
+        <file>${EXCEPTION_DIR}/kmg-fund-exceptions.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${EXCEPTION_DIR}/kmg-foundation-exceptions_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${EXCEPTION_DIR}/kmg-fund-exceptions_%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>

@@ -76,11 +76,11 @@ jobs:
             - name: Create Release
               uses: softprops/action-gh-release@v1
               with:
-                  files: target/kmg-foundation-*.jar
+                  files: target/kmg-fund-*.jar
                   generate_release_notes: true
                   body: |
                       ## 成果物
-                      - JARファイル: `target/kmg-foundation-*.jar`
+                      - JARファイル: `target/kmg-fund-*.jar`
 
                       ## テスト結果
                       - JUnitテストレポート: `target/surefire-reports/`
