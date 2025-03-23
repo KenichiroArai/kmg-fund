@@ -31,7 +31,7 @@ public class KmgFundApplication {
         try (final ConfigurableApplicationContext ctx = application.run(args)) {
 
             // テスト処理を実行
-            KmgString str = new KmgString("TestAbc5Ttt");
+            final KmgString str = new KmgString("TestAbc5Ttt");
             System.out.println(str.toCamelCase());
 
             System.out.println("HelloWorld");
