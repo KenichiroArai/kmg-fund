@@ -26,25 +26,6 @@ public class SpringApplicationContextHelper implements ApplicationContextAware {
     private static ApplicationContext applicationContext;
 
     /**
-     * アプリケーションコンテキストを設定する<br>
-     * Springフレームワークによって自動的に呼び出される
-     *
-     * @since 0.1.0
-     *
-     * @param applicationContext
-     *                           アプリケーションコンテキスト
-     *
-     * @throws BeansException
-     *                        Beanの例外が発生した場合
-     */
-    @Override
-    public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
-
-        SpringApplicationContextHelper.applicationContext = applicationContext;
-
-    }
-
-    /**
      * 指定されたクラス型のBeanを取得する<br>
      *
      * @since 0.1.0
@@ -91,5 +72,24 @@ public class SpringApplicationContextHelper implements ApplicationContextAware {
     private SpringApplicationContextHelper() {
 
         // 処理なし
+    }
+
+    /**
+     * アプリケーションコンテキストを設定する<br>
+     * Springフレームワークによって自動的に呼び出される
+     *
+     * @since 0.1.0
+     *
+     * @param applicationContext
+     *                           アプリケーションコンテキスト
+     *
+     * @throws BeansException
+     *                        Beanの例外が発生した場合
+     */
+    @Override
+    public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
+
+        SpringApplicationContextHelper.applicationContext = applicationContext;
+
     }
 }
