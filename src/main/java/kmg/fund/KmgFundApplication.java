@@ -1,11 +1,12 @@
-package kmg.foundation;
+package kmg.fund;
+
+import java.util.Properties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.core.infrastructure.type.KmgString;
-import java.util.Properties;
 
 /**
  * KMG基盤アプリケーション
@@ -30,7 +31,7 @@ public class KmgFundApplication {
         try (final ConfigurableApplicationContext ctx = application.run(args)) {
 
             // テスト処理を実行
-            KmgString str = new KmgString("TestAbc5Ttt");
+            final KmgString str = new KmgString("TestAbc5Ttt");
             System.out.println(str.toCamelCase());
 
             System.out.println("HelloWorld");

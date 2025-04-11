@@ -1,2 +1,2 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
-kmg.foundation.infrastructure.config.KmgFundPropertiesLoader
+kmg.fund.infrastructure.config.KmgFundPropertiesLoader

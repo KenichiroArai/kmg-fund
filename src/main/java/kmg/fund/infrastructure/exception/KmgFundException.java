@@ -1,9 +1,9 @@
-package kmg.foundation.infrastructure.exception;
+package kmg.fund.infrastructure.exception;
 
 import kmg.core.infrastructure.exception.KmgDomainException;
-import kmg.foundation.infrastructure.common.KmgFundComExcMessageTypes;
-import kmg.foundation.infrastructure.context.KmgMessageSource;
-import kmg.foundation.infrastructure.context.SpringApplicationContextHelper;
+import kmg.fund.infrastructure.common.KmgFundComExcMessageTypes;
+import kmg.fund.infrastructure.context.KmgMessageSource;
+import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
 /**
  * KMG 基盤例外<br>
@@ -96,16 +96,6 @@ public class KmgFundException extends KmgDomainException {
     }
 
     /**
-     * メッセージソースを作成する。
-     */
-    @Override
-    protected void createMessageSource() {
-
-        this.messageSource = SpringApplicationContextHelper.getBean(KmgMessageSource.class);
-
-    }
-
-    /**
      * メッセージを作成し、返す。
      *
      * @return メッセージ
@@ -115,6 +105,16 @@ public class KmgFundException extends KmgDomainException {
 
         final String result = this.messageSource.getExcMessage(this.getMessageTypes(), this.getMessageArgs());
         return result;
+
+    }
+
+    /**
+     * メッセージソースを作成する。
+     */
+    @Override
+    protected void createMessageSource() {
+
+        this.messageSource = SpringApplicationContextHelper.getBean(KmgMessageSource.class);
 
     }
 

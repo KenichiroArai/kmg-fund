@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.context;
+package kmg.fund.infrastructure.context;
 
 import java.util.Locale;
 
@@ -34,6 +34,150 @@ public class KmgMessageSource {
      */
     @Autowired
     private MessageSource messageSource;
+
+    /**
+     * 例外用メッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
+     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     *
+     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
+     *
+     * @see #getMessage(KmgComMessageTypes, boolean)
+     * @see KmgComGenMessageTypes
+     */
+    public String getExcMessage(final KmgComExcMessageTypes type) {
+
+        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, true);
+        return result;
+
+    }
+
+    /**
+     * 例外用メッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
+     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     * @param args
+     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
+     *
+     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
+     *
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
+     * @see KmgComGenMessageTypes
+     */
+    public String getExcMessage(final KmgComExcMessageTypes type, final Object[] args) {
+
+        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, args, true);
+        return result;
+
+    }
+
+    /**
+     * 一般メッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
+     * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     *
+     * @return メッセージ。メッセージコードは埋め込まれません。
+     *
+     * @see #getMessage(KmgComMessageTypes, boolean)
+     * @see KmgComGenMessageTypes
+     */
+    public String getGenMessage(final KmgComGenMessageTypes type) {
+
+        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, false);
+        return result;
+
+    }
+
+    /**
+     * 一般メッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
+     * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     * @param args
+     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
+     *
+     * @return メッセージ。メッセージコードは埋め込まれません。
+     *
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
+     * @see KmgComGenMessageTypes
+     */
+    public String getGenMessage(final KmgComGenMessageTypes type, final Object[] args) {
+
+        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, args, false);
+        return result;
+
+    }
+
+    /**
+     * ログメッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
+     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     *
+     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
+     *
+     * @see #getMessage(KmgComMessageTypes, boolean)
+     * @see KmgComLogMessageTypes
+     */
+    public String getLogMessage(final KmgComLogMessageTypes type) {
+
+        /* コード埋め込みフラグをtrueに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, true);
+        return result;
+
+    }
+
+    /**
+     * ログメッセージを取得する<br>
+     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
+     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
+     *
+     * @since 0.1.0
+     *
+     * @param type
+     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
+     * @param args
+     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
+     *
+     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
+     *
+     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
+     * @see KmgComLogMessageTypes
+     */
+    public String getLogMessage(final KmgComLogMessageTypes type, final Object[] args) {
+
+        /* コード埋め込みフラグをtrueに設定して、メッセージを取得 */
+        final String result = this.getMessage(type, args, true);
+        return result;
+
+    }
 
     /**
      * メッセージを取得する<br>
@@ -92,150 +236,6 @@ public class KmgMessageSource {
         }
 
         result = message;
-        return result;
-
-    }
-
-    /**
-     * ログメッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
-     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
-     *
-     * @since 0.1.0
-     *
-     * @param type
-     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
-     * @param args
-     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
-     *
-     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
-     *
-     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
-     * @see KmgComLogMessageTypes
-     */
-    public String getLogMessage(final KmgComLogMessageTypes type, final Object[] args) {
-
-        /* コード埋め込みフラグをtrueに設定して、メッセージを取得 */
-        final String result = this.getMessage(type, args, true);
-        return result;
-
-    }
-
-    /**
-     * ログメッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
-     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
-     *
-     * @since 0.1.0
-     *
-     * @param type
-     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
-     *
-     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
-     *
-     * @see #getMessage(KmgComMessageTypes, boolean)
-     * @see KmgComLogMessageTypes
-     */
-    public String getLogMessage(final KmgComLogMessageTypes type) {
-
-        /* コード埋め込みフラグをtrueに設定して、メッセージを取得 */
-        final String result = this.getMessage(type, true);
-        return result;
-
-    }
-
-    /**
-     * 一般メッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
-     * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
-     *
-     * @since 0.1.0
-     *
-     * @param type
-     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
-     * @param args
-     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
-     *
-     * @return メッセージ。メッセージコードは埋め込まれません。
-     *
-     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
-     * @see KmgComGenMessageTypes
-     */
-    public String getGenMessage(final KmgComGenMessageTypes type, final Object[] args) {
-
-        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
-        final String result = this.getMessage(type, args, false);
-        return result;
-
-    }
-
-    /**
-     * 一般メッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
-     * コード埋め込みフラグをfalseに設定して呼び出す便利メソッドです。
-     *
-     * @since 0.1.0
-     *
-     * @param type
-     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
-     *
-     * @return メッセージ。メッセージコードは埋め込まれません。
-     *
-     * @see #getMessage(KmgComMessageTypes, boolean)
-     * @see KmgComGenMessageTypes
-     */
-    public String getGenMessage(final KmgComGenMessageTypes type) {
-
-        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
-        final String result = this.getMessage(type, false);
-        return result;
-
-    }
-
-    /**
-     * 例外用メッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得し、指定された引数で置換します。 このメソッドは {@link #getMessage(KmgComMessageTypes, Object[], boolean)} を
-     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
-     *
-     * @since 0.1.0
-     *
-     * @param type
-     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
-     * @param args
-     *             メッセージの引数。メッセージパターン内のプレースホルダーを置換するために使用されます。 nullの場合、メッセージパターンをそのまま返します。
-     *
-     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
-     *
-     * @see #getMessage(KmgComMessageTypes, Object[], boolean)
-     * @see KmgComGenMessageTypes
-     */
-    public String getExcMessage(final KmgComExcMessageTypes type, final Object[] args) {
-
-        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
-        final String result = this.getMessage(type, args, true);
-        return result;
-
-    }
-
-    /**
-     * 例外用メッセージを取得する<br>
-     * メッセージタイプに対応するメッセージパターンを取得します。 このメソッドは {@link #getMessage(KmgComMessageTypes, boolean)} を
-     * コード埋め込みフラグをtrueに設定して呼び出す便利メソッドです。
-     *
-     * @since 0.1.0
-     *
-     * @param type
-     *             メッセージの種類。対応するリソースからメッセージパターンを取得するために使用されます。
-     *
-     * @return メッセージ。メッセージコードが先頭に埋め込まれます（例：「[E001] エラーメッセージ」）。
-     *
-     * @see #getMessage(KmgComMessageTypes, boolean)
-     * @see KmgComGenMessageTypes
-     */
-    public String getExcMessage(final KmgComExcMessageTypes type) {
-
-        /* コード埋め込みフラグをfalseに設定して、メッセージを取得 */
-        final String result = this.getMessage(type, true);
         return result;
 
     }

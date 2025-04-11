@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.utils;
+package kmg.fund.infrastructure.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,8 +9,8 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import kmg.foundation.domain.types.KmgFundGenMessageTypes;
-import kmg.foundation.infrastructure.exception.KmgFundException;
+import kmg.fund.domain.types.KmgFundGenMessageTypes;
+import kmg.fund.infrastructure.exception.KmgFundException;
 
 /**
  * KMG YAMLユーティリティ<br>

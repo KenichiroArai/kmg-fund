@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.context;
+package kmg.fund.infrastructure.context;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -24,25 +24,6 @@ public class SpringApplicationContextHelper implements ApplicationContextAware {
      * @since 0.1.0
      */
     private static ApplicationContext applicationContext;
-
-    /**
-     * アプリケーションコンテキストを設定する<br>
-     * Springフレームワークによって自動的に呼び出される
-     *
-     * @since 0.1.0
-     *
-     * @param applicationContext
-     *                           アプリケーションコンテキスト
-     *
-     * @throws BeansException
-     *                        Beanの例外が発生した場合
-     */
-    @Override
-    public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
-
-        SpringApplicationContextHelper.applicationContext = applicationContext;
-
-    }
 
     /**
      * 指定されたクラス型のBeanを取得する<br>
@@ -91,5 +72,24 @@ public class SpringApplicationContextHelper implements ApplicationContextAware {
     private SpringApplicationContextHelper() {
 
         // 処理なし
+    }
+
+    /**
+     * アプリケーションコンテキストを設定する<br>
+     * Springフレームワークによって自動的に呼び出される
+     *
+     * @since 0.1.0
+     *
+     * @param applicationContext
+     *                           アプリケーションコンテキスト
+     *
+     * @throws BeansException
+     *                        Beanの例外が発生した場合
+     */
+    @Override
+    public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
+
+        SpringApplicationContextHelper.applicationContext = applicationContext;
+
     }
 }

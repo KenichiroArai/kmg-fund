@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<included>
+    <!-- Spring用プロパティを読み込み -->
+    <property resource="application.properties" />
+
+    <!-- ベースとなる非Spring依存の設定を読み込み -->
+    <include resource="logback-kmg-base.xml" />
+
+    <!-- Spring用のパターン上書き設定 -->
+    <property name="SPRING_LOG_PATTERN"
+        value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5r [%-5p] - [${spring.application.name}] &lt;%C %M:%L&gt; [%t] - %m%n%xEx" />
+
+    <!-- Spring用アペンダー -->
+    <appender name="SPRING_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${SPRING_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SPRING_APPLIATION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/${spring.application.name}/${spring.application.name}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ./logs/${spring.application.name}/${spring.application.name}_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${SPRING_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+</included>

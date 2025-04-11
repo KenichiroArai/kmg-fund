@@ -1,4 +1,4 @@
-package kmg.foundation.infrastructure.config;
+package kmg.fund.infrastructure.config;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 
 import kmg.core.infrastructure.type.KmgString;
 import kmg.core.infrastructure.types.KmgDelimiterTypes;
-import kmg.foundation.domain.types.KmgApplicationPropertyFileTypes;
-import kmg.foundation.domain.types.KmgApplicationPropertyKeyTypes;
+import kmg.fund.domain.types.KmgApplicationPropertyFileTypes;
+import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
 
 /**
  * KMG基盤プロパティローダー
@@ -53,6 +53,52 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
     /** 追加プロパティのマップ：サブクラスで追加されるプロパティを保持 */
     private final Map<String, Object> additionalPropertieMap;
+
+    /**
+     * リソースパスからプロパティを読み込み、マップに設定する
+     * <p>
+     * 指定されたリソースパスのプロパティファイルを読み込み、 その内容を指定されたマップに設定します。 ファイルが存在しない場合や読み込みに失敗した場合は処理をスキップします。
+     * </p>
+     *
+     * @param resourcePath
+     *                     プロパティファイルのリソースパス
+     * @param propertieMap
+     *                     プロパティを格納するマップ
+     */
+    protected static void fromPropertieMap(final String resourcePath, final Map<String, Object> propertieMap) {
+
+        /* リソースの取得 */
+        final Resource resource = new ClassPathResource(resourcePath);
+
+        /* リソースが存在しない場合は処理終了 */
+        if (!resource.exists()) {
+
+            return;
+
+        }
+
+        /* プロパティの読み込み */
+        final Properties properties = new Properties();
+
+        try (InputStream inputStream = resource.getInputStream()) {
+
+            properties.load(inputStream);
+
+        } catch (final IOException e) {
+
+            e.printStackTrace();
+            return;
+
+        }
+
+        /* プロパティをマップに設定 */
+        for (final Object key : properties.keySet()) {
+
+            propertieMap.put(key.toString(), properties.get(key));
+
+        }
+
+    }
 
     /**
      * デフォルトコンストラクタ
@@ -187,52 +233,6 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
             /* 統合した値を保存 */
             this.integratedPropertieMap.put(destKey, intergratedValue);
-
-        }
-
-    }
-
-    /**
-     * リソースパスからプロパティを読み込み、マップに設定する
-     * <p>
-     * 指定されたリソースパスのプロパティファイルを読み込み、 その内容を指定されたマップに設定します。 ファイルが存在しない場合や読み込みに失敗した場合は処理をスキップします。
-     * </p>
-     *
-     * @param resourcePath
-     *                     プロパティファイルのリソースパス
-     * @param propertieMap
-     *                     プロパティを格納するマップ
-     */
-    protected static void fromPropertieMap(final String resourcePath, final Map<String, Object> propertieMap) {
-
-        /* リソースの取得 */
-        final Resource resource = new ClassPathResource(resourcePath);
-
-        /* リソースが存在しない場合は処理終了 */
-        if (!resource.exists()) {
-
-            return;
-
-        }
-
-        /* プロパティの読み込み */
-        final Properties properties = new Properties();
-
-        try (InputStream inputStream = resource.getInputStream()) {
-
-            properties.load(inputStream);
-
-        } catch (final IOException e) {
-
-            e.printStackTrace();
-            return;
-
-        }
-
-        /* プロパティをマップに設定 */
-        for (final Object key : properties.keySet()) {
-
-            propertieMap.put(key.toString(), properties.get(key));
 
         }
 
