@@ -32,7 +32,7 @@ public final class KmgYamlUtils {
      * @return マップ形式のデータ
      *
      * @throws KmgFundMsgException
-     *                          入出力処理に失敗した場合
+     *                             入出力処理に失敗した場合
      */
     public static Map<String, Object> load(final Path path) throws KmgFundMsgException {
 
