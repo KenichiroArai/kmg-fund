@@ -1,6 +1,6 @@
 package kmg.fund.infrastructure.exception;
 
-import kmg.core.infrastructure.exception.KmgDomainException;
+import kmg.core.infrastructure.exception.KmgMsgException;
 import kmg.fund.infrastructure.common.KmgFundComExcMessageTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
@@ -14,7 +14,7 @@ import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
  *
  * @version 0.1.0
  */
-public class KmgFundException extends KmgDomainException {
+public class KmgFundException extends KmgMsgException {
 
     /**
      * デフォルトシリアルバージョンＵＩＤ
