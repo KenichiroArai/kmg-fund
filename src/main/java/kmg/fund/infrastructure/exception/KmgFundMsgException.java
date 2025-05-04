@@ -6,7 +6,7 @@ import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
 /**
- * KMG 基盤例外<br>
+ * KMG 基盤メッセージ例外<br>
  *
  * @author KenichiroArai
  *
@@ -14,7 +14,7 @@ import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
  *
  * @version 0.1.0
  */
-public class KmgFundException extends KmgMsgException {
+public class KmgFundMsgException extends KmgMsgException {
 
     /**
      * デフォルトシリアルバージョンＵＩＤ
@@ -38,7 +38,7 @@ public class KmgFundException extends KmgMsgException {
      * @param messageTypes
      *                     メッセージの種類
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes) {
+    public KmgFundMsgException(final KmgFundComExcMessageTypes messageTypes) {
 
         this(messageTypes, null, null);
 
@@ -54,7 +54,7 @@ public class KmgFundException extends KmgMsgException {
      * @param messageArgs
      *                     メッセージの引数
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs) {
+    public KmgFundMsgException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs) {
 
         this(messageTypes, messageArgs, null);
 
@@ -72,7 +72,7 @@ public class KmgFundException extends KmgMsgException {
      * @param cause
      *                     原因
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs,
+    public KmgFundMsgException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs,
         final Throwable cause) {
 
         super(messageTypes, messageArgs, cause);
@@ -89,7 +89,7 @@ public class KmgFundException extends KmgMsgException {
      * @param cause
      *                     原因
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Throwable cause) {
+    public KmgFundMsgException(final KmgFundComExcMessageTypes messageTypes, final Throwable cause) {
 
         this(messageTypes, null, cause);
 

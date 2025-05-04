@@ -10,7 +10,7 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import kmg.fund.domain.types.KmgFundGenMessageTypes;
-import kmg.fund.infrastructure.exception.KmgFundException;
+import kmg.fund.infrastructure.exception.KmgFundMsgException;
 
 /**
  * KMG YAMLユーティリティ<br>
@@ -31,10 +31,10 @@ public final class KmgYamlUtils {
      *
      * @return マップ形式のデータ
      *
-     * @throws KmgFundException
+     * @throws KmgFundMsgException
      *                          入出力処理に失敗した場合
      */
-    public static Map<String, Object> load(final Path path) throws KmgFundException {
+    public static Map<String, Object> load(final Path path) throws KmgFundMsgException {
 
         Map<String, Object> result = null;
 
@@ -50,7 +50,7 @@ public final class KmgYamlUtils {
             final Object[]               genMsgArgs = {
                 path.toString()
             };
-            throw new KmgFundException(genMsgType, genMsgArgs, e);
+            throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
 
         } catch (final IOException e) {
 
@@ -58,7 +58,7 @@ public final class KmgYamlUtils {
             final Object[]               genMsgArgs = {
                 path.toString()
             };
-            throw new KmgFundException(genMsgType, genMsgArgs, e);
+            throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
 
         }
 
