@@ -1,7 +1,7 @@
 package kmg.fund.infrastructure.exception;
 
 import kmg.core.infrastructure.exception.KmgValidationException;
-import kmg.core.infrastructure.model.validation.KmgValidationsModel;
+import kmg.core.infrastructure.model.validation.KmgValsModel;
 
 /**
  * KMG 基盤バリデーション例外<br>
@@ -29,7 +29,7 @@ public class KmgFundValException extends KmgValidationException {
      * @param validationsModel
      *                         KMGバリデーション集合モデル
      */
-    public KmgFundValException(final KmgValidationsModel validationsModel) {
+    public KmgFundValException(final KmgValsModel validationsModel) {
 
         this(validationsModel, null);
 
@@ -45,7 +45,7 @@ public class KmgFundValException extends KmgValidationException {
      * @param cause
      *                         原因
      */
-    public KmgFundValException(final KmgValidationsModel validationsModel, final Throwable cause) {
+    public KmgFundValException(final KmgValsModel validationsModel, final Throwable cause) {
 
         super(validationsModel, cause);
 
