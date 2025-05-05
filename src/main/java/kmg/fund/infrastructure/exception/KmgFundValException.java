@@ -1,7 +1,7 @@
 package kmg.fund.infrastructure.exception;
 
-import kmg.core.infrastructure.exception.KmgValidationException;
-import kmg.core.infrastructure.model.validation.KmgValsModel;
+import kmg.core.infrastructure.exception.KmgValException;
+import kmg.core.infrastructure.model.val.KmgValsModel;
 
 /**
  * KMG 基盤バリデーション例外<br>
@@ -12,7 +12,7 @@ import kmg.core.infrastructure.model.validation.KmgValsModel;
  *
  * @version 0.1.0
  */
-public class KmgFundValException extends KmgValidationException {
+public class KmgFundValException extends KmgValException {
 
     /**
      * デフォルトシリアルバージョンＵＩＤ
