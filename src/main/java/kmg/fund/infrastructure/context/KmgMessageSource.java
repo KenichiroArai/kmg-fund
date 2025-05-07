@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import kmg.core.infrastructure.common.KmgComExcMessageTypes;
-import kmg.core.infrastructure.common.KmgComGenMessageTypes;
-import kmg.core.infrastructure.common.KmgComLogMessageTypes;
-import kmg.core.infrastructure.common.KmgComMessageTypes;
+import kmg.core.infrastructure.common.msg.KmgComExcMessageTypes;
+import kmg.core.infrastructure.common.msg.KmgComGenMessageTypes;
+import kmg.core.infrastructure.common.msg.KmgComLogMessageTypes;
+import kmg.core.infrastructure.common.msg.KmgComMessageTypes;
 import kmg.core.infrastructure.type.KmgString;
 
 /**

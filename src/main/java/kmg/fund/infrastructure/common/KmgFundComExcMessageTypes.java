@@ -1,6 +1,6 @@
 package kmg.fund.infrastructure.common;
 
-import kmg.core.infrastructure.common.KmgComExcMessageTypes;
+import kmg.core.infrastructure.common.msg.KmgComExcMessageTypes;
 
 /**
  * KMG 基盤例外メッセージの種類のインタフェース
