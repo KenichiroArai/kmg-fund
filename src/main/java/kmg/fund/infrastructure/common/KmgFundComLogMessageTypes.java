@@ -1,6 +1,6 @@
 package kmg.fund.infrastructure.common;
 
-import kmg.core.infrastructure.common.msg.KmgComLogMessageTypes;
+import kmg.core.infrastructure.common.msg.KmgComLogMsgTypes;
 
 /**
  * KMG 基盤共通ログメッセージの種類のインタフェース
@@ -11,7 +11,7 @@ import kmg.core.infrastructure.common.msg.KmgComLogMessageTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFundComLogMessageTypes extends KmgFundComMessageTypes, KmgComLogMessageTypes {
+public interface KmgFundComLogMessageTypes extends KmgFundComMessageTypes, KmgComLogMsgTypes {
 
     // 処理なし
 
