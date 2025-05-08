@@ -1,4 +1,4 @@
-package kmg.fund.domain.types.msg;
+package kmg.fund.infrastructure.types.msg;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +7,9 @@ import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
 
 /**
  * KMG 基盤ログメッセージの種類<br>
+ * <p>
+ * Msgは、Messageの略。
+ * </p>
  *
  * @author KenichiroArai
  *
