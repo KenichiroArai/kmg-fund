@@ -5,6 +5,9 @@ import kmg.core.infrastructure.model.val.KmgValsModel;
 
 /**
  * KMG 基盤バリデーション例外<br>
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  *
  * @author KenichiroArai
  *

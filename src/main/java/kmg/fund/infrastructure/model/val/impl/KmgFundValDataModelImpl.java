@@ -8,6 +8,7 @@ import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 /**
  * KMG基盤バリデーションデータモデル<br>
  * <p>
+ * Fundは、Foundationの略。<br>
  * Valは、Validationの略。
  * </p>
  *

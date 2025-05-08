@@ -4,6 +4,9 @@ import kmg.core.infrastructure.common.msg.KmgComExcMsgTypes;
 
 /**
  * KMG 基盤例外メッセージの種類のインタフェース
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  *
  * @author KenichiroArai
  *

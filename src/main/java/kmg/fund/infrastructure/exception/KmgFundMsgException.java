@@ -7,6 +7,9 @@ import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
 /**
  * KMG 基盤メッセージ例外<br>
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  *
  * @author KenichiroArai
  *

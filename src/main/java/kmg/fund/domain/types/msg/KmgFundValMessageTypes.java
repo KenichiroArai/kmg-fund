@@ -8,6 +8,9 @@ import kmg.fund.infrastructure.common.KmgFundComValMessageTypes;
 
 /**
  * KMG 基盤バリデーションメッセージの種類<br>
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  *
  * @author KenichiroArai
  *

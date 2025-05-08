@@ -4,6 +4,9 @@ import kmg.core.infrastructure.common.msg.KmgComLogMsgTypes;
 
 /**
  * KMG 基盤共通ログメッセージの種類のインタフェース
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  *
  * @author KenichiroArai
  *

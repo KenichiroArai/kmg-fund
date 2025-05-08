@@ -5,6 +5,7 @@ import kmg.core.infrastructure.model.val.impl.KmgValsModelImpl;
 /**
  * KMG基盤バリデーション集合モデル<br>
  * <p>
+ * Fundは、Foundationの略。<br>
  * Valは、Validationの略。
  * </p>
  *
