@@ -8,6 +8,7 @@ import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
 /**
  * KMG 基盤ログメッセージの種類<br>
  * <p>
+ * Fundは、Foundationの略。<br>
  * Msgは、Messageの略。
  * </p>
  *
@@ -17,7 +18,7 @@ import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
+public enum KmgFundLogMsgTypes implements KmgFundComLogMessageTypes {
 
     /* 定義：開始 */
 
@@ -40,14 +41,14 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @since 0.1.0
      */
-    private static final Map<String, KmgFundLogMessageTypes> VALUES_MAP = new HashMap<>();
+    private static final Map<String, KmgFundLogMsgTypes> VALUES_MAP = new HashMap<>();
 
     static {
 
         /* 種類のマップにプット */
-        for (final KmgFundLogMessageTypes type : KmgFundLogMessageTypes.values()) {
+        for (final KmgFundLogMsgTypes type : KmgFundLogMsgTypes.values()) {
 
-            KmgFundLogMessageTypes.VALUES_MAP.put(type.get(), type);
+            KmgFundLogMsgTypes.VALUES_MAP.put(type.get(), type);
 
         }
 
@@ -88,9 +89,9 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @return デフォルト値
      */
-    public static KmgFundLogMessageTypes getDefault() {
+    public static KmgFundLogMsgTypes getDefault() {
 
-        final KmgFundLogMessageTypes result = NONE;
+        final KmgFundLogMsgTypes result = NONE;
         return result;
 
     }
@@ -108,9 +109,9 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @return 種類。指定無し（NONE）：キーが存在しない場合。
      */
-    public static KmgFundLogMessageTypes getEnum(final String key) {
+    public static KmgFundLogMsgTypes getEnum(final String key) {
 
-        KmgFundLogMessageTypes result = KmgFundLogMessageTypes.VALUES_MAP.get(key);
+        KmgFundLogMsgTypes result = KmgFundLogMsgTypes.VALUES_MAP.get(key);
 
         if (result == null) {
 
@@ -128,9 +129,9 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @return 初期値
      */
-    public static KmgFundLogMessageTypes getInitValue() {
+    public static KmgFundLogMsgTypes getInitValue() {
 
-        final KmgFundLogMessageTypes result = NONE;
+        final KmgFundLogMsgTypes result = NONE;
         return result;
 
     }
@@ -143,7 +144,7 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      * @param displayName
      *                    表示名
      */
-    KmgFundLogMessageTypes(final String displayName) {
+    KmgFundLogMsgTypes(final String displayName) {
 
         this.displayName = displayName;
         this.key = super.name();

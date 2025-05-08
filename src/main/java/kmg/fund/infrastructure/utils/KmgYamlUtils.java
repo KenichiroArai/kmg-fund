@@ -10,7 +10,7 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
-import kmg.fund.infrastructure.types.msg.KmgFundGenMessageTypes;
+import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 
 /**
  * KMG YAMLユーティリティ<br>
@@ -46,7 +46,7 @@ public final class KmgYamlUtils {
 
         } catch (final NoSuchFileException e) {
 
-            final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24000;
+            final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24000;
             final Object[]               genMsgArgs = {
                 path.toString()
             };
@@ -54,7 +54,7 @@ public final class KmgYamlUtils {
 
         } catch (final IOException e) {
 
-            final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24001;
+            final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24001;
             final Object[]               genMsgArgs = {
                 path.toString()
             };
