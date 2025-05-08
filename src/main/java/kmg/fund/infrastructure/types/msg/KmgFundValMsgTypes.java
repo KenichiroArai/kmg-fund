@@ -3,8 +3,8 @@ package kmg.fund.infrastructure.types.msg;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.fund.infrastructure.common.KmgFundComExcMsgTypes;
-import kmg.fund.infrastructure.common.KmgFundComValMsgTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComExcMsgTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComValMsgTypes;
 
 /**
  * KMG 基盤バリデーションメッセージの種類<br>

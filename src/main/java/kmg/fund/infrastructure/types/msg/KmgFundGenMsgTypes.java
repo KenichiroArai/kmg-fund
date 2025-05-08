@@ -3,8 +3,8 @@ package kmg.fund.infrastructure.types.msg;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.fund.infrastructure.common.KmgFundComExcMsgTypes;
-import kmg.fund.infrastructure.common.KmgFundComGenMsgTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComExcMsgTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComGenMsgTypes;
 
 /**
  * KMG 基盤一般メッセージの種類<br>

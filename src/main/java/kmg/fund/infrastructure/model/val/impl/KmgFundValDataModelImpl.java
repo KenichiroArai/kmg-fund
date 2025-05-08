@@ -1,7 +1,7 @@
 package kmg.fund.infrastructure.model.val.impl;
 
 import kmg.core.infrastructure.model.val.impl.KmgValDataModelImpl;
-import kmg.fund.infrastructure.common.KmgFundComValMsgTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComValMsgTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
