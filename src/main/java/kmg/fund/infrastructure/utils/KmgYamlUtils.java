@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import kmg.fund.domain.types.KmgFundGenMessageTypes;
+import kmg.fund.domain.types.msg.KmgFundGenMessageTypes;
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
 
 /**

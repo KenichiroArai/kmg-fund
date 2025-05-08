@@ -1,4 +1,4 @@
-package kmg.fund.domain.types;
+package kmg.fund.domain.types.msg;
 
 import java.util.HashMap;
 import java.util.Map;
