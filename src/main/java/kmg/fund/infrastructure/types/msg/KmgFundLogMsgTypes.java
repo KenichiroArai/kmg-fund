@@ -3,7 +3,7 @@ package kmg.fund.infrastructure.types.msg;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
+import kmg.fund.infrastructure.common.KmgFundComLogMsgTypes;
 
 /**
  * KMG 基盤ログメッセージの種類<br>
@@ -18,7 +18,7 @@ import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFundLogMsgTypes implements KmgFundComLogMessageTypes {
+public enum KmgFundLogMsgTypes implements KmgFundComLogMsgTypes {
 
     /* 定義：開始 */
 

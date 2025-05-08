@@ -5,7 +5,10 @@ import kmg.core.infrastructure.common.msg.KmgComValMsgTypes;
 /**
  * KMG 基盤バリデーションメッセージの種類のインタフェース
  * <p>
- * Fundは、Foundationの略。
+ * Fundは、Foundationの略。<br>
+ * Comは、Commonの略。<br>
+ * Valは、Validationの略。<br>
+ * Msgは、Messageの略。
  * </p>
  *
  * @author KenichiroArai
@@ -14,7 +17,7 @@ import kmg.core.infrastructure.common.msg.KmgComValMsgTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFundComValMessageTypes extends KmgFundComMessageTypes, KmgComValMsgTypes {
+public interface KmgFundComValMsgTypes extends KmgFundComMsgTypes, KmgComValMsgTypes {
 
     // 処理なし
 

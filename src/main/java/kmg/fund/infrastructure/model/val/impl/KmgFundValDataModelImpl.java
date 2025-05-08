@@ -1,7 +1,7 @@
 package kmg.fund.infrastructure.model.val.impl;
 
 import kmg.core.infrastructure.model.val.impl.KmgValDataModelImpl;
-import kmg.fund.infrastructure.common.KmgFundComValMessageTypes;
+import kmg.fund.infrastructure.common.KmgFundComValMsgTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
@@ -39,7 +39,7 @@ public class KmgFundValDataModelImpl extends KmgValDataModelImpl {
      * @param messageArgs
      *                     メッセージの引数
      */
-    public KmgFundValDataModelImpl(final KmgFundComValMessageTypes messageTypes, final Object[] messageArgs) {
+    public KmgFundValDataModelImpl(final KmgFundComValMsgTypes messageTypes, final Object[] messageArgs) {
 
         super(messageTypes, messageArgs);
 

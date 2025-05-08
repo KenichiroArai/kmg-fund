@@ -3,13 +3,14 @@ package kmg.fund.infrastructure.types.msg;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.fund.infrastructure.common.KmgFundComExcMessageTypes;
-import kmg.fund.infrastructure.common.KmgFundComGenMessageTypes;
+import kmg.fund.infrastructure.common.KmgFundComExcMsgTypes;
+import kmg.fund.infrastructure.common.KmgFundComGenMsgTypes;
 
 /**
  * KMG 基盤一般メッセージの種類<br>
  * <p>
  * Fundは、Foundationの略。<br>
+ * Genは、Generalの略。<br>
  * Msgは、Messageの略。
  * </p>
  *
@@ -19,7 +20,7 @@ import kmg.fund.infrastructure.common.KmgFundComGenMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFundGenMsgTypes implements KmgFundComGenMessageTypes, KmgFundComExcMessageTypes {
+public enum KmgFundGenMsgTypes implements KmgFundComGenMsgTypes, KmgFundComExcMsgTypes {
 
     /* 定義：開始 */
 
