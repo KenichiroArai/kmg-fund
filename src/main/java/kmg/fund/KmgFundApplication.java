@@ -9,7 +9,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import kmg.core.infrastructure.type.KmgString;
 
 /**
- * KMG基盤アプリケーション
+ * KMG基盤アプリケーション<br>
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  */
 @SpringBootApplication
 public class KmgFundApplication {

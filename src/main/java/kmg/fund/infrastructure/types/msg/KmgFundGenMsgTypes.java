@@ -1,12 +1,18 @@
-package kmg.fund.domain.types;
+package kmg.fund.infrastructure.types.msg;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComExcMsgTypes;
+import kmg.fund.infrastructure.common.msg.KmgFundComGenMsgTypes;
 
 /**
- * KMG 基盤ログメッセージの種類<br>
+ * KMG 基盤一般メッセージの種類<br>
+ * <p>
+ * Fundは、Foundationの略。<br>
+ * Genは、Generalの略。<br>
+ * Msgは、Messageの略。
+ * </p>
  *
  * @author KenichiroArai
  *
@@ -14,7 +20,7 @@ import kmg.fund.infrastructure.common.KmgFundComLogMessageTypes;
  *
  * @version 0.1.0
  */
-public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
+public enum KmgFundGenMsgTypes implements KmgFundComGenMsgTypes, KmgFundComExcMsgTypes {
 
     /* 定義：開始 */
 
@@ -29,7 +35,30 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      */
     NONE("指定無し"),
 
+    /**
+     * 該当するYAMLファイルがありません。ファイルパス=[{0}]
+     *
+     * @author KenichiroArai
+     *
+     * @since 0.1.0
+     *
+     * @version 0.1.0
+     */
+    KMGFUND_GEN24000("該当するYAMLファイルがありません。ファイルパス=[{0}]"),
+
+    /**
+     * YAMLにロードするファイルの読み込みに失敗しました。ファイルパス=[{0}]
+     *
+     * @author KenichiroArai
+     *
+     * @since 0.1.0
+     *
+     * @version 0.1.0
+     */
+    KMGFUND_GEN24001("YAMLにロードするファイルの読み込みに失敗しました。ファイルパス=[{0}]"),
+
     /* 定義：終了 */
+
     ;
 
     /**
@@ -37,14 +66,14 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @since 0.1.0
      */
-    private static final Map<String, KmgFundLogMessageTypes> VALUES_MAP = new HashMap<>();
+    private static final Map<String, KmgFundGenMsgTypes> VALUES_MAP = new HashMap<>();
 
     static {
 
         /* 種類のマップにプット */
-        for (final KmgFundLogMessageTypes type : KmgFundLogMessageTypes.values()) {
+        for (final KmgFundGenMsgTypes type : KmgFundGenMsgTypes.values()) {
 
-            KmgFundLogMessageTypes.VALUES_MAP.put(type.get(), type);
+            KmgFundGenMsgTypes.VALUES_MAP.put(type.get(), type);
 
         }
 
@@ -85,9 +114,9 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @return デフォルト値
      */
-    public static KmgFundLogMessageTypes getDefault() {
+    public static KmgFundGenMsgTypes getDefault() {
 
-        final KmgFundLogMessageTypes result = NONE;
+        final KmgFundGenMsgTypes result = NONE;
         return result;
 
     }
@@ -105,9 +134,9 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @return 種類。指定無し（NONE）：キーが存在しない場合。
      */
-    public static KmgFundLogMessageTypes getEnum(final String key) {
+    public static KmgFundGenMsgTypes getEnum(final String key) {
 
-        KmgFundLogMessageTypes result = KmgFundLogMessageTypes.VALUES_MAP.get(key);
+        KmgFundGenMsgTypes result = KmgFundGenMsgTypes.VALUES_MAP.get(key);
 
         if (result == null) {
 
@@ -125,9 +154,9 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      *
      * @return 初期値
      */
-    public static KmgFundLogMessageTypes getInitValue() {
+    public static KmgFundGenMsgTypes getInitValue() {
 
-        final KmgFundLogMessageTypes result = NONE;
+        final KmgFundGenMsgTypes result = NONE;
         return result;
 
     }
@@ -140,7 +169,7 @@ public enum KmgFundLogMessageTypes implements KmgFundComLogMessageTypes {
      * @param displayName
      *                    表示名
      */
-    KmgFundLogMessageTypes(final String displayName) {
+    KmgFundGenMsgTypes(final String displayName) {
 
         this.displayName = displayName;
         this.key = super.name();

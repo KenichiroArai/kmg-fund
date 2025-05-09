@@ -1,12 +1,15 @@
 package kmg.fund.infrastructure.exception;
 
-import kmg.core.infrastructure.exception.KmgDomainException;
-import kmg.fund.infrastructure.common.KmgFundComExcMessageTypes;
+import kmg.core.infrastructure.exception.KmgMsgException;
+import kmg.fund.infrastructure.common.msg.KmgFundComExcMsgTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
 /**
- * KMG 基盤例外<br>
+ * KMG 基盤メッセージ例外<br>
+ * <p>
+ * Fundは、Foundationの略。
+ * </p>
  *
  * @author KenichiroArai
  *
@@ -14,7 +17,7 @@ import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
  *
  * @version 0.1.0
  */
-public class KmgFundException extends KmgDomainException {
+public class KmgFundMsgException extends KmgMsgException {
 
     /**
      * デフォルトシリアルバージョンＵＩＤ
@@ -38,7 +41,7 @@ public class KmgFundException extends KmgDomainException {
      * @param messageTypes
      *                     メッセージの種類
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes) {
+    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes) {
 
         this(messageTypes, null, null);
 
@@ -54,7 +57,7 @@ public class KmgFundException extends KmgDomainException {
      * @param messageArgs
      *                     メッセージの引数
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs) {
+    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes, final Object[] messageArgs) {
 
         this(messageTypes, messageArgs, null);
 
@@ -72,7 +75,7 @@ public class KmgFundException extends KmgDomainException {
      * @param cause
      *                     原因
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Object[] messageArgs,
+    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes, final Object[] messageArgs,
         final Throwable cause) {
 
         super(messageTypes, messageArgs, cause);
@@ -89,14 +92,14 @@ public class KmgFundException extends KmgDomainException {
      * @param cause
      *                     原因
      */
-    public KmgFundException(final KmgFundComExcMessageTypes messageTypes, final Throwable cause) {
+    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes, final Throwable cause) {
 
         this(messageTypes, null, cause);
 
     }
 
     /**
-     * メッセージを作成し、返す。
+     * メッセージを作成して返す。
      *
      * @return メッセージ
      */

@@ -24,6 +24,9 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
 /**
  * KMG基盤プロパティローダー
  * <p>
+ * Fundは、Foundationの略。
+ * </p>
+ * <p>
  * Spring Boot起動時にプロパティファイルを読み込み、環境設定を行うクラスです。 以下の順序でプロパティを読み込み、統合します：
  * <ol>
  * <li>メインプロパティ（application.properties）</li>
@@ -34,7 +37,7 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  *
  * @author KenichiroArai
  *
- * @version 0.2.0
+ * @version 0.1.0
  *
  * @since 0.1.0
  */

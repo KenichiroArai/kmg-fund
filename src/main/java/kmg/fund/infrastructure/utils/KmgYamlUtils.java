@@ -9,8 +9,8 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import kmg.fund.domain.types.KmgFundGenMessageTypes;
-import kmg.fund.infrastructure.exception.KmgFundException;
+import kmg.fund.infrastructure.exception.KmgFundMsgException;
+import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 
 /**
  * KMG YAMLユーティリティ<br>
@@ -31,10 +31,10 @@ public final class KmgYamlUtils {
      *
      * @return マップ形式のデータ
      *
-     * @throws KmgFundException
-     *                          入出力処理に失敗した場合
+     * @throws KmgFundMsgException
+     *                             入出力処理に失敗した場合
      */
-    public static Map<String, Object> load(final Path path) throws KmgFundException {
+    public static Map<String, Object> load(final Path path) throws KmgFundMsgException {
 
         Map<String, Object> result = null;
 
@@ -46,19 +46,19 @@ public final class KmgYamlUtils {
 
         } catch (final NoSuchFileException e) {
 
-            final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24000;
+            final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24000;
             final Object[]               genMsgArgs = {
                 path.toString()
             };
-            throw new KmgFundException(genMsgType, genMsgArgs, e);
+            throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
 
         } catch (final IOException e) {
 
-            final KmgFundGenMessageTypes genMsgType = KmgFundGenMessageTypes.KMGFUND_GEN24001;
+            final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24001;
             final Object[]               genMsgArgs = {
                 path.toString()
             };
-            throw new KmgFundException(genMsgType, genMsgArgs, e);
+            throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
 
         }
 
