@@ -1,5 +1,6 @@
 package kmg.fund.infrastructure.config;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,10 +8,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.SpringApplication;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.mock.env.MockEnvironment;
 
 import kmg.fund.domain.types.KmgApplicationPropertyFileTypes;
@@ -107,7 +111,7 @@ public class KmgFundPropertiesLoaderTest {
         final Map<String, Object> propertieMap = new HashMap<>();
 
         /* 実行 */
-        KmgFundPropertiesLoader.fromPropertieMap("non-existent.properties", propertieMap);
+        KmgFundPropertiesLoader.fromPropertieMap(new ClassPathResource("non-existent.properties"), propertieMap);
 
         /* 検証 */
         Assertions.assertEquals(expectedSize, propertieMap.size(), "マップのサイズが一致しません");
@@ -147,6 +151,32 @@ public class KmgFundPropertiesLoaderTest {
             = propertySource.getProperty(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get()).toString();
         Assertions.assertTrue(basename.contains(expectedMessage1), "messages1が含まれていません");
         Assertions.assertTrue(basename.contains(expectedMessage2), "messages2が含まれていません");
+
+    }
+
+    /**
+     * fromPropertieMapメソッドのテスト - 異常系:IOException発生
+     *
+     * @throws IOException
+     *                     テスト用の例外
+     *
+     * @since 0.1.0
+     */
+    @Test
+    @DisplayName("IOExceptionが発生した場合、マップは空のままであること")
+    public void testFromPropertieMap_IOException() throws IOException {
+
+        /* 準備 */
+        final Map<String, Object> propertieMap = new HashMap<>();
+        final Resource            resource     = Mockito.mock(Resource.class);
+        Mockito.when(resource.exists()).thenReturn(true);
+        Mockito.when(resource.getInputStream()).thenThrow(new IOException("テスト用の例外"));
+
+        /* 実行 */
+        KmgFundPropertiesLoader.fromPropertieMap(resource, propertieMap);
+
+        /* 検証 */
+        Assertions.assertEquals(0, propertieMap.size(), "マップのサイズが一致しません");
 
     }
 }
