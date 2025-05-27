@@ -17,6 +17,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mock.env.MockEnvironment;
 
+import kmg.core.infrastructure.exception.KmgReflectionException;
+import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.fund.domain.types.KmgApplicationPropertyFileTypes;
 import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
 
@@ -119,14 +121,16 @@ public class KmgFundPropertiesLoaderTest {
     }
 
     /**
-     * integrateMessageBasenameメソッドのテスト - 正常系:メッセージベース名の統合
+     * integrateMessageBasenameメソッドのテスト - 正常系:メッセージベース名の統合（リフレクション使用）
+     *
+     * @throws KmgReflectionException
+     *                                KMGリフレクション例外
      *
      * @since 0.1.0
      */
-    @SuppressWarnings("null")
     @Test
-    @DisplayName("メッセージベース名が正しく統合されること")
-    public void testIntegrateMessageBasename_normalIntegration() {
+    @DisplayName("リフレクションを使用してメッセージベース名が正しく統合されること")
+    public void testIntegrateMessageBasenameWithReflection_normalIntegration() throws KmgReflectionException {
 
         /* 期待値の定義 */
         final String expectedMessage1 = "kmg-fund-messages";
@@ -139,18 +143,51 @@ public class KmgFundPropertiesLoaderTest {
         final Map<String, Object> integratedMap = new HashMap<>();
         integratedMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), expectedMessage1);
 
-        /* 実行 */
-        this.loader.postProcessEnvironment(this.environment, this.application);
+        /* リフレクションを使用してprivateメソッドを呼び出し */
+        final KmgReflectionModelImpl reflection = new KmgReflectionModelImpl(this.loader);
+        reflection.getMethod("integrateMessageBasename", propertyMap,
+            KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
 
         /* 検証 */
-        final MutablePropertySources propertySources = this.environment.getPropertySources();
-        final MapPropertySource      propertySource  = (MapPropertySource) propertySources
-            .get(KmgApplicationPropertyFileTypes.KMG_APPLICATION_PROPERTIES.get());
-
+        @SuppressWarnings("unlikely-arg-type")
         final String basename
-            = propertySource.getProperty(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get()).toString();
+            = (String) ((Map<?, ?>) new KmgReflectionModelImpl(this.loader).get("integratedPropertieMap"))
+                .get(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
         Assertions.assertTrue(basename.contains(expectedMessage1), "messages1が含まれていません");
         Assertions.assertTrue(basename.contains(expectedMessage2), "messages2が含まれていません");
+
+    }
+
+    /**
+     * integrateMessageBasenameメソッドのテスト - 異常系:空の値
+     *
+     * @throws KmgReflectionException
+     *                                KMGリフレクション例外
+     *
+     * @since 0.1.0
+     */
+    @Test
+    @DisplayName("リフレクションを使用して空の値の場合のテスト")
+    public void testIntegrateMessageBasenameWithReflection_emptyValue() throws KmgReflectionException {
+
+        /* 準備 */
+        final Map<String, Object> propertyMap = new HashMap<>();
+        propertyMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), "");
+
+        final Map<String, Object> integratedMap = new HashMap<>();
+        integratedMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), "");
+
+        /* リフレクションを使用してprivateメソッドを呼び出し */
+        final KmgReflectionModelImpl reflection = new KmgReflectionModelImpl(this.loader);
+        reflection.getMethod("integrateMessageBasename", propertyMap,
+            KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
+
+        /* 検証 */
+        @SuppressWarnings("unlikely-arg-type")
+        final String basename
+            = (String) ((Map<?, ?>) new KmgReflectionModelImpl(this.loader).get("integratedPropertieMap"))
+                .get(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
+        Assertions.assertNull(basename, "空の値の場合、nullが返されること");
 
     }
 
@@ -162,6 +199,7 @@ public class KmgFundPropertiesLoaderTest {
      *
      * @since 0.1.0
      */
+    @SuppressWarnings("resource")
     @Test
     @DisplayName("IOExceptionが発生した場合、マップは空のままであること")
     public void testFromPropertieMap_IOException() throws IOException {
