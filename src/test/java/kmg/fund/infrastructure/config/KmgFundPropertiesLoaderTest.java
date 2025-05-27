@@ -140,11 +140,15 @@ public class KmgFundPropertiesLoaderTest {
         final Map<String, Object> propertyMap = new HashMap<>();
         propertyMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), expectedMessage2);
 
-        final Map<String, Object> integratedMap = new HashMap<>();
-        integratedMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), expectedMessage1);
-
         /* リフレクションを使用してprivateメソッドを呼び出し */
         final KmgReflectionModelImpl reflection = new KmgReflectionModelImpl(this.loader);
+
+        /* integratedPropertieMapに値を設定 */
+        @SuppressWarnings("unchecked")
+        final Map<String, Object> integratedMap = (Map<String, Object>) reflection.get("integratedPropertieMap");
+        integratedMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), expectedMessage1);
+
+        /* integrateMessageBasenameメソッドを呼び出し */
         reflection.getMethod("integrateMessageBasename", propertyMap,
             KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
 
