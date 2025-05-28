@@ -45,8 +45,8 @@ public class SpringApplicationContextHelperTest {
         final TestBean expected = new TestBean();
 
         /* 準備 */
-        final ApplicationContext             context = new AnnotationConfigApplicationContext(TestConfig.class);
-        final SpringApplicationContextHelper helper  = context.getBean(SpringApplicationContextHelper.class);
+        final ApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
+        context.getBean(SpringApplicationContextHelper.class);
 
         /* テスト対象の実行 */
         final TestBean actual = SpringApplicationContextHelper.getBean(TestBean.class);
@@ -62,6 +62,7 @@ public class SpringApplicationContextHelperTest {
      *
      * @since 0.1.0
      */
+    @SuppressWarnings("resource")
     @Test
     public void testGetBean_normalByName() {
 
@@ -69,8 +70,8 @@ public class SpringApplicationContextHelperTest {
         final TestBean expected = new TestBean();
 
         /* 準備 */
-        final ApplicationContext             context = new AnnotationConfigApplicationContext(TestConfig.class);
-        final SpringApplicationContextHelper helper  = context.getBean(SpringApplicationContextHelper.class);
+        final ApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
+        context.getBean(SpringApplicationContextHelper.class);
 
         /* テスト対象の実行 */
         final TestBean actual = SpringApplicationContextHelper.getBean("testBean");
