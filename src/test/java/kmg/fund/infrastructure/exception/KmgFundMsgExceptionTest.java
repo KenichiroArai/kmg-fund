@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 
 import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 
@@ -29,7 +31,23 @@ public class KmgFundMsgExceptionTest {
     @Configuration
     @ComponentScan(basePackages = "kmg.fund.infrastructure")
     static class TestConfig {
-        // テスト用の設定クラスは空の実装で十分です
+
+        /**
+         * メッセージソースを返す<br>
+         *
+         * @since 0.1.0
+         *
+         * @return メッセージソース
+         */
+        @Bean
+        ResourceBundleMessageSource messageSource() {
+
+            final ResourceBundleMessageSource result = new ResourceBundleMessageSource();
+            result.setBasenames("kmg-fund-messages");
+            result.setDefaultEncoding("UTF-8");
+            return result;
+
+        }
     }
 
     /**
