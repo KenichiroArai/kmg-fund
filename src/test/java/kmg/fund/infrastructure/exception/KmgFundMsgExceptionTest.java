@@ -1,7 +1,11 @@
 package kmg.fund.infrastructure.exception;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 
@@ -20,6 +24,15 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 public class KmgFundMsgExceptionTest {
 
     /**
+     * テスト用の設定クラス
+     */
+    @Configuration
+    @ComponentScan(basePackages = "kmg.fund.infrastructure")
+    static class TestConfig {
+        // テスト用の設定クラスは空の実装で十分です
+    }
+
+    /**
      * デフォルトコンストラクタ<br>
      *
      * @since 0.1.0
@@ -27,6 +40,20 @@ public class KmgFundMsgExceptionTest {
     public KmgFundMsgExceptionTest() {
 
         // 処理なし
+    }
+
+    /**
+     * テストの前準備
+     */
+    @SuppressWarnings({
+        "unused", "resource"
+    })
+    @BeforeEach
+    public void setUp() {
+
+        // Springのアプリケーションコンテキストを初期化
+        new AnnotationConfigApplicationContext(TestConfig.class);
+
     }
 
     /**
@@ -38,7 +65,7 @@ public class KmgFundMsgExceptionTest {
     public void testConstructor() {
 
         // テストデータ
-        final KmgFundGenMsgTypes messageTypes = KmgFundGenMsgTypes.NONE;
+        final KmgFundGenMsgTypes messageTypes = KmgFundGenMsgTypes.KMGFUND_GEN24000;
         final Object[]           messageArgs  = {
             "test"
         };
