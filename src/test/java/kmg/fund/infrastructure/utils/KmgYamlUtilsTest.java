@@ -214,4 +214,39 @@ public class KmgYamlUtilsTest {
         });
 
     }
+
+    /**
+     * load メソッドのテスト - 準正常系:ディレクトリをファイルとして読み込む場合
+     *
+     * @since 1.0.0
+     *
+     * @throws IOException
+     *                     入出力例外
+     */
+    @Test
+    public void testLoad_semiDirectoryAsFile() throws IOException {
+
+        /* 期待値の定義 */
+        final KmgFundGenMsgTypes expectedMessageType = KmgFundGenMsgTypes.KMGFUND_GEN24001;
+
+        /* 準備 */
+        final Path testDirectory = this.tempDir.resolve("testDirectory");
+        Files.createDirectory(testDirectory);
+        final String expectedDirectoryPath = testDirectory.toString();
+
+        /* テスト対象の実行 */
+        final KmgFundMsgException actualException
+            = Assertions.assertThrows(KmgFundMsgException.class, () -> KmgYamlUtils.load(testDirectory));
+
+        /* 検証の準備 */
+        final KmgFundGenMsgTypes actualMessageType = (KmgFundGenMsgTypes) actualException.getMessageTypes();
+        final Object[]           actualMessageArgs = actualException.getMessageArgs();
+        final Throwable          actualCause       = actualException.getCause();
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedMessageType, actualMessageType, "期待するメッセージタイプが設定されていること");
+        Assertions.assertEquals(expectedDirectoryPath, actualMessageArgs[0], "期待するディレクトリパスがメッセージ引数に設定されていること");
+        Assertions.assertTrue(actualCause instanceof IOException, "原因がIOExceptionであること");
+
+    }
 }
