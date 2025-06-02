@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
  * @version 0.1.0
  */
 @SuppressWarnings({
-    "static-method",
+    "nls", "static-method",
 })
 public class KmgApplicationPropertyKeyTypesTest {
 

@@ -32,7 +32,7 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  * @since 0.1.0
  */
 @SuppressWarnings({
-    "static-method",
+    "nls", "static-method",
 })
 @DisplayName("KmgFundPropertiesLoaderのテスト")
 public class KmgFundPropertiesLoaderTest {

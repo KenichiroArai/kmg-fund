@@ -20,6 +20,9 @@ import kmg.fund.infrastructure.common.msg.KmgFundComGenMsgTypes;
  *
  * @version 0.1.0
  */
+@SuppressWarnings({
+    "nls",
+})
 public enum KmgFundGenMsgTypes implements KmgFundComGenMsgTypes, KmgFundComExcMsgTypes {
 
     /* 定義：開始 */

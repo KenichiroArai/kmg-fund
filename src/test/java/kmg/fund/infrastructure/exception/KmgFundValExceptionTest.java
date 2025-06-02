@@ -15,7 +15,7 @@ import kmg.core.infrastructure.model.val.impl.KmgValsModelImpl;
  * @version 0.1.0
  */
 @SuppressWarnings({
-    "static-method",
+    "nls", "static-method",
 })
 public class KmgFundValExceptionTest {
 

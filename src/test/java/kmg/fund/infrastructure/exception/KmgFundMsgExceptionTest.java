@@ -21,7 +21,7 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
  * @version 0.1.0
  */
 @SuppressWarnings({
-    "static-method",
+    "nls", "static-method",
 })
 public class KmgFundMsgExceptionTest {
 

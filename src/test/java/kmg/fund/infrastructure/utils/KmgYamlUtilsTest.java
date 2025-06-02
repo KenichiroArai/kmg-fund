@@ -28,7 +28,7 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 @SpringBootTest
 @ActiveProfiles("test")
 @SuppressWarnings({
-    "static-method",
+    "nls", "static-method",
 })
 public class KmgYamlUtilsTest {
 

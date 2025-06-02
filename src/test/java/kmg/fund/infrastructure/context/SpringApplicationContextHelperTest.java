@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
  * @version 0.1.0
  */
 @SuppressWarnings({
-    "static-method",
+    "nls", "static-method",
 })
 public class SpringApplicationContextHelperTest {
 

@@ -25,6 +25,9 @@ import kmg.fund.infrastructure.types.msg.KmgFundLogMsgTypes;
  *
  * @version 0.1.0
  */
+@SuppressWarnings({
+    "nls",
+})
 public class KmgMessageSourceTest {
 
     /** テスト対象 */

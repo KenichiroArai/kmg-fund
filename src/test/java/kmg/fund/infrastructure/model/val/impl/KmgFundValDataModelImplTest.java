@@ -21,6 +21,9 @@ import kmg.fund.infrastructure.types.msg.KmgFundValMsgTypes;
  *
  * @version 0.1.0
  */
+@SuppressWarnings({
+    "nls",
+})
 @ExtendWith(MockitoExtension.class)
 public class KmgFundValDataModelImplTest {
 

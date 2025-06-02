@@ -20,7 +20,9 @@ public class KmgFundApplication {
      * @param args
      *             引数
      */
-    @SuppressWarnings("resource")
+    @SuppressWarnings({
+        "resource", "nls"
+    })
     public static void main(final String[] args) {
 
         // SpringApplicationの設定
