@@ -182,7 +182,7 @@ public class KmgYamlUtilsTest {
         /* 検証の実施 */
         Assertions.assertEquals(expectedMessageType, actualMessageType, "期待するメッセージタイプが設定されていること");
         Assertions.assertEquals(expectedFilePath, actualMessageArgs[0], "期待するファイルパスがメッセージ引数に設定されていること");
-        Assertions.assertTrue(actualCause instanceof NoSuchFileException, "原因がNoSuchFileExceptionであること");
+        Assertions.assertInstanceOf(NoSuchFileException.class, actualCause, "原因がNoSuchFileExceptionであること");
 
     }
 
@@ -246,7 +246,7 @@ public class KmgYamlUtilsTest {
         /* 検証の実施 */
         Assertions.assertEquals(expectedMessageType, actualMessageType, "期待するメッセージタイプが設定されていること");
         Assertions.assertEquals(expectedDirectoryPath, actualMessageArgs[0], "期待するディレクトリパスがメッセージ引数に設定されていること");
-        Assertions.assertTrue(actualCause instanceof IOException, "原因がIOExceptionであること");
+        Assertions.assertInstanceOf(IOException.class, actualCause, "原因がIOExceptionであること");
 
     }
 }
