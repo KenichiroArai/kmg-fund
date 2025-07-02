@@ -9,10 +9,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.context.MessageSource;
 
-import kmg.core.infrastructure.common.msg.KmgComExcMsgTypes;
-import kmg.core.infrastructure.common.msg.KmgComGenMsgTypes;
-import kmg.core.infrastructure.common.msg.KmgComLogMsgTypes;
-import kmg.core.infrastructure.common.msg.KmgComMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnExcMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnGenMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnLogMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnMsgTypes;
 import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 import kmg.fund.infrastructure.types.msg.KmgFundLogMsgTypes;
 
@@ -73,7 +73,7 @@ public class KmgMessageSourceTest {
         final String expected = "[KMGFUND_GEN24000] テストメッセージ";
 
         /* 準備 */
-        final KmgComExcMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+        final KmgCmnExcMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
         Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
             .thenReturn("テストメッセージ");
 
@@ -97,7 +97,7 @@ public class KmgMessageSourceTest {
         final String expected = "[KMGFUND_GEN24000] テストメッセージ: 引数1";
 
         /* 準備 */
-        final KmgComExcMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+        final KmgCmnExcMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
         final Object[]          args = {
             "引数1"
         };
@@ -124,7 +124,7 @@ public class KmgMessageSourceTest {
         final String expected = "テストメッセージ";
 
         /* 準備 */
-        final KmgComGenMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+        final KmgCmnGenMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
         Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
             .thenReturn("テストメッセージ");
 
@@ -148,7 +148,7 @@ public class KmgMessageSourceTest {
         final String expected = "テストメッセージ: 引数1";
 
         /* 準備 */
-        final KmgComGenMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+        final KmgCmnGenMsgTypes type = KmgFundGenMsgTypes.KMGFUND_GEN24000;
         final Object[]          args = {
             "引数1"
         };
@@ -175,7 +175,7 @@ public class KmgMessageSourceTest {
         final String expected = "[NONE] テストメッセージ";
 
         /* 準備 */
-        final KmgComLogMsgTypes type = KmgFundLogMsgTypes.NONE;
+        final KmgCmnLogMsgTypes type = KmgFundLogMsgTypes.NONE;
         Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
             .thenReturn("テストメッセージ");
 
@@ -199,7 +199,7 @@ public class KmgMessageSourceTest {
         final String expected = "[NONE] テストメッセージ: 引数1";
 
         /* 準備 */
-        final KmgComLogMsgTypes type = KmgFundLogMsgTypes.NONE;
+        final KmgCmnLogMsgTypes type = KmgFundLogMsgTypes.NONE;
         final Object[]          args = {
             "引数1"
         };
@@ -226,7 +226,7 @@ public class KmgMessageSourceTest {
         final String expected = "テストメッセージ";
 
         /* 準備 */
-        final KmgComMsgTypes type = KmgFundLogMsgTypes.NONE;
+        final KmgCmnMsgTypes type = KmgFundLogMsgTypes.NONE;
         Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
             .thenReturn("テストメッセージ");
 
@@ -250,7 +250,7 @@ public class KmgMessageSourceTest {
         final String expected = "[NONE] テストメッセージ";
 
         /* 準備 */
-        final KmgComMsgTypes type = KmgFundLogMsgTypes.NONE;
+        final KmgCmnMsgTypes type = KmgFundLogMsgTypes.NONE;
         Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
             .thenReturn("テストメッセージ");
 

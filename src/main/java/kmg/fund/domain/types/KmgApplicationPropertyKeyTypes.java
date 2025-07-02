@@ -3,7 +3,7 @@ package kmg.fund.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.core.infrastructure.common.KmgComTypes;
+import kmg.core.infrastructure.cmn.KmgCmnTypes;
 
 /**
  * KMG アプリケーションプロパティキーの種類<br>
@@ -15,7 +15,7 @@ import kmg.core.infrastructure.common.KmgComTypes;
  * @version 0.1.0
  */
 @SuppressWarnings("nls")
-public enum KmgApplicationPropertyKeyTypes implements KmgComTypes<String> {
+public enum KmgApplicationPropertyKeyTypes implements KmgCmnTypes<String> {
 
     /* 定義：開始 */
 

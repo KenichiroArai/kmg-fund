@@ -1,6 +1,6 @@
 package kmg.fund.infrastructure.common.msg;
 
-import kmg.core.infrastructure.common.msg.KmgComGenMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnGenMsgTypes;
 
 /**
  * KMG 基盤一般メッセージの種類のインタフェース
@@ -17,7 +17,7 @@ import kmg.core.infrastructure.common.msg.KmgComGenMsgTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFundComGenMsgTypes extends KmgFundComMsgTypes, KmgComGenMsgTypes {
+public interface KmgFundComGenMsgTypes extends KmgFundComMsgTypes, KmgCmnGenMsgTypes {
 
     // 処理なし
 
