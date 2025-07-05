@@ -3,7 +3,7 @@ package kmg.fund.infrastructure.types.msg;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.fund.infrastructure.common.msg.KmgFundComLogMsgTypes;
+import kmg.fund.infrastructure.cmn.msg.KmgFundCmnLogMsgTypes;
 
 /**
  * KMG 基盤ログメッセージの種類<br>
@@ -21,7 +21,7 @@ import kmg.fund.infrastructure.common.msg.KmgFundComLogMsgTypes;
 @SuppressWarnings({
     "nls",
 })
-public enum KmgFundLogMsgTypes implements KmgFundComLogMsgTypes {
+public enum KmgFundLogMsgTypes implements KmgFundCmnLogMsgTypes {
 
     /* 定義：開始 */
 

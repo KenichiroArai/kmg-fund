@@ -1,4 +1,4 @@
-package kmg.fund.infrastructure.common.msg;
+package kmg.fund.infrastructure.cmn.msg;
 
 import kmg.core.infrastructure.cmn.msg.KmgCmnGenMsgTypes;
 
@@ -17,7 +17,7 @@ import kmg.core.infrastructure.cmn.msg.KmgCmnGenMsgTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFundComGenMsgTypes extends KmgFundComMsgTypes, KmgCmnGenMsgTypes {
+public interface KmgFundCmnGenMsgTypes extends KmgFundCmnMsgTypes, KmgCmnGenMsgTypes {
 
     // 処理なし
 
