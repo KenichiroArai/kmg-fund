@@ -6,7 +6,7 @@ import kmg.core.infrastructure.cmn.msg.KmgCmnExcMsgTypes;
  * KMG 基盤例外メッセージの種類のインタフェース
  * <p>
  * Fundは、Foundationの略。<br>
- * Comは、Commonの略。<br>
+ * Cmnは、Commonの略。<br>
  * Excは、Exceptionの略。<br>
  * Msgは、Messageの略。
  * </p>

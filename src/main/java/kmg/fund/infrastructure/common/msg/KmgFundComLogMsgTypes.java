@@ -6,7 +6,7 @@ import kmg.core.infrastructure.cmn.msg.KmgCmnLogMsgTypes;
  * KMG 基盤共通ログメッセージの種類のインタフェース
  * <p>
  * Fundは、Foundationの略。<br>
- * Comは、Commonの略。<br>
+ * Cmnは、Commonの略。<br>
  * Msgは、Messageの略。
  * </p>
  *
