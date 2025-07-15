@@ -3,7 +3,7 @@ package kmg.fund.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.core.infrastructure.common.KmgComTypes;
+import kmg.core.infrastructure.cmn.KmgCmnTypes;
 
 /**
  * KMG アプリケーションプロパティファイルの種類<br>
@@ -12,54 +12,38 @@ import kmg.core.infrastructure.common.KmgComTypes;
  *
  * @since 0.1.0
  *
- * @version 0.3.0
+ * @version 0.1.0
  */
 @SuppressWarnings("nls")
-public enum KmgApplicationPropertyFileTypes implements KmgComTypes<String> {
+public enum KmgApplicationPropertyFileTypes implements KmgCmnTypes<String> {
 
     /* 定義：開始 */
 
     /**
      * 指定無し
      *
-     * @author KenichiroArai
-     *
      * @since 0.1.0
-     *
-     * @version 0.1.0
      */
     NONE("指定無し", "None", "指定無し"),
 
     /**
      * アプリケーションプロパティ
      *
-     * @author KenichiroArai
-     *
-     * @since 0.3.0
-     *
-     * @version 0.3.0
+     * @since 0.1.0
      */
     APPLICATION_PROPERTIES("アプリケーションプロパティ", "application.properties", "Springアプリケーションのプロパティファイル"),
 
     /**
      * KMG基盤アプリケーションプロパティ
      *
-     * @author KenichiroArai
-     *
-     * @since 0.3.0
-     *
-     * @version 0.3.0
+     * @since 0.1.0
      */
     KMG_FUND_APPLICATION_PROPERTIES("KMG基盤アプリケーションプロパティ", "kmg-fund-application.properties", "KMG基盤アプリケーションのプロパティファイル"),
 
     /**
      * KMGアプリケーションプロパティ
      *
-     * @author KenichiroArai
-     *
-     * @since 0.3.0
-     *
-     * @version 0.3.0
+     * @since 0.1.0
      */
     KMG_APPLICATION_PROPERTIES("KMGアプリケーションプロパティ", "kmg-application-properties", "KMGアプリケーションのプロパティ名"),
 

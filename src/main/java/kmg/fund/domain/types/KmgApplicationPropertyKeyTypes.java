@@ -3,7 +3,7 @@ package kmg.fund.domain.types;
 import java.util.HashMap;
 import java.util.Map;
 
-import kmg.core.infrastructure.common.KmgComTypes;
+import kmg.core.infrastructure.cmn.KmgCmnTypes;
 
 /**
  * KMG アプリケーションプロパティキーの種類<br>
@@ -12,32 +12,24 @@ import kmg.core.infrastructure.common.KmgComTypes;
  *
  * @since 0.1.0
  *
- * @version 0.3.0
+ * @version 0.1.0
  */
 @SuppressWarnings("nls")
-public enum KmgApplicationPropertyKeyTypes implements KmgComTypes<String> {
+public enum KmgApplicationPropertyKeyTypes implements KmgCmnTypes<String> {
 
     /* 定義：開始 */
 
     /**
      * 指定無し
      *
-     * @author KenichiroArai
-     *
      * @since 0.1.0
-     *
-     * @version 0.1.0
      */
     NONE("指定無し", "None", "指定無し"),
 
     /**
      * メッセージのベース名
      *
-     * @author KenichiroArai
-     *
-     * @since 0.3.1
-     *
-     * @version 0.3.1
+     * @since 0.1.0
      */
     SPRING_MESSAGES_BASENAME("メッセージのベース名", "spring.messages.basename", "メッセージのベース名を指定するプロパティキー"),
 

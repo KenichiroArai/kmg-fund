@@ -1,12 +1,12 @@
-package kmg.fund.infrastructure.common.msg;
+package kmg.fund.infrastructure.cmn.msg;
 
-import kmg.core.infrastructure.common.msg.KmgComMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnMsgTypes;
 
 /**
  * KMG 基盤共通メッセージの種類のインタフェース
  * <p>
  * Fundは、Foundationの略。<br>
- * Comは、Commonの略。<br>
+ * Cmnは、Commonの略。<br>
  * Msgは、Messageの略。
  * </p>
  *
@@ -16,7 +16,7 @@ import kmg.core.infrastructure.common.msg.KmgComMsgTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFundComMsgTypes extends KmgComMsgTypes {
+public interface KmgFundCmnMsgTypes extends KmgCmnMsgTypes {
 
     // 処理なし
 

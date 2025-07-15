@@ -1,7 +1,7 @@
 package kmg.fund.infrastructure.exception;
 
 import kmg.core.infrastructure.exception.KmgMsgException;
-import kmg.fund.infrastructure.common.msg.KmgFundComExcMsgTypes;
+import kmg.fund.infrastructure.cmn.msg.KmgFundCmnExcMsgTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 
@@ -41,7 +41,7 @@ public class KmgFundMsgException extends KmgMsgException {
      * @param messageTypes
      *                     メッセージの種類
      */
-    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes) {
+    public KmgFundMsgException(final KmgFundCmnExcMsgTypes messageTypes) {
 
         this(messageTypes, null, null);
 
@@ -57,7 +57,7 @@ public class KmgFundMsgException extends KmgMsgException {
      * @param messageArgs
      *                     メッセージの引数
      */
-    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes, final Object[] messageArgs) {
+    public KmgFundMsgException(final KmgFundCmnExcMsgTypes messageTypes, final Object[] messageArgs) {
 
         this(messageTypes, messageArgs, null);
 
@@ -75,7 +75,7 @@ public class KmgFundMsgException extends KmgMsgException {
      * @param cause
      *                     原因
      */
-    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes, final Object[] messageArgs,
+    public KmgFundMsgException(final KmgFundCmnExcMsgTypes messageTypes, final Object[] messageArgs,
         final Throwable cause) {
 
         super(messageTypes, messageArgs, cause);
@@ -92,7 +92,7 @@ public class KmgFundMsgException extends KmgMsgException {
      * @param cause
      *                     原因
      */
-    public KmgFundMsgException(final KmgFundComExcMsgTypes messageTypes, final Throwable cause) {
+    public KmgFundMsgException(final KmgFundCmnExcMsgTypes messageTypes, final Throwable cause) {
 
         this(messageTypes, null, cause);
 

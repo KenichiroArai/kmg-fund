@@ -267,6 +267,7 @@ sp_cleanup.stringconcat_stringbuffer_stringbuilder=true
 sp_cleanup.stringconcat_to_textblock=true
 sp_cleanup.substring=true
 sp_cleanup.switch=true
+sp_cleanup.switch_for_instanceof_pattern=false
 sp_cleanup.system_property=true
 sp_cleanup.system_property_boolean=true
 sp_cleanup.system_property_file_encoding=true

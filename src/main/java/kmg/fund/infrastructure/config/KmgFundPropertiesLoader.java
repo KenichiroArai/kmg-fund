@@ -58,20 +58,17 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     private final Map<String, Object> additionalPropertieMap;
 
     /**
-     * リソースパスからプロパティを読み込み、マップに設定する
+     * リソースからプロパティを読み込み、マップに設定する
      * <p>
-     * 指定されたリソースパスのプロパティファイルを読み込み、 その内容を指定されたマップに設定します。 ファイルが存在しない場合や読み込みに失敗した場合は処理をスキップします。
+     * 指定されたリソースのプロパティファイルを読み込み、 その内容を指定されたマップに設定します。 ファイルが存在しない場合や読み込みに失敗した場合は処理をスキップします。
      * </p>
      *
-     * @param resourcePath
-     *                     プロパティファイルのリソースパス
+     * @param resource
+     *                     プロパティファイルのリソース
      * @param propertieMap
      *                     プロパティを格納するマップ
      */
-    protected static void fromPropertieMap(final String resourcePath, final Map<String, Object> propertieMap) {
-
-        /* リソースの取得 */
-        final Resource resource = new ClassPathResource(resourcePath);
+    protected static void fromPropertieMap(final Resource resource, final Map<String, Object> propertieMap) {
 
         /* リソースが存在しない場合は処理終了 */
         if (!resource.exists()) {
@@ -140,11 +137,12 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     public void postProcessEnvironment(final ConfigurableEnvironment environment, final SpringApplication application) {
 
         /* メインプロパティファイルの読み込み */
-        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyFileTypes.APPLICATION_PROPERTIES.get(),
-            this.mainPropertieMap);
+        KmgFundPropertiesLoader.fromPropertieMap(
+            new ClassPathResource(KmgApplicationPropertyFileTypes.APPLICATION_PROPERTIES.get()), this.mainPropertieMap);
 
         /* KMG基盤プロパティファイルの読み込み */
-        KmgFundPropertiesLoader.fromPropertieMap(KmgApplicationPropertyFileTypes.KMG_FUND_APPLICATION_PROPERTIES.get(),
+        KmgFundPropertiesLoader.fromPropertieMap(
+            new ClassPathResource(KmgApplicationPropertyFileTypes.KMG_FUND_APPLICATION_PROPERTIES.get()),
             this.kmgFundPropertieMap);
 
         /* 追加プロパティの読み込み */

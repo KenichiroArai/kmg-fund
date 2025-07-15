@@ -1,12 +1,12 @@
-package kmg.fund.infrastructure.common.msg;
+package kmg.fund.infrastructure.cmn.msg;
 
-import kmg.core.infrastructure.common.msg.KmgComValMsgTypes;
+import kmg.core.infrastructure.cmn.msg.KmgCmnValMsgTypes;
 
 /**
  * KMG 基盤バリデーションメッセージの種類のインタフェース
  * <p>
  * Fundは、Foundationの略。<br>
- * Comは、Commonの略。<br>
+ * Cmnは、Commonの略。<br>
  * Valは、Validationの略。<br>
  * Msgは、Messageの略。
  * </p>
@@ -17,7 +17,7 @@ import kmg.core.infrastructure.common.msg.KmgComValMsgTypes;
  *
  * @version 0.1.0
  */
-public interface KmgFundComValMsgTypes extends KmgFundComMsgTypes, KmgComValMsgTypes {
+public interface KmgFundCmnValMsgTypes extends KmgFundCmnMsgTypes, KmgCmnValMsgTypes {
 
     // 処理なし
 
