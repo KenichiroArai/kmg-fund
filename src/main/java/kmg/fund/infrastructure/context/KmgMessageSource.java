@@ -10,7 +10,6 @@ import kmg.core.infrastructure.cmn.msg.KmgCmnExcMsgTypes;
 import kmg.core.infrastructure.cmn.msg.KmgCmnGenMsgTypes;
 import kmg.core.infrastructure.cmn.msg.KmgCmnLogMsgTypes;
 import kmg.core.infrastructure.cmn.msg.KmgCmnMsgTypes;
-import kmg.core.infrastructure.type.KmgString;
 
 /**
  * KMGメッセージリソース<br>
@@ -220,7 +219,7 @@ public class KmgMessageSource {
      */
     public String getMessage(final KmgCmnMsgTypes type, final Object[] args, final boolean codeEmbeddingFlag) {
 
-        String result = KmgString.EMPTY;
+        String result;
 
         /* メッセージの取得 */
         String message = this.messageSource.getMessage(type.getCode(), args, Locale.JAPANESE);

@@ -17,7 +17,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mock.env.MockEnvironment;
 
-import kmg.core.infrastructure.exception.KmgReflectionException;
 import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.fund.domain.types.KmgApplicationPropertyFileTypes;
 import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
@@ -123,14 +122,14 @@ public class KmgFundPropertiesLoaderTest {
     /**
      * integrateMessageBasenameメソッドのテスト - 正常系:メッセージベース名の統合（リフレクション使用）
      *
-     * @throws KmgReflectionException
-     *                                KMGリフレクション例外
+     * @throws Exception
+     *                   例外
      *
      * @since 0.1.0
      */
     @Test
     @DisplayName("リフレクションを使用してメッセージベース名が正しく統合されること")
-    public void testIntegrateMessageBasenameWithReflection_normalIntegration() throws KmgReflectionException {
+    public void testIntegrateMessageBasenameWithReflection_normalIntegration() throws Exception {
 
         /* 期待値の定義 */
         final String expectedMessage1 = "kmg-fund-messages";
@@ -165,14 +164,14 @@ public class KmgFundPropertiesLoaderTest {
     /**
      * integrateMessageBasenameメソッドのテスト - 異常系:空の値
      *
-     * @throws KmgReflectionException
-     *                                KMGリフレクション例外
+     * @throws Exception
+     *                   例外
      *
      * @since 0.1.0
      */
     @Test
     @DisplayName("リフレクションを使用して空の値の場合のテスト")
-    public void testIntegrateMessageBasenameWithReflection_emptyValue() throws KmgReflectionException {
+    public void testIntegrateMessageBasenameWithReflection_emptyValue() throws Exception {
 
         /* 準備 */
         final Map<String, Object> propertyMap = new HashMap<>();
