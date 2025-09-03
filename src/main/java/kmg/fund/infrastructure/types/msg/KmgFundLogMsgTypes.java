@@ -28,11 +28,7 @@ public enum KmgFundLogMsgTypes implements KmgFundCmnLogMsgTypes {
     /**
      * 指定無し
      *
-     * @author KenichiroArai
-     *
      * @since 0.1.0
-     *
-     * @version 0.1.0
      */
     NONE("指定無し"),
 

@@ -19,6 +19,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * get メソッドのテスト - 正常系:NONEのキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGet_normalNoneKey() {
@@ -42,6 +44,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getCode メソッドのテスト - 正常系:NONEのコード取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetCode_normalNoneCode() {
@@ -65,6 +69,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getDefault メソッドのテスト - 正常系:デフォルト値の取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDefault_normalDefault() {
@@ -87,6 +93,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDetail_normalNoneDetail() {
@@ -110,6 +118,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDisplayName_normalNoneDisplayName() {
@@ -133,6 +143,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 正常系:存在するキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_normalExistingKey() {
@@ -156,6 +168,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 準正常系:存在しないキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_semiNonExistingKey() {
@@ -179,6 +193,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 準正常系:nullキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_semiNullKey() {
@@ -202,6 +218,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getInitValue メソッドのテスト - 正常系:初期値の取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetInitValue_normalInitValue() {
@@ -224,6 +242,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getKey メソッドのテスト - 正常系:NONEのキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetKey_normalNoneKey() {
@@ -247,6 +267,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * getValue メソッドのテスト - 正常系:NONEの値取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetValue_normalNoneValue() {
@@ -270,6 +292,8 @@ public class KmgFundLogMsgTypesTest {
 
     /**
      * toString メソッドのテスト - 正常系:NONEの文字列変換
+     *
+     * @since 0.1.0
      */
     @Test
     public void testToString_normalNoneToString() {

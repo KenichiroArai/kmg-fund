@@ -19,6 +19,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * get メソッドのテスト - 正常系:KMGFUND_GEN24000のキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGet_normalKmgFund24000Key() {
@@ -42,6 +44,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * get メソッドのテスト - 正常系:NONEのキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGet_normalNoneKey() {
@@ -65,6 +69,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getCode メソッドのテスト - 正常系:NONEのコード取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetCode_normalNoneCode() {
@@ -88,6 +94,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getDefault メソッドのテスト - 正常系:デフォルト値の取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDefault_normalDefault() {
@@ -110,6 +118,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDetail_normalNoneDetail() {
@@ -133,6 +143,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDisplayName_normalNoneDisplayName() {
@@ -156,6 +168,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 正常系:存在するキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_normalExistingKey() {
@@ -179,6 +193,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 正常系:KMGFUND_GEN24000のキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_normalKmgFund24000Key() {
@@ -202,6 +218,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 正常系:KMGFUND_GEN24001のキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_normalKmgFund24001Key() {
@@ -225,6 +243,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 準正常系:存在しないキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_semiNonExistingKey() {
@@ -248,6 +268,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getEnum メソッドのテスト - 準正常系:nullキーの場合
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetEnum_semiNullKey() {
@@ -271,6 +293,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getInitValue メソッドのテスト - 正常系:初期値の取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetInitValue_normalInitValue() {
@@ -293,6 +317,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getKey メソッドのテスト - 正常系:NONEのキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetKey_normalNoneKey() {
@@ -316,6 +342,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getValue メソッドのテスト - 正常系:KMGFUND_GEN24000の値取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetValue_normalKmgFund24000Value() {
@@ -339,6 +367,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getValue メソッドのテスト - 正常系:KMGFUND_GEN24001の値取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetValue_normalKmgFund24001Value() {
@@ -362,6 +392,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * getValue メソッドのテスト - 正常系:NONEの値取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetValue_normalNoneValue() {
@@ -385,6 +417,8 @@ public class KmgFundGenMsgTypesTest {
 
     /**
      * toString メソッドのテスト - 正常系:NONEの文字列変換
+     *
+     * @since 0.1.0
      */
     @Test
     public void testToString_normalNoneToString() {
