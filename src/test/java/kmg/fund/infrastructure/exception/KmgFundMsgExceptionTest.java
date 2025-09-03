@@ -62,6 +62,8 @@ public class KmgFundMsgExceptionTest {
 
     /**
      * テストの前準備
+     *
+     * @since 0.1.0
      */
     @SuppressWarnings({
         "unused", "resource"
