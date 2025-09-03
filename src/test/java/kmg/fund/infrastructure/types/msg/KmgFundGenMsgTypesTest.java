@@ -18,6 +18,75 @@ import org.junit.jupiter.api.Test;
 public class KmgFundGenMsgTypesTest {
 
     /**
+     * get メソッドのテスト - 正常系:KMGFUND_GEN24000のキー取得
+     */
+    @Test
+    public void testGet_normalKmgFund24000Key() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "KMGFUND_GEN24000";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.get();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24000のキーが一致しません");
+
+    }
+
+    /**
+     * get メソッドのテスト - 正常系:NONEのキー取得
+     */
+    @Test
+    public void testGet_normalNoneKey() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "NONE";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.get();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEのキーが一致しません");
+
+    }
+
+    /**
+     * getCode メソッドのテスト - 正常系:NONEのコード取得
+     */
+    @Test
+    public void testGetCode_normalNoneCode() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "NONE";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getCode();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEのコードが一致しません");
+
+    }
+
+    /**
      * getDefault メソッドのテスト - 正常系:デフォルト値の取得
      */
     @Test
@@ -36,6 +105,52 @@ public class KmgFundGenMsgTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expectedResult, actualResult, "デフォルト値が一致しません");
+
+    }
+
+    /**
+     * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
+     */
+    @Test
+    public void testGetDetail_normalNoneDetail() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "指定無し";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getDetail();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEの詳細情報が一致しません");
+
+    }
+
+    /**
+     * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
+     */
+    @Test
+    public void testGetDisplayName_normalNoneDisplayName() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "指定無し";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getDisplayName();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEの表示名が一致しません");
 
     }
 
@@ -59,6 +174,52 @@ public class KmgFundGenMsgTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expectedResult, actualResult, "存在するキーに対応する値が一致しません");
+
+    }
+
+    /**
+     * getEnum メソッドのテスト - 正常系:KMGFUND_GEN24000のキーの場合
+     */
+    @Test
+    public void testGetEnum_normalKmgFund24000Key() {
+
+        /* 期待値の定義 */
+        final KmgFundGenMsgTypes expectedResult = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+
+        /* 準備 */
+        final String testKey = "KMGFUND_GEN24000";
+
+        /* テスト対象の実行 */
+        final KmgFundGenMsgTypes testResult = KmgFundGenMsgTypes.getEnum(testKey);
+
+        /* 検証の準備 */
+        final KmgFundGenMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24000キーに対応する値が一致しません");
+
+    }
+
+    /**
+     * getEnum メソッドのテスト - 正常系:KMGFUND_GEN24001のキーの場合
+     */
+    @Test
+    public void testGetEnum_normalKmgFund24001Key() {
+
+        /* 期待値の定義 */
+        final KmgFundGenMsgTypes expectedResult = KmgFundGenMsgTypes.KMGFUND_GEN24001;
+
+        /* 準備 */
+        final String testKey = "KMGFUND_GEN24001";
+
+        /* テスト対象の実行 */
+        final KmgFundGenMsgTypes testResult = KmgFundGenMsgTypes.getEnum(testKey);
+
+        /* 検証の準備 */
+        final KmgFundGenMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24001キーに対応する値が一致しません");
 
     }
 
@@ -131,98 +292,6 @@ public class KmgFundGenMsgTypesTest {
     }
 
     /**
-     * get メソッドのテスト - 正常系:NONEのキー取得
-     */
-    @Test
-    public void testGet_normalNoneKey() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "NONE";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.get();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEのキーが一致しません");
-
-    }
-
-    /**
-     * getCode メソッドのテスト - 正常系:NONEのコード取得
-     */
-    @Test
-    public void testGetCode_normalNoneCode() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "NONE";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getCode();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEのコードが一致しません");
-
-    }
-
-    /**
-     * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
-     */
-    @Test
-    public void testGetDetail_normalNoneDetail() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "指定無し";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getDetail();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEの詳細情報が一致しません");
-
-    }
-
-    /**
-     * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
-     */
-    @Test
-    public void testGetDisplayName_normalNoneDisplayName() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "指定無し";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getDisplayName();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEの表示名が一致しません");
-
-    }
-
-    /**
      * getKey メソッドのテスト - 正常系:NONEのキー取得
      */
     @Test
@@ -242,6 +311,52 @@ public class KmgFundGenMsgTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expectedResult, actualResult, "NONEのキーが一致しません");
+
+    }
+
+    /**
+     * getValue メソッドのテスト - 正常系:KMGFUND_GEN24000の値取得
+     */
+    @Test
+    public void testGetValue_normalKmgFund24000Value() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "該当するYAMLファイルがありません。ファイルパス=[{0}]";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getValue();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24000の値が一致しません");
+
+    }
+
+    /**
+     * getValue メソッドのテスト - 正常系:KMGFUND_GEN24001の値取得
+     */
+    @Test
+    public void testGetValue_normalKmgFund24001Value() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "YAMLにロードするファイルの読み込みに失敗しました。ファイルパス=[{0}]";
+
+        /* 準備 */
+        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.KMGFUND_GEN24001;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getValue();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24001の値が一致しません");
 
     }
 
@@ -288,121 +403,6 @@ public class KmgFundGenMsgTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expectedResult, actualResult, "NONEの文字列変換が一致しません");
-
-    }
-
-    /**
-     * getEnum メソッドのテスト - 正常系:KMGFUND_GEN24000のキーの場合
-     */
-    @Test
-    public void testGetEnum_normalKmgFund24000Key() {
-
-        /* 期待値の定義 */
-        final KmgFundGenMsgTypes expectedResult = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-
-        /* 準備 */
-        final String testKey = "KMGFUND_GEN24000";
-
-        /* テスト対象の実行 */
-        final KmgFundGenMsgTypes testResult = KmgFundGenMsgTypes.getEnum(testKey);
-
-        /* 検証の準備 */
-        final KmgFundGenMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24000キーに対応する値が一致しません");
-
-    }
-
-    /**
-     * get メソッドのテスト - 正常系:KMGFUND_GEN24000のキー取得
-     */
-    @Test
-    public void testGet_normalKmgFund24000Key() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "KMGFUND_GEN24000";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.get();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24000のキーが一致しません");
-
-    }
-
-    /**
-     * getValue メソッドのテスト - 正常系:KMGFUND_GEN24000の値取得
-     */
-    @Test
-    public void testGetValue_normalKmgFund24000Value() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "該当するYAMLファイルがありません。ファイルパス=[{0}]";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getValue();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24000の値が一致しません");
-
-    }
-
-    /**
-     * getEnum メソッドのテスト - 正常系:KMGFUND_GEN24001のキーの場合
-     */
-    @Test
-    public void testGetEnum_normalKmgFund24001Key() {
-
-        /* 期待値の定義 */
-        final KmgFundGenMsgTypes expectedResult = KmgFundGenMsgTypes.KMGFUND_GEN24001;
-
-        /* 準備 */
-        final String testKey = "KMGFUND_GEN24001";
-
-        /* テスト対象の実行 */
-        final KmgFundGenMsgTypes testResult = KmgFundGenMsgTypes.getEnum(testKey);
-
-        /* 検証の準備 */
-        final KmgFundGenMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24001キーに対応する値が一致しません");
-
-    }
-
-    /**
-     * getValue メソッドのテスト - 正常系:KMGFUND_GEN24001の値取得
-     */
-    @Test
-    public void testGetValue_normalKmgFund24001Value() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "YAMLにロードするファイルの読み込みに失敗しました。ファイルパス=[{0}]";
-
-        /* 準備 */
-        final KmgFundGenMsgTypes testTarget = KmgFundGenMsgTypes.KMGFUND_GEN24001;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getValue();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "KMGFUND_GEN24001の値が一致しません");
 
     }
 

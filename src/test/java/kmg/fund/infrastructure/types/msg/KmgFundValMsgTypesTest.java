@@ -18,6 +18,52 @@ import org.junit.jupiter.api.Test;
 public class KmgFundValMsgTypesTest {
 
     /**
+     * get メソッドのテスト - 正常系:NONEのキー取得
+     */
+    @Test
+    public void testGet_normalNoneKey() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "NONE";
+
+        /* 準備 */
+        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.get();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEのキーが一致しません");
+
+    }
+
+    /**
+     * getCode メソッドのテスト - 正常系:NONEのコード取得
+     */
+    @Test
+    public void testGetCode_normalNoneCode() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "NONE";
+
+        /* 準備 */
+        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getCode();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEのコードが一致しません");
+
+    }
+
+    /**
      * getDefault メソッドのテスト - 正常系:デフォルト値の取得
      */
     @Test
@@ -36,6 +82,52 @@ public class KmgFundValMsgTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expectedResult, actualResult, "デフォルト値が一致しません");
+
+    }
+
+    /**
+     * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
+     */
+    @Test
+    public void testGetDetail_normalNoneDetail() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "指定無し";
+
+        /* 準備 */
+        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getDetail();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEの詳細情報が一致しません");
+
+    }
+
+    /**
+     * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
+     */
+    @Test
+    public void testGetDisplayName_normalNoneDisplayName() {
+
+        /* 期待値の定義 */
+        final String expectedResult = "指定無し";
+
+        /* 準備 */
+        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
+
+        /* テスト対象の実行 */
+        final String testResult = testTarget.getDisplayName();
+
+        /* 検証の準備 */
+        final String actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "NONEの表示名が一致しません");
 
     }
 
@@ -127,98 +219,6 @@ public class KmgFundValMsgTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expectedResult, actualResult, "初期値が一致しません");
-
-    }
-
-    /**
-     * get メソッドのテスト - 正常系:NONEのキー取得
-     */
-    @Test
-    public void testGet_normalNoneKey() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "NONE";
-
-        /* 準備 */
-        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.get();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEのキーが一致しません");
-
-    }
-
-    /**
-     * getCode メソッドのテスト - 正常系:NONEのコード取得
-     */
-    @Test
-    public void testGetCode_normalNoneCode() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "NONE";
-
-        /* 準備 */
-        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getCode();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEのコードが一致しません");
-
-    }
-
-    /**
-     * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
-     */
-    @Test
-    public void testGetDetail_normalNoneDetail() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "指定無し";
-
-        /* 準備 */
-        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getDetail();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEの詳細情報が一致しません");
-
-    }
-
-    /**
-     * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
-     */
-    @Test
-    public void testGetDisplayName_normalNoneDisplayName() {
-
-        /* 期待値の定義 */
-        final String expectedResult = "指定無し";
-
-        /* 準備 */
-        final KmgFundValMsgTypes testTarget = KmgFundValMsgTypes.NONE;
-
-        /* テスト対象の実行 */
-        final String testResult = testTarget.getDisplayName();
-
-        /* 検証の準備 */
-        final String actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "NONEの表示名が一致しません");
 
     }
 

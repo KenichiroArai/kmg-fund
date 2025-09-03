@@ -47,7 +47,7 @@ public final class KmgYamlUtils {
         } catch (final NoSuchFileException e) {
 
             final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-            final Object[]               genMsgArgs = {
+            final Object[]           genMsgArgs = {
                 path.toString()
             };
             throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
@@ -55,7 +55,7 @@ public final class KmgYamlUtils {
         } catch (final IOException e) {
 
             final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24001;
-            final Object[]               genMsgArgs = {
+            final Object[]           genMsgArgs = {
                 path.toString()
             };
             throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
