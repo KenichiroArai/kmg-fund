@@ -6,6 +6,12 @@ import org.springframework.test.context.ActiveProfiles;
 
 /**
  * KMG基盤アプリケーションのテスト<br>
+ *
+ * @author KenichiroArai
+ *
+ * @since 0.1.0
+ *
+ * @version 0.1.0
  */
 @SpringBootTest
 @ActiveProfiles("test")
@@ -13,6 +19,8 @@ public class KmgFundApplicationTest {
 
     /**
      * アプリケーションコンテキストが正常に起動することを確認するテスト<br>
+     *
+     * @since 0.1.0
      */
     @Test
     public void contextLoads() {
@@ -22,6 +30,8 @@ public class KmgFundApplicationTest {
 
     /**
      * mainメソッドのテスト<br>
+     *
+     * @since 0.1.0
      */
     @SuppressWarnings("static-method")
     @Test

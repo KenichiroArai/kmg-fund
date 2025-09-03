@@ -10,12 +10,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * Fundは、Foundationの略。
  * </p>
+ *
+ * @author KenichiroArai
+ *
+ * @since 0.1.0
+ *
+ * @version 0.1.0
  */
 @SpringBootApplication
 public class KmgFundApplication {
 
     /**
      * エントリポイント
+     *
+     * @since 0.1.0
      *
      * @param args
      *             引数
