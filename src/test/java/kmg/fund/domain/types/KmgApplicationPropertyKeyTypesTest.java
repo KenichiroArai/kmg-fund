@@ -198,28 +198,6 @@ public class KmgApplicationPropertyKeyTypesTest {
     }
 
     /**
-     * toString メソッドのテスト - 正常系:SPRING_MESSAGES_BASENAMEの文字列表現
-     *
-     * @since 0.1.0
-     */
-    @Test
-    public void testToString_normalSpringMessagesBasename() {
-
-        /* 期待値の定義 */
-        final String expected = "spring.messages.basename";
-
-        /* 準備 */
-        final KmgApplicationPropertyKeyTypes testType = KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME;
-
-        /* テスト対象の実行 */
-        final String actual = testType.toString();
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expected, actual, "SPRING_MESSAGES_BASENAMEの場合、'spring.messages.basename'が返されること");
-
-    }
-
-    /**
      * toString メソッドのテスト - 正常系:NONEの文字列表現
      *
      * @since 0.1.0
@@ -238,6 +216,28 @@ public class KmgApplicationPropertyKeyTypesTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expected, actual, "NONEの場合、'None'が返されること");
+
+    }
+
+    /**
+     * toString メソッドのテスト - 正常系:SPRING_MESSAGES_BASENAMEの文字列表現
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testToString_normalSpringMessagesBasename() {
+
+        /* 期待値の定義 */
+        final String expected = "spring.messages.basename";
+
+        /* 準備 */
+        final KmgApplicationPropertyKeyTypes testType = KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME;
+
+        /* テスト対象の実行 */
+        final String actual = testType.toString();
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expected, actual, "SPRING_MESSAGES_BASENAMEの場合、'spring.messages.basename'が返されること");
 
     }
 }
