@@ -26,9 +26,9 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  *
  * @author KenichiroArai
  *
- * @version 0.1.0
- *
  * @since 0.1.0
+ *
+ * @version 0.1.0
  */
 @SuppressWarnings({
     "nls", "static-method",
@@ -36,13 +36,25 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
 @DisplayName("KmgFundPropertiesLoaderのテスト")
 public class KmgFundPropertiesLoaderTest {
 
-    /** テスト対象のプロパティローダー */
+    /**
+     * テスト対象のプロパティローダー
+     *
+     * @since 0.1.0
+     */
     private KmgFundPropertiesLoader loader;
 
-    /** テスト用の環境設定 */
+    /**
+     * テスト用の環境設定
+     *
+     * @since 0.1.0
+     */
     private ConfigurableEnvironment environment;
 
-    /** テスト用のSpringアプリケーション */
+    /**
+     * テスト用のSpringアプリケーション
+     *
+     * @since 0.1.0
+     */
     private SpringApplication application;
 
     /**
@@ -73,26 +85,29 @@ public class KmgFundPropertiesLoaderTest {
     }
 
     /**
-     * postProcessEnvironmentメソッドのテスト - 正常系:プロパティの統合
+     * fromPropertieMapメソッドのテスト - 異常系:IOException発生
      *
      * @since 0.1.0
+     *
+     * @throws IOException
+     *                     テスト用の例外
      */
+    @SuppressWarnings("resource")
     @Test
-    @DisplayName("プロパティが正しく統合されること")
-    public void testPostProcessEnvironment_normalIntegration() {
+    @DisplayName("IOExceptionが発生した場合、マップは空のままであること")
+    public void testFromPropertieMap_IOException() throws IOException {
 
-        /* 期待値の定義 */
-        final String expectedPropertySourceName = KmgApplicationPropertyFileTypes.KMG_APPLICATION_PROPERTIES.get();
+        /* 準備 */
+        final Map<String, Object> propertieMap = new HashMap<>();
+        final Resource            resource     = Mockito.mock(Resource.class);
+        Mockito.when(resource.exists()).thenReturn(true);
+        Mockito.when(resource.getInputStream()).thenThrow(new IOException("テスト用の例外"));
 
         /* 実行 */
-        this.loader.postProcessEnvironment(this.environment, this.application);
+        KmgFundPropertiesLoader.fromPropertieMap(resource, propertieMap);
 
         /* 検証 */
-        final MutablePropertySources propertySources = this.environment.getPropertySources();
-        Assertions.assertEquals(true, propertySources.contains(expectedPropertySourceName), "プロパティソースが存在しません");
-
-        final MapPropertySource propertySource = (MapPropertySource) propertySources.get(expectedPropertySourceName);
-        Assertions.assertNotNull(propertySource, "プロパティソースがnullです");
+        Assertions.assertEquals(0, propertieMap.size(), "マップのサイズが一致しません");
 
     }
 
@@ -120,12 +135,45 @@ public class KmgFundPropertiesLoaderTest {
     }
 
     /**
-     * integrateMessageBasenameメソッドのテスト - 正常系:メッセージベース名の統合（リフレクション使用）
+     * integrateMessageBasenameメソッドのテスト - 異常系:空の値
+     *
+     * @since 0.1.0
      *
      * @throws Exception
      *                   例外
+     */
+    @Test
+    @DisplayName("リフレクションを使用して空の値の場合のテスト")
+    public void testIntegrateMessageBasenameWithReflection_emptyValue() throws Exception {
+
+        /* 準備 */
+        final Map<String, Object> propertyMap = new HashMap<>();
+        propertyMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), "");
+
+        final Map<String, Object> integratedMap = new HashMap<>();
+        integratedMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), "");
+
+        /* リフレクションを使用してprivateメソッドを呼び出し */
+        final KmgReflectionModelImpl reflection = new KmgReflectionModelImpl(this.loader);
+        reflection.getMethod("integrateMessageBasename", propertyMap,
+            KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
+
+        /* 検証 */
+        @SuppressWarnings("unlikely-arg-type")
+        final String basename
+            = (String) ((Map<?, ?>) new KmgReflectionModelImpl(this.loader).get("integratedPropertieMap"))
+                .get(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
+        Assertions.assertNull(basename, "空の値の場合、nullが返されること");
+
+    }
+
+    /**
+     * integrateMessageBasenameメソッドのテスト - 正常系:メッセージベース名の統合（リフレクション使用）
      *
      * @since 0.1.0
+     *
+     * @throws Exception
+     *                   例外
      */
     @Test
     @DisplayName("リフレクションを使用してメッセージベース名が正しく統合されること")
@@ -162,62 +210,26 @@ public class KmgFundPropertiesLoaderTest {
     }
 
     /**
-     * integrateMessageBasenameメソッドのテスト - 異常系:空の値
-     *
-     * @throws Exception
-     *                   例外
+     * postProcessEnvironmentメソッドのテスト - 正常系:プロパティの統合
      *
      * @since 0.1.0
      */
     @Test
-    @DisplayName("リフレクションを使用して空の値の場合のテスト")
-    public void testIntegrateMessageBasenameWithReflection_emptyValue() throws Exception {
+    @DisplayName("プロパティが正しく統合されること")
+    public void testPostProcessEnvironment_normalIntegration() {
 
-        /* 準備 */
-        final Map<String, Object> propertyMap = new HashMap<>();
-        propertyMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), "");
-
-        final Map<String, Object> integratedMap = new HashMap<>();
-        integratedMap.put(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get(), "");
-
-        /* リフレクションを使用してprivateメソッドを呼び出し */
-        final KmgReflectionModelImpl reflection = new KmgReflectionModelImpl(this.loader);
-        reflection.getMethod("integrateMessageBasename", propertyMap,
-            KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
-
-        /* 検証 */
-        @SuppressWarnings("unlikely-arg-type")
-        final String basename
-            = (String) ((Map<?, ?>) new KmgReflectionModelImpl(this.loader).get("integratedPropertieMap"))
-                .get(KmgApplicationPropertyKeyTypes.SPRING_MESSAGES_BASENAME.get());
-        Assertions.assertNull(basename, "空の値の場合、nullが返されること");
-
-    }
-
-    /**
-     * fromPropertieMapメソッドのテスト - 異常系:IOException発生
-     *
-     * @throws IOException
-     *                     テスト用の例外
-     *
-     * @since 0.1.0
-     */
-    @SuppressWarnings("resource")
-    @Test
-    @DisplayName("IOExceptionが発生した場合、マップは空のままであること")
-    public void testFromPropertieMap_IOException() throws IOException {
-
-        /* 準備 */
-        final Map<String, Object> propertieMap = new HashMap<>();
-        final Resource            resource     = Mockito.mock(Resource.class);
-        Mockito.when(resource.exists()).thenReturn(true);
-        Mockito.when(resource.getInputStream()).thenThrow(new IOException("テスト用の例外"));
+        /* 期待値の定義 */
+        final String expectedPropertySourceName = KmgApplicationPropertyFileTypes.KMG_APPLICATION_PROPERTIES.get();
 
         /* 実行 */
-        KmgFundPropertiesLoader.fromPropertieMap(resource, propertieMap);
+        this.loader.postProcessEnvironment(this.environment, this.application);
 
         /* 検証 */
-        Assertions.assertEquals(0, propertieMap.size(), "マップのサイズが一致しません");
+        final MutablePropertySources propertySources = this.environment.getPropertySources();
+        Assertions.assertEquals(true, propertySources.contains(expectedPropertySourceName), "プロパティソースが存在しません");
+
+        final MapPropertySource propertySource = (MapPropertySource) propertySources.get(expectedPropertySourceName);
+        Assertions.assertNotNull(propertySource, "プロパティソースがnullです");
 
     }
 }
