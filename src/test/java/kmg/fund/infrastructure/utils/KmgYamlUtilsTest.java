@@ -21,9 +21,9 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
  *
  * @author KenichiroArai
  *
- * @since 1.0.0
+ * @since 0.1.0
  *
- * @version 1.0.0
+ * @version 0.1.0
  */
 @SpringBootTest
 @ActiveProfiles("test")
@@ -35,7 +35,7 @@ public class KmgYamlUtilsTest {
     /**
      * 一時ディレクトリ
      *
-     * @since 1.0.0
+     * @since 0.1.0
      */
     @TempDir
     private Path tempDir;
@@ -43,7 +43,7 @@ public class KmgYamlUtilsTest {
     /**
      * デフォルトコンストラクタ<br>
      *
-     * @since 1.0.0
+     * @since 0.1.0
      */
     public KmgYamlUtilsTest() {
 
@@ -53,7 +53,7 @@ public class KmgYamlUtilsTest {
     /**
      * load メソッドのテスト - 正常系:複合構造のYAMLファイルの読み込み
      *
-     * @since 1.0.0
+     * @since 0.1.0
      *
      * @throws KmgFundMsgException
      *                             KMG基盤メッセージ例外
@@ -123,7 +123,7 @@ public class KmgYamlUtilsTest {
     /**
      * load メソッドのテスト - 正常系:有効なYAMLファイルの読み込み
      *
-     * @since 1.0.0
+     * @since 0.1.0
      *
      * @throws KmgFundMsgException
      *                             KMG基盤メッセージ例外
@@ -158,7 +158,7 @@ public class KmgYamlUtilsTest {
     /**
      * load メソッドのテスト - 準正常系:ディレクトリをファイルとして読み込む場合
      *
-     * @since 1.0.0
+     * @since 0.1.0
      *
      * @throws IOException
      *                     入出力例外
@@ -193,7 +193,7 @@ public class KmgYamlUtilsTest {
     /**
      * load メソッドのテスト - 準正常系:不正なYAML形式のファイル
      *
-     * @since 1.0.0
+     * @since 0.1.0
      *
      * @throws IOException
      *                     入出力例外
@@ -222,7 +222,7 @@ public class KmgYamlUtilsTest {
     /**
      * load メソッドのテスト - 準正常系:存在しないファイルパスの場合
      *
-     * @since 1.0.0
+     * @since 0.1.0
      */
     @Test
     public void testLoad_semiNonExistentFile() {
