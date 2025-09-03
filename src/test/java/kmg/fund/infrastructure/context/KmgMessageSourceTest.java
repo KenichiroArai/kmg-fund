@@ -30,11 +30,19 @@ import kmg.fund.infrastructure.types.msg.KmgFundLogMsgTypes;
 })
 public class KmgMessageSourceTest {
 
-    /** テスト対象 */
+    /**
+     * テスト対象
+     *
+     * @since 0.1.0
+     */
     @InjectMocks
     private KmgMessageSource testTarget;
 
-    /** モック */
+    /**
+     * モック
+     *
+     * @since 0.1.0
+     */
     @Mock
     private MessageSource messageSource;
 
@@ -215,30 +223,6 @@ public class KmgMessageSourceTest {
     }
 
     /**
-     * getMessage メソッドのテスト - 正常系:コード埋め込みなしメッセージの取得
-     *
-     * @since 0.1.0
-     */
-    @Test
-    public void testGetMessage_normalWithoutCodeEmbedding() {
-
-        /* 期待値の定義 */
-        final String expected = "テストメッセージ";
-
-        /* 準備 */
-        final KmgCmnMsgTypes type = KmgFundLogMsgTypes.NONE;
-        Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
-            .thenReturn("テストメッセージ");
-
-        /* テスト対象の実行 */
-        final String actual = this.testTarget.getMessage(type, false);
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expected, actual, "コード埋め込みなしメッセージが一致しません");
-
-    }
-
-    /**
      * getMessage メソッドのテスト - 正常系:コード埋め込みありメッセージの取得
      *
      * @since 0.1.0
@@ -259,6 +243,30 @@ public class KmgMessageSourceTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(expected, actual, "コード埋め込みありメッセージが一致しません");
+
+    }
+
+    /**
+     * getMessage メソッドのテスト - 正常系:コード埋め込みなしメッセージの取得
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testGetMessage_normalWithoutCodeEmbedding() {
+
+        /* 期待値の定義 */
+        final String expected = "テストメッセージ";
+
+        /* 準備 */
+        final KmgCmnMsgTypes type = KmgFundLogMsgTypes.NONE;
+        Mockito.when(this.messageSource.getMessage(type.getCode(), null, java.util.Locale.JAPANESE))
+            .thenReturn("テストメッセージ");
+
+        /* テスト対象の実行 */
+        final String actual = this.testTarget.getMessage(type, false);
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expected, actual, "コード埋め込みなしメッセージが一致しません");
 
     }
 }
