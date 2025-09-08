@@ -8,7 +8,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.4</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <groupId>kmg.fund</groupId>
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit5</artifactId>
-            <version>4.0.17</version>
+            <version>4.0.18</version>
         </dependency>
         <dependency>
             <groupId>org.testfx</groupId>
