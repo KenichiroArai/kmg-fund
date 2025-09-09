@@ -30,8 +30,6 @@ public class KmgFundValDataModelImpl extends KmgValDataModelImpl {
     /**
      * コンストラクタ<br>
      *
-     * @author KenichiroArai
-     *
      * @since 0.1.0
      *
      * @param messageTypes
@@ -62,6 +60,8 @@ public class KmgFundValDataModelImpl extends KmgValDataModelImpl {
 
     /**
      * メッセージソースを作成する。
+     *
+     * @since 0.1.0
      */
     @Override
     protected void createMessageSource() {

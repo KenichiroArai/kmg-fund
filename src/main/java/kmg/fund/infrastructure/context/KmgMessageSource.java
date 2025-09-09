@@ -14,7 +14,11 @@ import kmg.core.infrastructure.cmn.msg.KmgCmnMsgTypes;
 /**
  * KMGメッセージリソース<br>
  *
+ * @author KenichiroArai
+ *
  * @since 0.1.0
+ *
+ * @version 0.1.0
  */
 @Component
 public class KmgMessageSource {

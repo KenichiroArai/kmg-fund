@@ -18,120 +18,9 @@ import org.junit.jupiter.api.Test;
 public class KmgFundValMsgTypesTest {
 
     /**
-     * getDefault メソッドのテスト - 正常系:デフォルト値の取得
-     */
-    @Test
-    public void testGetDefault_normalDefault() {
-
-        /* 期待値の定義 */
-        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
-
-        /* 準備 */
-
-        /* テスト対象の実行 */
-        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getDefault();
-
-        /* 検証の準備 */
-        final KmgFundValMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "デフォルト値が一致しません");
-
-    }
-
-    /**
-     * getEnum メソッドのテスト - 正常系:存在するキーの場合
-     */
-    @Test
-    public void testGetEnum_normalExistingKey() {
-
-        /* 期待値の定義 */
-        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
-
-        /* 準備 */
-        final String testKey = "NONE";
-
-        /* テスト対象の実行 */
-        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getEnum(testKey);
-
-        /* 検証の準備 */
-        final KmgFundValMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "存在するキーに対応する値が一致しません");
-
-    }
-
-    /**
-     * getEnum メソッドのテスト - 準正常系:存在しないキーの場合
-     */
-    @Test
-    public void testGetEnum_semiNonExistingKey() {
-
-        /* 期待値の定義 */
-        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
-
-        /* 準備 */
-        final String testKey = "NON_EXISTING_KEY";
-
-        /* テスト対象の実行 */
-        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getEnum(testKey);
-
-        /* 検証の準備 */
-        final KmgFundValMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "存在しないキーの場合はNONEが返されません");
-
-    }
-
-    /**
-     * getEnum メソッドのテスト - 準正常系:nullキーの場合
-     */
-    @Test
-    public void testGetEnum_semiNullKey() {
-
-        /* 期待値の定義 */
-        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
-
-        /* 準備 */
-        final String testKey = null;
-
-        /* テスト対象の実行 */
-        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getEnum(testKey);
-
-        /* 検証の準備 */
-        final KmgFundValMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "nullキーの場合はNONEが返されません");
-
-    }
-
-    /**
-     * getInitValue メソッドのテスト - 正常系:初期値の取得
-     */
-    @Test
-    public void testGetInitValue_normalInitValue() {
-
-        /* 期待値の定義 */
-        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
-
-        /* 準備 */
-
-        /* テスト対象の実行 */
-        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getInitValue();
-
-        /* 検証の準備 */
-        final KmgFundValMsgTypes actualResult = testResult;
-
-        /* 検証の実施 */
-        Assertions.assertEquals(expectedResult, actualResult, "初期値が一致しません");
-
-    }
-
-    /**
      * get メソッドのテスト - 正常系:NONEのキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGet_normalNoneKey() {
@@ -155,6 +44,8 @@ public class KmgFundValMsgTypesTest {
 
     /**
      * getCode メソッドのテスト - 正常系:NONEのコード取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetCode_normalNoneCode() {
@@ -177,7 +68,33 @@ public class KmgFundValMsgTypesTest {
     }
 
     /**
+     * getDefault メソッドのテスト - 正常系:デフォルト値の取得
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testGetDefault_normalDefault() {
+
+        /* 期待値の定義 */
+        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
+
+        /* 準備 */
+
+        /* テスト対象の実行 */
+        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getDefault();
+
+        /* 検証の準備 */
+        final KmgFundValMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "デフォルト値が一致しません");
+
+    }
+
+    /**
      * getDetail メソッドのテスト - 正常系:NONEの詳細情報取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDetail_normalNoneDetail() {
@@ -201,6 +118,8 @@ public class KmgFundValMsgTypesTest {
 
     /**
      * getDisplayName メソッドのテスト - 正常系:NONEの表示名取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetDisplayName_normalNoneDisplayName() {
@@ -223,7 +142,108 @@ public class KmgFundValMsgTypesTest {
     }
 
     /**
+     * getEnum メソッドのテスト - 正常系:存在するキーの場合
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testGetEnum_normalExistingKey() {
+
+        /* 期待値の定義 */
+        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
+
+        /* 準備 */
+        final String testKey = "NONE";
+
+        /* テスト対象の実行 */
+        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getEnum(testKey);
+
+        /* 検証の準備 */
+        final KmgFundValMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "存在するキーに対応する値が一致しません");
+
+    }
+
+    /**
+     * getEnum メソッドのテスト - 準正常系:存在しないキーの場合
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testGetEnum_semiNonExistingKey() {
+
+        /* 期待値の定義 */
+        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
+
+        /* 準備 */
+        final String testKey = "NON_EXISTING_KEY";
+
+        /* テスト対象の実行 */
+        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getEnum(testKey);
+
+        /* 検証の準備 */
+        final KmgFundValMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "存在しないキーの場合はNONEが返されません");
+
+    }
+
+    /**
+     * getEnum メソッドのテスト - 準正常系:nullキーの場合
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testGetEnum_semiNullKey() {
+
+        /* 期待値の定義 */
+        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
+
+        /* 準備 */
+        final String testKey = null;
+
+        /* テスト対象の実行 */
+        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getEnum(testKey);
+
+        /* 検証の準備 */
+        final KmgFundValMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "nullキーの場合はNONEが返されません");
+
+    }
+
+    /**
+     * getInitValue メソッドのテスト - 正常系:初期値の取得
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testGetInitValue_normalInitValue() {
+
+        /* 期待値の定義 */
+        final KmgFundValMsgTypes expectedResult = KmgFundValMsgTypes.NONE;
+
+        /* 準備 */
+
+        /* テスト対象の実行 */
+        final KmgFundValMsgTypes testResult = KmgFundValMsgTypes.getInitValue();
+
+        /* 検証の準備 */
+        final KmgFundValMsgTypes actualResult = testResult;
+
+        /* 検証の実施 */
+        Assertions.assertEquals(expectedResult, actualResult, "初期値が一致しません");
+
+    }
+
+    /**
      * getKey メソッドのテスト - 正常系:NONEのキー取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetKey_normalNoneKey() {
@@ -247,6 +267,8 @@ public class KmgFundValMsgTypesTest {
 
     /**
      * getValue メソッドのテスト - 正常系:NONEの値取得
+     *
+     * @since 0.1.0
      */
     @Test
     public void testGetValue_normalNoneValue() {
@@ -270,6 +292,8 @@ public class KmgFundValMsgTypesTest {
 
     /**
      * toString メソッドのテスト - 正常系:NONEの文字列変換
+     *
+     * @since 0.1.0
      */
     @Test
     public void testToString_normalNoneToString() {

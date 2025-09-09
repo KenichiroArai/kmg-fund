@@ -23,6 +23,36 @@ import org.springframework.context.annotation.Configuration;
 public class SpringApplicationContextHelperTest {
 
     /**
+     * テスト用のBeanクラス<br>
+     */
+    static class TestBean {
+        // テスト用の空のBean
+    }
+
+    /**
+     * テスト用の設定クラス<br>
+     */
+    @Configuration
+    @ComponentScan(basePackages = "kmg.fund.infrastructure.context")
+    static class TestConfig {
+
+        /**
+         * テスト用のBeanを生成する<br>
+         *
+         * @since 0.1.0
+         *
+         * @return テスト用のBean
+         */
+        @Bean
+        TestBean testBean() {
+
+            final TestBean result = new TestBean();
+            return result;
+
+        }
+    }
+
+    /**
      * デフォルトコンストラクタ<br>
      *
      * @since 0.1.0
@@ -80,39 +110,5 @@ public class SpringApplicationContextHelperTest {
         Assertions.assertNotNull(actual, "Beanが取得できること");
         Assertions.assertEquals(expected.getClass(), actual.getClass(), "取得したBeanの型が一致すること");
 
-    }
-
-    /**
-     * テスト用の設定クラス<br>
-     *
-     * @since 0.1.0
-     */
-    @Configuration
-    @ComponentScan(basePackages = "kmg.fund.infrastructure.context")
-    static class TestConfig {
-
-        /**
-         * テスト用のBeanを生成する<br>
-         *
-         * @since 0.1.0
-         *
-         * @return テスト用のBean
-         */
-        @Bean
-        TestBean testBean() {
-
-            final TestBean result = new TestBean();
-            return result;
-
-        }
-    }
-
-    /**
-     * テスト用のBeanクラス<br>
-     *
-     * @since 0.1.0
-     */
-    static class TestBean {
-        // テスト用の空のBean
     }
 }

@@ -37,24 +37,40 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  *
  * @author KenichiroArai
  *
- * @version 0.1.0
- *
  * @since 0.1.0
+ *
+ * @version 0.1.0
  */
 @Component
 @Order(10)
 public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
-    /** 統合プロパティのマップ：全てのプロパティを統合して保持 */
+    /**
+     * 統合プロパティのマップ：全てのプロパティを統合して保持
+     *
+     * @since 0.1.0
+     */
     private final Map<String, Object> integratedPropertieMap;
 
-    /** メインプロパティのマップ：application.propertiesの内容を保持 */
+    /**
+     * メインプロパティのマップ：application.propertiesの内容を保持
+     *
+     * @since 0.1.0
+     */
     private final Map<String, Object> mainPropertieMap;
 
-    /** KMG基盤プロパティのマップ：kmg-fund-application.propertiesの内容を保持 */
+    /**
+     * KMG基盤プロパティのマップ：kmg-fund-application.propertiesの内容を保持
+     *
+     * @since 0.1.0
+     */
     private final Map<String, Object> kmgFundPropertieMap;
 
-    /** 追加プロパティのマップ：サブクラスで追加されるプロパティを保持 */
+    /**
+     * 追加プロパティのマップ：サブクラスで追加されるプロパティを保持
+     *
+     * @since 0.1.0
+     */
     private final Map<String, Object> additionalPropertieMap;
 
     /**
@@ -62,6 +78,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * <p>
      * 指定されたリソースのプロパティファイルを読み込み、 その内容を指定されたマップに設定します。 ファイルが存在しない場合や読み込みに失敗した場合は処理をスキップします。
      * </p>
+     *
+     * @since 0.1.0
      *
      * @param resource
      *                     プロパティファイルのリソース
@@ -105,6 +123,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * <p>
      * 各プロパティマップを初期化します。
      * </p>
+     *
+     * @since 0.1.0
      */
     public KmgFundPropertiesLoader() {
 
@@ -127,6 +147,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * <li>環境への統合プロパティの追加</li>
      * </ol>
      * </p>
+     *
+     * @since 0.1.0
      *
      * @param environment
      *                    Spring環境設定オブジェクト
@@ -164,6 +186,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * サブクラスでオーバーライドして、独自のプロパティファイルを読み込むことができます。 デフォルトの実装では何も行いません。
      * </p>
      *
+     * @since 0.1.0
+     *
      * @param additionalPropertieMap
      *                               追加プロパティを格納するマップ
      */
@@ -178,6 +202,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * <p>
      * メインプロパティを基準とし、spring.messages.basenameプロパティのみを統合します。 サブクラスでオーバーライドして、独自の統合ロジックを実装できます。
      * </p>
+     *
+     * @since 0.1.0
      *
      * @param integratedPropertieMap
      *                               統合結果を格納するマップ
@@ -199,6 +225,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * <p>
      * 指定されたプロパティキーに対応する値を、カンマ区切りで統合します。 統合されたプロパティは統合マップに保存されます。
      * </p>
+     *
+     * @since 0.1.0
      *
      * @param propertyMap
      *                    メッセージベース名を含むプロパティマップ

@@ -17,9 +17,9 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
  *
  * @author KenichiroArai
  *
- * @since 1.0.0
+ * @since 0.1.0
  *
- * @version 1.0.0
+ * @version 0.1.0
  */
 public final class KmgYamlUtils {
 
@@ -47,7 +47,7 @@ public final class KmgYamlUtils {
         } catch (final NoSuchFileException e) {
 
             final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-            final Object[]               genMsgArgs = {
+            final Object[]           genMsgArgs = {
                 path.toString()
             };
             throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
@@ -55,7 +55,7 @@ public final class KmgYamlUtils {
         } catch (final IOException e) {
 
             final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24001;
-            final Object[]               genMsgArgs = {
+            final Object[]           genMsgArgs = {
                 path.toString()
             };
             throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
