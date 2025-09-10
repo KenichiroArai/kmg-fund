@@ -858,7 +858,8 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
 
         /* 期待値の定義 */
         final Class<?>          expectedCauseClass    = RuntimeException.class;
-        final String            expectedDomainMessage = "[KMGCORE_GEN11100] test.yamlがありません。";
+        final String            expectedDomainMessage
+                                                      = "[KMGCORE_GEN11200] フィールドの取得に失敗しました。フィールド名=[test.yaml]、対象のクラス=[TestClass]、最後に取得したフィールド=[testField]";
         final KmgCmnGenMsgTypes expectedMessageTypes  = KmgCoreGenMsgTypes.KMGCORE_GEN11100;
 
         /* 準備 */
@@ -933,7 +934,8 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
     public void testVerifyKmgMsgExceptionKmgMsg_semiWithoutCauseDomainMessageMismatch() {
 
         /* 期待値の定義 */
-        final String            expectedDomainMessage = "[KMGCORE_GEN11100] test.yamlがありません。";
+        final String            expectedDomainMessage
+                                                      = "[KMGCORE_GEN11200] フィールドの取得に失敗しました。フィールド名=[test.yaml]、対象のクラス=[TestClass]、最後に取得したフィールド=[testField]";
         final KmgCmnGenMsgTypes expectedMessageTypes  = KmgCoreGenMsgTypes.KMGCORE_GEN11100;
 
         /* 準備 */
