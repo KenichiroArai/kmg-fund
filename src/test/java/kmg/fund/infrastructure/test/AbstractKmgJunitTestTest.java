@@ -91,6 +91,45 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
     }
 
     /**
+     * verifyKmgMsgException メソッドのテスト - 正常系:原因クラスがnullの場合
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testVerifyKmgMsgException_normalCauseClassIsNull() {
+
+        /* 期待値の定義 */
+        final Class<?>              expectedCauseClass    = null;
+        final String                expectedDomainMessage = "[KMGFUND_GEN24000] 該当するYAMLファイルがありません。ファイルパス=[test.yaml]";
+        final KmgFundCmnExcMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+
+        /* 準備 */
+        // Springのアプリケーションコンテキストを初期化
+        @SuppressWarnings({
+            "resource", "unused"
+        })
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
+
+        final Object[]            testMessageArgs     = {
+            "test.yaml"
+        };
+        final KmgFundMsgException testActualException = new KmgFundMsgException(KmgFundGenMsgTypes.KMGFUND_GEN24000,
+            testMessageArgs);
+
+        /* テスト対象の実行 */
+        // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
+        this.verifyKmgMsgException(testActualException, expectedCauseClass, expectedDomainMessage,
+            expectedMessageTypes);
+
+        /* 検証の準備 */
+        final boolean actualNoException = true; // 例外が発生しなかった
+
+        /* 検証の実施 */
+        Assertions.assertTrue(actualNoException, "verifyKmgMsgExceptionメソッドが正常に実行されること");
+
+    }
+
+    /**
      * verifyKmgMsgException メソッドのテスト - 正常系:原因クラスありの場合
      *
      * @since 0.1.0
@@ -158,45 +197,6 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
         /* テスト対象の実行 */
         // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
         this.verifyKmgMsgException(testActualException, expectedDomainMessage, expectedMessageTypes);
-
-        /* 検証の準備 */
-        final boolean actualNoException = true; // 例外が発生しなかった
-
-        /* 検証の実施 */
-        Assertions.assertTrue(actualNoException, "verifyKmgMsgExceptionメソッドが正常に実行されること");
-
-    }
-
-    /**
-     * verifyKmgMsgException メソッドのテスト - 正常系:原因クラスがnullの場合
-     *
-     * @since 0.1.0
-     */
-    @Test
-    public void testVerifyKmgMsgException_normalCauseClassIsNull() {
-
-        /* 期待値の定義 */
-        final Class<?>              expectedCauseClass    = null;
-        final String                expectedDomainMessage = "[KMGFUND_GEN24000] 該当するYAMLファイルがありません。ファイルパス=[test.yaml]";
-        final KmgFundCmnExcMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-
-        /* 準備 */
-        // Springのアプリケーションコンテキストを初期化
-        @SuppressWarnings({
-            "resource", "unused"
-        })
-        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
-
-        final Object[]            testMessageArgs     = {
-            "test.yaml"
-        };
-        final KmgFundMsgException testActualException = new KmgFundMsgException(KmgFundGenMsgTypes.KMGFUND_GEN24000,
-            testMessageArgs);
-
-        /* テスト対象の実行 */
-        // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
-        this.verifyKmgMsgException(testActualException, expectedCauseClass, expectedDomainMessage,
-            expectedMessageTypes);
 
         /* 検証の準備 */
         final boolean actualNoException = true; // 例外が発生しなかった
@@ -393,6 +393,45 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
     }
 
     /**
+     * verifyKmgMsgException メソッドのテスト - 正常系:KmgFundMsgException原因クラスがnullの場合
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testVerifyKmgMsgExceptionKmgFund_normalCauseClassIsNull() {
+
+        /* 期待値の定義 */
+        final Class<?>              expectedCauseClass    = null;
+        final String                expectedDomainMessage = "[KMGFUND_GEN24000] 該当するYAMLファイルがありません。ファイルパス=[test.yaml]";
+        final KmgFundCmnExcMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN24000;
+
+        /* 準備 */
+        // Springのアプリケーションコンテキストを初期化
+        @SuppressWarnings({
+            "resource", "unused"
+        })
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
+
+        final Object[]            testMessageArgs     = {
+            "test.yaml"
+        };
+        final KmgFundMsgException testActualException = new KmgFundMsgException(KmgFundGenMsgTypes.KMGFUND_GEN24000,
+            testMessageArgs);
+
+        /* テスト対象の実行 */
+        // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
+        this.verifyKmgMsgException(testActualException, expectedCauseClass, expectedDomainMessage,
+            expectedMessageTypes);
+
+        /* 検証の準備 */
+        final boolean actualNoException = true; // 例外が発生しなかった
+
+        /* 検証の実施 */
+        Assertions.assertTrue(actualNoException, "verifyKmgMsgExceptionメソッドが正常に実行されること");
+
+    }
+
+    /**
      * verifyKmgMsgException メソッドのテスト - 正常系:KmgFundMsgException原因クラスありの場合
      *
      * @since 0.1.0
@@ -460,45 +499,6 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
         /* テスト対象の実行 */
         // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
         this.verifyKmgMsgException(testActualException, expectedDomainMessage, expectedMessageTypes);
-
-        /* 検証の準備 */
-        final boolean actualNoException = true; // 例外が発生しなかった
-
-        /* 検証の実施 */
-        Assertions.assertTrue(actualNoException, "verifyKmgMsgExceptionメソッドが正常に実行されること");
-
-    }
-
-    /**
-     * verifyKmgMsgException メソッドのテスト - 正常系:KmgFundMsgException原因クラスがnullの場合
-     *
-     * @since 0.1.0
-     */
-    @Test
-    public void testVerifyKmgMsgExceptionKmgFund_normalCauseClassIsNull() {
-
-        /* 期待値の定義 */
-        final Class<?>              expectedCauseClass    = null;
-        final String                expectedDomainMessage = "[KMGFUND_GEN24000] 該当するYAMLファイルがありません。ファイルパス=[test.yaml]";
-        final KmgFundCmnExcMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN24000;
-
-        /* 準備 */
-        // Springのアプリケーションコンテキストを初期化
-        @SuppressWarnings({
-            "resource", "unused"
-        })
-        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
-
-        final Object[]            testMessageArgs     = {
-            "test.yaml"
-        };
-        final KmgFundMsgException testActualException = new KmgFundMsgException(KmgFundGenMsgTypes.KMGFUND_GEN24000,
-            testMessageArgs);
-
-        /* テスト対象の実行 */
-        // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
-        this.verifyKmgMsgException(testActualException, expectedCauseClass, expectedDomainMessage,
-            expectedMessageTypes);
 
         /* 検証の準備 */
         final boolean actualNoException = true; // 例外が発生しなかった
@@ -695,6 +695,45 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
     }
 
     /**
+     * verifyKmgMsgException メソッドのテスト - 正常系:KmgMsgException原因クラスがnullの場合
+     *
+     * @since 0.1.0
+     */
+    @Test
+    public void testVerifyKmgMsgExceptionKmgMsg_normalCauseClassIsNull() {
+
+        /* 期待値の定義 */
+        final Class<?>          expectedCauseClass    = null;
+        final String            expectedDomainMessage = "[KMGCORE_GEN11100] test.yamlがありません。";
+        final KmgCmnGenMsgTypes expectedMessageTypes  = KmgCoreGenMsgTypes.KMGCORE_GEN11100;
+
+        /* 準備 */
+        // Springのアプリケーションコンテキストを初期化
+        @SuppressWarnings({
+            "resource", "unused"
+        })
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
+
+        final Object[]        testMessageArgs     = {
+            "test.yaml"
+        };
+        final KmgMsgException testActualException = new KmgMsgException(KmgCoreGenMsgTypes.KMGCORE_GEN11100,
+            testMessageArgs);
+
+        /* テスト対象の実行 */
+        // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
+        this.verifyKmgMsgException(testActualException, expectedCauseClass, expectedDomainMessage,
+            expectedMessageTypes);
+
+        /* 検証の準備 */
+        final boolean actualNoException = true; // 例外が発生しなかった
+
+        /* 検証の実施 */
+        Assertions.assertTrue(actualNoException, "verifyKmgMsgExceptionメソッドが正常に実行されること");
+
+    }
+
+    /**
      * verifyKmgMsgException メソッドのテスト - 正常系:KmgMsgException原因クラスありの場合
      *
      * @since 0.1.0
@@ -762,45 +801,6 @@ public class AbstractKmgJunitTestTest extends AbstractKmgJunitTest {
         /* テスト対象の実行 */
         // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
         this.verifyKmgMsgException(testActualException, expectedDomainMessage, expectedMessageTypes);
-
-        /* 検証の準備 */
-        final boolean actualNoException = true; // 例外が発生しなかった
-
-        /* 検証の実施 */
-        Assertions.assertTrue(actualNoException, "verifyKmgMsgExceptionメソッドが正常に実行されること");
-
-    }
-
-    /**
-     * verifyKmgMsgException メソッドのテスト - 正常系:KmgMsgException原因クラスがnullの場合
-     *
-     * @since 0.1.0
-     */
-    @Test
-    public void testVerifyKmgMsgExceptionKmgMsg_normalCauseClassIsNull() {
-
-        /* 期待値の定義 */
-        final Class<?>          expectedCauseClass    = null;
-        final String            expectedDomainMessage = "[KMGCORE_GEN11100] test.yamlがありません。";
-        final KmgCmnGenMsgTypes expectedMessageTypes  = KmgCoreGenMsgTypes.KMGCORE_GEN11100;
-
-        /* 準備 */
-        // Springのアプリケーションコンテキストを初期化
-        @SuppressWarnings({
-            "resource", "unused"
-        })
-        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
-
-        final Object[]        testMessageArgs     = {
-            "test.yaml"
-        };
-        final KmgMsgException testActualException = new KmgMsgException(KmgCoreGenMsgTypes.KMGCORE_GEN11100,
-            testMessageArgs);
-
-        /* テスト対象の実行 */
-        // verifyKmgMsgExceptionメソッドを実行（例外が発生しないことを確認）
-        this.verifyKmgMsgException(testActualException, expectedCauseClass, expectedDomainMessage,
-            expectedMessageTypes);
 
         /* 検証の準備 */
         final boolean actualNoException = true; // 例外が発生しなかった
