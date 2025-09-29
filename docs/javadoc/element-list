@@ -1,0 +1,10 @@
+kmg.fund
+kmg.fund.domain.types
+kmg.fund.infrastructure.cmn.msg
+kmg.fund.infrastructure.config
+kmg.fund.infrastructure.context
+kmg.fund.infrastructure.exception
+kmg.fund.infrastructure.model.val.impl
+kmg.fund.infrastructure.test
+kmg.fund.infrastructure.types.msg
+kmg.fund.infrastructure.utils

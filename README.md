@@ -1,4 +1,4 @@
-# kmg-fund について
+# KMG 基盤（kmg-fund）
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
@@ -19,6 +19,10 @@ kmg-fund（以降は、「KMG 基盤」と言う。）は、KMG シリーズの 
 - バリデーション機能
 - ユーティリティクラス群
 - JavaFX サポート
+
+## ドキュメント
+
+詳細なドキュメントは [docs/](docs/) ディレクトリに格納されています：
 
 ## プロジェクト構成
 
