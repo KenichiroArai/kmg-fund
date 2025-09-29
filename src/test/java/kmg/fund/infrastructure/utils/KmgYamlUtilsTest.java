@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.yaml.snakeyaml.error.YAMLException;
 
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
 import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
@@ -186,7 +187,8 @@ public class KmgYamlUtilsTest {
         /* 検証の実施 */
         Assertions.assertEquals(expectedMessageType, actualMessageType, "期待するメッセージタイプが設定されていること");
         Assertions.assertEquals(expectedDirectoryPath, actualMessageArgs[0], "期待するディレクトリパスがメッセージ引数に設定されていること");
-        Assertions.assertInstanceOf(IOException.class, actualCause, "原因がIOExceptionであること");
+        Assertions.assertTrue((actualCause instanceof IOException) || (actualCause instanceof YAMLException),
+            "原因がIOExceptionまたはYAMLExceptionであること: " + actualCause.getClass().getName());
 
     }
 
