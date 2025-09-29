@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.error.YAMLException;
 
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
 import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
@@ -52,7 +53,7 @@ public final class KmgYamlUtils {
             };
             throw new KmgFundMsgException(genMsgType, genMsgArgs, e);
 
-        } catch (final IOException e) {
+        } catch (final YAMLException | IOException e) {
 
             final KmgFundGenMsgTypes genMsgType = KmgFundGenMsgTypes.KMGFUND_GEN24001;
             final Object[]           genMsgArgs = {
