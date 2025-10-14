@@ -21,6 +21,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KmgFundApplication {
 
     /**
+     * コンストラクタ
+     *
+     * @since 0.1.0
+     */
+    public KmgFundApplication() {
+
+        // 処理なし
+    }
+
+    /**
      * エントリポイント
      *
      * @since 0.1.0

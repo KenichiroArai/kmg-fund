@@ -24,6 +24,16 @@ import kmg.core.infrastructure.cmn.msg.KmgCmnMsgTypes;
 public class KmgMessageSource {
 
     /**
+     * コンストラクタ
+     *
+     * @since 0.1.0
+     */
+    public KmgMessageSource() {
+
+        // 処理なし
+    }
+
+    /**
      * コード埋め込みフォーマット
      *
      * @since 0.1.0
