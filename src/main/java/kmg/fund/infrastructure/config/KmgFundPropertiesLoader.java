@@ -28,12 +28,12 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  * </p>
  * <p>
  * Spring Boot起動時にプロパティファイルを読み込み、環境設定を行うクラスです。 以下の順序でプロパティを読み込み、統合します：
+ * </p>
  * <ol>
  * <li>メインプロパティ（application.properties）</li>
  * <li>KMG基盤プロパティ（kmg-fund-application.properties）</li>
  * <li>追加プロパティ（サブクラスで定義可能）</li>
  * </ol>
- * </p>
  *
  * @author KenichiroArai
  *
@@ -138,7 +138,8 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
     /**
      * 環境後処理を実行
      * <p>
-     * Spring Boot起動時に呼び出され、以下の処理を行います：
+     * Spring Boot起動時に呼び出され、以下の処理を行います：>
+     * </p>
      * <ol>
      * <li>メインプロパティの読み込み</li>
      * <li>KMG基盤プロパティの読み込み</li>
@@ -146,7 +147,6 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
      * <li>全プロパティの統合</li>
      * <li>環境への統合プロパティの追加</li>
      * </ol>
-     * </p>
      *
      * @since 0.1.0
      *
