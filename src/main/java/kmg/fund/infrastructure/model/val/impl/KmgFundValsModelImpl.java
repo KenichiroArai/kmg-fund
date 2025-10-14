@@ -17,6 +17,14 @@ import kmg.core.infrastructure.model.val.impl.KmgValsModelImpl;
  */
 public class KmgFundValsModelImpl extends KmgValsModelImpl {
 
-    // 処理なし
+    /**
+     * コンストラクタ
+     *
+     * @since 0.1.0
+     */
+    public KmgFundValsModelImpl() {
+
+        // 処理なし
+    }
 
 }
