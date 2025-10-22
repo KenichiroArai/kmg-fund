@@ -18,7 +18,6 @@ kmg-fund（以降は、「KMG 基盤」と言う。）は、KMG シリーズの 
 - メッセージ管理機能
 - バリデーション機能
 - ユーティリティクラス群
-- JavaFX サポート
 
 ## ドキュメント
 
@@ -89,7 +88,6 @@ kmg-fund/
 - Maven Surefire Plugin 3.2.5（JUnit テストレポート用）
 - JaCoCo Maven Plugin 0.8.11（カバレッジレポート用）
 - Spring Boot Maven Plugin 3.5.5
-- JavaFX Maven Plugin 0.0.8
 
 ### プロジェクト情報
 
@@ -173,14 +171,12 @@ mvn test
 - **Spring Boot**: Spring Boot フレームワーク（3.5.5）
 - **Apache POI**: Excel ファイル操作（5.4.1）
 - **SnakeYAML**: YAML ファイル処理
-- **JavaFX**: デスクトップアプリケーション（21.0.8）
 
 ### テスト依存関係
 
 - **Spring Boot Test**: Spring Boot テストサポート
 - **JUnit Jupiter**: ユニットテストフレームワーク
 - **Mockito**: モックテストフレームワーク
-- **TestFX**: JavaFX テストフレームワーク
 - **Hamcrest**: マッチャーライブラリ
 
 ## 設定ファイル
