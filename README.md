@@ -159,10 +159,6 @@ mvn test
 - `KmgFundLogMsgTypes` - ログメッセージ型
 - `KmgFundValMsgTypes` - バリデーションメッセージ型
 
-### テスト基盤
-
-- `AbstractKmgJunitTest` - KMG JUnit テスト基底クラス
-
 ## 依存関係
 
 ### 主要依存関係
