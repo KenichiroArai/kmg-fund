@@ -1,16 +1,10 @@
 kmg.fund
-kmg.fund.domain
 kmg.fund.domain.types
-kmg.fund.infrastructure
 kmg.fund.infrastructure.cmn
 kmg.fund.infrastructure.cmn.msg
 kmg.fund.infrastructure.config
 kmg.fund.infrastructure.context
 kmg.fund.infrastructure.exception
-kmg.fund.infrastructure.model
-kmg.fund.infrastructure.model.val
 kmg.fund.infrastructure.model.val.impl
-kmg.fund.infrastructure.test
-kmg.fund.infrastructure.types
 kmg.fund.infrastructure.types.msg
 kmg.fund.infrastructure.utils
