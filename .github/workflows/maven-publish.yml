@@ -28,8 +28,6 @@ jobs:
                   java-version: "21"
                   distribution: "temurin"
                   cache: maven
-                  server-id: github
-                  settings-path: ${{ github.workspace }}
 
             # Maven設定の構成
             - name: Configure Maven settings.xml
@@ -37,7 +35,11 @@ jobs:
               with:
                   servers: |
                       [{
-                        "id": "github",
+                        "id": "github-kmg-core",
+                        "username": "${{ github.actor }}",
+                        "password": "${{ secrets.GITHUB_TOKEN }}"
+                      }, {
+                        "id": "github-kmg-fund",
                         "username": "${{ github.actor }}",
                         "password": "${{ secrets.GITHUB_TOKEN }}"
                       }]
@@ -67,7 +69,7 @@ jobs:
             - name: Publish to GitHub Packages
               run: |
                   echo "GitHub Packagesへの公開を開始します..."
-                  mvn deploy
+                  mvn deploy -DskipTests
                   echo "パッケージの公開が完了しました"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
