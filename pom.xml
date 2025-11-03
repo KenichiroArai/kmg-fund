@@ -25,7 +25,7 @@
         <apache-poi.version>5.4.1</apache-poi.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <junit-jupiter.version>6.0.0</junit-jupiter.version>
+        <junit-jupiter.version>6.0.1</junit-jupiter.version>
     </properties>
 
     <dependencies>
