@@ -16,7 +16,7 @@ REM   - GitHub CLI（オプション：プルリクエストの自動作成に必要）
 REM
 REM 使用方法：
 REM   release.bat [作業ブランチ] [リリースブランチ] [バージョン]
-REM   例：release.bat features/main main 1.0.0
+REM   例：release.bat features/main main v1.0.0
 REM
 REM 機能：
 REM - 指定したバージョンでのリリース作成を自動化
@@ -48,7 +48,7 @@ powershell -command "$OutputEncoding = [System.Text.Encoding]::GetEncoding('shif
 REM パラメータのチェック
 IF "%~1"=="" (
     ECHO 使用方法：release.bat [作業ブランチ] [リリースブランチ] [バージョン]
-    ECHO 例：release.bat features/main main 1.0.0
+    ECHO 例：release.bat features/main main v1.0.0
     EXIT /b 1
 )
 
