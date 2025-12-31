@@ -6,6 +6,7 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -1418,7 +1419,6 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
      * @throws IOException
      *                     入出力例外
      */
-    @SuppressWarnings("resource")
     private void deleteDirectoryRecursively(final Path directory) throws IOException {
 
         if (!Files.exists(directory)) {
@@ -1427,19 +1427,23 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
         }
 
-        Files.walk(directory).sorted((a, b) -> b.compareTo(a)).forEach(path -> {
+        try (Stream<Path> stream = Files.walk(directory)) {
 
-            try {
+            stream.sorted((a, b) -> b.compareTo(a)).forEach(path -> {
 
-                Files.delete(path);
+                try {
 
-            } catch (final IOException e) {
+                    Files.delete(path);
 
-                e.printStackTrace();
+                } catch (final IOException e) {
 
-            }
+                    // テストコードのため、例外は無視
 
-        });
+                }
+
+            });
+
+        }
 
     }
 

@@ -5,10 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import kmg.core.infrastructure.type.KmgString;
@@ -30,6 +32,7 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
  * @version 0.2.3
  */
 @Service
+@Scope("prototype")
 public class FileIteratorLogicImpl implements FileIteratorLogic {
 
     /**
@@ -124,7 +127,7 @@ public class FileIteratorLogicImpl implements FileIteratorLogic {
     @Override
     public List<Path> getFilePathList() {
 
-        final List<Path> result = this.filePathList;
+        final List<Path> result = Collections.unmodifiableList(this.filePathList);
         return result;
 
     }
