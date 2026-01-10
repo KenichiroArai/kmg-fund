@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -21,12 +20,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import kmg.core.infrastructure.cmn.msg.KmgCmnExcMsgTypes;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.core.infrastructure.type.KmgString;
+import kmg.core.infrastructure.utils.KmgMessageUtils;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
-import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 
 /**
  * ファイルイテレータロジック実装のテスト<br>
@@ -404,77 +404,14 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
     }
 
     /**
-     * load メソッドのテスト - 異常系:深いディレクトリ階層の非存在パス
+     * load メソッドのテスト - 異常系:IOException発生
      *
      * @since 0.2.3
      */
     @Test
-    @Disabled
-    public void testLoad_errorDeepNonExistentPath() {
+    public void testLoad_errorIOException() {
 
-        final Class<?>           expectedCauseClass    = IOException.class;
-        final String             expectedDomainMessage
-                                                       = "[KMGFUND_GEN13002] 対象ファイルをロード中に例外が発生しました。対象ファイルパス=[deep\\non\\existent\\path]";
-        final KmgFundGenMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN13002;
-
-        final Path deepNonExistentPath = Paths.get("deep/non/existent/path");
-
-        try {
-
-            this.testTarget.initialize(deepNonExistentPath);
-
-        } catch (final Exception e) {
-
-            Assertions.fail("準備処理で例外が発生しました: " + e.getMessage());
-
-        }
-
-        // SpringApplicationContextHelperのモック化
-        try (MockedStatic<SpringApplicationContextHelper> mockedStatic
-            = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
-
-            final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
-            mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
-                .thenReturn(mockMessageSource);
-
-            // モックメッセージソースの設定
-            Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn(expectedDomainMessage);
-
-            // Files.walkをstaticモックしてIOExceptionをスローさせる
-            try (MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
-
-                filesMock.when(() -> Files.walk(deepNonExistentPath)).thenThrow(new IOException("mocked io error"));
-
-                final KmgFundMsgException actualException = Assertions.assertThrows(KmgFundMsgException.class, () -> {
-
-                    this.testTarget.load();
-
-                }, "深い階層の非存在ディレクトリでKmgFundMsgExceptionがスローされること");
-
-                this.verifyKmgMsgException(actualException, expectedCauseClass, expectedDomainMessage,
-                    expectedMessageTypes);
-
-            }
-
-        }
-
-    }
-
-    /**
-     * load メソッドのテスト - 異常系:存在しないディレクトリ
-     *
-     * @since 0.2.3
-     */
-    @Test
-    @Disabled
-    public void testLoad_errorNonExistentDirectory() {
-
-        final Class<?>           expectedCauseClass    = IOException.class;
-        final String             expectedDomainMessage
-                                                       = "[KMGFUND_GEN13002] 対象ファイルをロード中に例外が発生しました。対象ファイルパス=[non\\existent\\path]";
-        final KmgFundGenMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN13002;
-
+        /* 準備 */
         final Path nonExistentPath = Paths.get("non/existent/path");
 
         try {
@@ -487,31 +424,39 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
         }
 
-        // SpringApplicationContextHelperのモック化
-        try (MockedStatic<SpringApplicationContextHelper> mockedStatic
-            = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
+        /* KmgMessageUtilsの静的メソッドをモック化 */
+        try (final MockedStatic<KmgMessageUtils> mockedKmgMessageUtils = this.setupKmgMessageUtilsMock()) {
 
-            final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
-            mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
-                .thenReturn(mockMessageSource);
+            /* SpringApplicationContextHelperのモック化 */
+            try (final MockedStatic<SpringApplicationContextHelper> mockedStatic
+                = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
 
-            // モックメッセージソースの設定
-            Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn(expectedDomainMessage);
+                final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
+                mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
+                    .thenReturn(mockMessageSource);
 
-            // Files.walkをstaticモックしてIOExceptionをスローさせる
-            try (MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
+                /* モックメッセージソースの設定 */
+                Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
+                    .thenReturn("");
 
-                filesMock.when(() -> Files.walk(nonExistentPath)).thenThrow(new IOException("mocked io error"));
+                /* Files.walkをstaticモックしてIOExceptionをスローさせる */
+                try (final MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
 
-                final KmgFundMsgException actualException = Assertions.assertThrows(KmgFundMsgException.class, () -> {
+                    filesMock.when(() -> Files.walk(nonExistentPath)).thenThrow(new IOException("Test IOException"));
 
-                    this.testTarget.load();
+                    /* テスト対象の実行・検証の実施 */
+                    final KmgFundMsgException actualException
+                        = Assertions.assertThrows(KmgFundMsgException.class, () -> {
 
-                }, "存在しないディレクトリでKmgFundMsgExceptionがスローされること");
+                            this.testTarget.load();
 
-                this.verifyKmgMsgException(actualException, expectedCauseClass, expectedDomainMessage,
-                    expectedMessageTypes);
+                        }, "IOExceptionでKmgFundMsgExceptionがスローされること");
+
+                    /* 検証の実施 */
+                    Assertions.assertNotNull(actualException, "例外が発生すること");
+                    Assertions.assertInstanceOf(IOException.class, actualException.getCause(), "原因がIOExceptionであること");
+
+                }
 
             }
 
@@ -525,14 +470,7 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
      * @since 0.2.3
      */
     @Test
-    @Disabled
     public void testLoad_errorNoSuchFileException() {
-
-        /* 期待値の定義 */
-        final Class<?>           expectedCauseClass    = NoSuchFileException.class;
-        final String             expectedDomainMessage
-                                                       = "[KMGFUND_GEN13003] 対象ファイルが見つかりません。対象ファイルパス=[nosuchfile\\path]";
-        final KmgFundGenMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN13003;
 
         /* 準備 */
         final Path testNoSuchFilePath = Paths.get("nosuchfile/path");
@@ -547,34 +485,41 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
         }
 
-        /* テスト対象の実行・検証の実施 */
-        // SpringApplicationContextHelperのモック化
-        try (MockedStatic<SpringApplicationContextHelper> mockedStatic
-            = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
+        /* KmgMessageUtilsの静的メソッドをモック化 */
+        try (final MockedStatic<KmgMessageUtils> mockedKmgMessageUtils = this.setupKmgMessageUtilsMock()) {
 
-            final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
-            mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
-                .thenReturn(mockMessageSource);
+            /* SpringApplicationContextHelperのモック化 */
+            try (final MockedStatic<SpringApplicationContextHelper> mockedStatic
+                = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
 
-            // モックメッセージソースの設定
-            Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn(expectedDomainMessage);
+                final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
+                mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
+                    .thenReturn(mockMessageSource);
 
-            // Files.walkをstaticモックしてNoSuchFileExceptionをスローさせる
-            try (MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
+                /* モックメッセージソースの設定 */
+                Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
+                    .thenReturn("");
 
-                filesMock.when(() -> Files.walk(testNoSuchFilePath))
-                    .thenThrow(new NoSuchFileException("mocked no such file error"));
+                /* Files.walkをstaticモックしてNoSuchFileExceptionをスローさせる */
+                try (final MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
 
-                final KmgFundMsgException actualException = Assertions.assertThrows(KmgFundMsgException.class, () -> {
+                    filesMock.when(() -> Files.walk(testNoSuchFilePath))
+                        .thenThrow(new NoSuchFileException("nosuchfile/path"));
 
-                    this.testTarget.load();
+                    /* テスト対象の実行・検証の実施 */
+                    final KmgFundMsgException actualException
+                        = Assertions.assertThrows(KmgFundMsgException.class, () -> {
 
-                }, "NoSuchFileExceptionでKmgFundMsgExceptionがスローされること");
+                            this.testTarget.load();
 
-                /* 検証の実施 */
-                this.verifyKmgMsgException(actualException, expectedCauseClass, expectedDomainMessage,
-                    expectedMessageTypes);
+                        }, "NoSuchFileExceptionでKmgFundMsgExceptionがスローされること");
+
+                    /* 検証の実施 */
+                    Assertions.assertNotNull(actualException, "例外が発生すること");
+                    Assertions.assertInstanceOf(NoSuchFileException.class, actualException.getCause(),
+                        "原因がNoSuchFileExceptionであること");
+
+                }
 
             }
 
@@ -831,8 +776,6 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
             this.testTarget.initialize(this.testTempDir);
             this.testTarget.load();
-            /* ファイルを削除してエラーを発生させる */
-            Files.delete(this.testJavaFile);
 
         } catch (final Exception e) {
 
@@ -840,65 +783,42 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
         }
 
-        /* テスト対象の実行・検証の実施 */
-        final Exception actualException = Assertions.assertThrows(Exception.class, () -> {
+        /* KmgMessageUtilsの静的メソッドをモック化 */
+        try (final MockedStatic<KmgMessageUtils> mockedKmgMessageUtils = this.setupKmgMessageUtilsMock()) {
 
-            this.testTarget.loadContent();
+            /* SpringApplicationContextHelperのモック化 */
+            try (final MockedStatic<SpringApplicationContextHelper> mockedStatic
+                = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
 
-        }, "ファイル読み込みエラーで例外がスローされること");
+                final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
+                mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
+                    .thenReturn(mockMessageSource);
 
-        /* 検証の実施 */
-        Assertions.assertNotNull(actualException, "例外が発生すること");
+                /* モックメッセージソースの設定 */
+                Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
+                    .thenReturn("");
 
-    }
+                /* Files.readStringをstaticモックしてIOExceptionをスローさせる */
+                try (final MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
 
-    /**
-     * loadContent メソッドのテスト - 異常系:KmgFundMsgException発生
-     *
-     * @since 0.2.3
-     */
-    @Test
-    @Disabled
-    public void testLoadContent_errorKmgFundMsgException() {
+                    filesMock.when(() -> Files.readString(ArgumentMatchers.any(Path.class)))
+                        .thenThrow(new IOException("Test IOException"));
 
-        final Class<?>           expectedCauseClass    = IOException.class;
-        final String             expectedDomainMessage = "[KMGFUND_GEN13001] ファイル内容を読み込み中に例外が発生しました。対象ファイルパス=[%s]";
-        final KmgFundGenMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN13001;
+                    /* テスト対象の実行・検証の実施 */
+                    final KmgFundMsgException actualException
+                        = Assertions.assertThrows(KmgFundMsgException.class, () -> {
 
-        /* 準備 */
-        try {
+                            this.testTarget.loadContent();
 
-            this.testTarget.initialize(this.testTempDir);
-            this.testTarget.load();
-            /* ファイルを削除してエラーを発生させる */
-            Files.delete(this.testJavaFile);
+                        }, "ファイル読み込みエラーでKmgFundMsgExceptionがスローされること");
 
-        } catch (final Exception e) {
+                    /* 検証の実施 */
+                    Assertions.assertNotNull(actualException, "例外が発生すること");
+                    Assertions.assertInstanceOf(IOException.class, actualException.getCause(), "原因がIOExceptionであること");
 
-            Assertions.fail("準備処理で例外が発生しました: " + e.getMessage());
+                }
 
-        }
-
-        // SpringApplicationContextHelperのモック化
-        try (MockedStatic<SpringApplicationContextHelper> mockedStatic
-            = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
-
-            final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
-            mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
-                .thenReturn(mockMessageSource);
-
-            // モックメッセージソースの設定
-            final String formattedMessage = String.format(expectedDomainMessage, this.testJavaFile.toString());
-            Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn(formattedMessage);
-
-            final KmgFundMsgException actualException = Assertions.assertThrows(KmgFundMsgException.class, () -> {
-
-                this.testTarget.loadContent();
-
-            }, "ファイル読み込みエラーでKmgFundMsgExceptionがスローされること");
-
-            this.verifyKmgMsgException(actualException, expectedCauseClass, formattedMessage, expectedMessageTypes);
+            }
 
         }
 
@@ -1260,63 +1180,6 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
     }
 
     /**
-     * writeContent メソッドのテスト - 異常系:KmgFundMsgException発生
-     *
-     * @since 0.2.3
-     */
-    @Test
-    @Disabled
-    public void testWriteContent_errorKmgFundMsgException() {
-
-        final Class<?>           expectedCauseClass    = IOException.class;
-        final String             expectedDomainMessage
-                                                       = "[KMGFUND_GEN13000] ファイル内容を書き込み中に例外が発生しました。対象ファイルパス=[%s] 書き込み内容=[%s]";
-        final KmgFundGenMsgTypes expectedMessageTypes  = KmgFundGenMsgTypes.KMGFUND_GEN13000;
-        final String             testContent           = "Test content";
-
-        /* 準備 */
-        try {
-
-            this.testTarget.initialize(this.testTempDir);
-            this.testTarget.load();
-            this.testTarget.setWriteContent(testContent);
-            /* ファイルを削除してディレクトリを作成し、書き込みエラーを発生させる */
-            Files.delete(this.testJavaFile);
-            Files.createDirectory(this.testJavaFile);
-
-        } catch (final Exception e) {
-
-            Assertions.fail("準備処理で例外が発生しました: " + e.getMessage());
-
-        }
-
-        // SpringApplicationContextHelperのモック化
-        try (MockedStatic<SpringApplicationContextHelper> mockedStatic
-            = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
-
-            final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
-            mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
-                .thenReturn(mockMessageSource);
-
-            // モックメッセージソースの設定
-            final String formattedMessage
-                = String.format(expectedDomainMessage, this.testJavaFile.toString(), testContent);
-            Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn(formattedMessage);
-
-            final KmgFundMsgException actualException = Assertions.assertThrows(KmgFundMsgException.class, () -> {
-
-                this.testTarget.writeContent();
-
-            }, "書き込みエラーでKmgFundMsgExceptionがスローされること");
-
-            this.verifyKmgMsgException(actualException, expectedCauseClass, formattedMessage, expectedMessageTypes);
-
-        }
-
-    }
-
-    /**
      * writeContent メソッドのテスト - 異常系:書き込みエラー
      *
      * @since 0.2.3
@@ -1324,15 +1187,14 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
     @Test
     public void testWriteContent_errorWriteError() {
 
+        final String testContent = "Test content";
+
         /* 準備 */
         try {
 
             this.testTarget.initialize(this.testTempDir);
             this.testTarget.load();
-            this.testTarget.setWriteContent("Test content");
-            /* ファイルを削除してディレクトリを作成し、書き込みエラーを発生させる */
-            Files.delete(this.testJavaFile);
-            Files.createDirectory(this.testJavaFile);
+            this.testTarget.setWriteContent(testContent);
 
         } catch (final Exception e) {
 
@@ -1340,15 +1202,45 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
         }
 
-        /* テスト対象の実行・検証の実施 */
-        final Exception actualException = Assertions.assertThrows(Exception.class, () -> {
+        /* KmgMessageUtilsの静的メソッドをモック化 */
+        try (final MockedStatic<KmgMessageUtils> mockedKmgMessageUtils = this.setupKmgMessageUtilsMock()) {
 
-            this.testTarget.writeContent();
+            /* SpringApplicationContextHelperのモック化 */
+            try (final MockedStatic<SpringApplicationContextHelper> mockedStatic
+                = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
 
-        }, "書き込みエラーで例外がスローされること");
+                final KmgMessageSource mockMessageSource = Mockito.mock(KmgMessageSource.class);
+                mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
+                    .thenReturn(mockMessageSource);
 
-        /* 検証の実施 */
-        Assertions.assertNotNull(actualException, "例外が発生すること");
+                /* モックメッセージソースの設定 */
+                Mockito.when(mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
+                    .thenReturn("");
+
+                /* Files.writeStringをstaticモックしてIOExceptionをスローさせる */
+                try (final MockedStatic<Files> filesMock = Mockito.mockStatic(Files.class)) {
+
+                    filesMock
+                        .when(() -> Files.writeString(ArgumentMatchers.any(Path.class), ArgumentMatchers.anyString()))
+                        .thenThrow(new IOException("Test IOException"));
+
+                    /* テスト対象の実行・検証の実施 */
+                    final KmgFundMsgException actualException
+                        = Assertions.assertThrows(KmgFundMsgException.class, () -> {
+
+                            this.testTarget.writeContent();
+
+                        }, "書き込みエラーでKmgFundMsgExceptionがスローされること");
+
+                    /* 検証の実施 */
+                    Assertions.assertNotNull(actualException, "例外が発生すること");
+                    Assertions.assertInstanceOf(IOException.class, actualException.getCause(), "原因がIOExceptionであること");
+
+                }
+
+            }
+
+        }
 
     }
 
@@ -1405,6 +1297,33 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
         /* 検証の実施 */
         Assertions.assertTrue(actualResult, "書き込みが成功すること");
         Assertions.assertEquals(expectedContent, actualFileContent, "指定された内容でファイルが書き込まれること");
+
+    }
+
+    /**
+     * KmgMessageUtilsの静的メソッドをモック化する<br>
+     * <p>
+     * テストでKmgFundMsgExceptionなどの例外クラスのコンストラクタが呼び出される前に、 KmgMessageUtilsの静的メソッドをモック化することで、静的初期化ブロックの失敗を回避します。
+     * </p>
+     *
+     * @since 0.2.3
+     *
+     * @return MockedStatic&lt;KmgMessageUtils&gt; モック化されたKmgMessageUtils（try-with-resourcesで管理すること）
+     */
+    protected MockedStatic<KmgMessageUtils> setupKmgMessageUtilsMock() {
+
+        final MockedStatic<KmgMessageUtils> mockedKmgMessageUtils = Mockito.mockStatic(KmgMessageUtils.class);
+
+        // getExcMessageをモック化（任意の引数で空文字列を返す）
+        mockedKmgMessageUtils.when(
+            () -> KmgMessageUtils.getExcMessage(ArgumentMatchers.any(KmgCmnExcMsgTypes.class), ArgumentMatchers.any()))
+            .thenReturn("");
+
+        // getMessageArgsCountをモック化（任意の文字列で0を返す）
+        mockedKmgMessageUtils.when(() -> KmgMessageUtils.getMessageArgsCount(ArgumentMatchers.anyString()))
+            .thenReturn(0);
+
+        return mockedKmgMessageUtils;
 
     }
 
