@@ -29,11 +29,18 @@ import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
  *
  * @since 0.2.3
  *
- * @version 0.2.3
+ * @version 0.2.4
  */
 @Service
 @Scope("prototype")
 public class FileIteratorLogicImpl implements FileIteratorLogic {
+
+    /**
+     * デフォルトファイル拡張子
+     *
+     * @since 0.2.4
+     */
+    private static final String DEFAULT_FILE_EXTENSION = ".java"; //$NON-NLS-1$
 
     /**
      * 対象ファイルの拡張子
@@ -182,7 +189,8 @@ public class FileIteratorLogicImpl implements FileIteratorLogic {
     @Override
     public boolean initialize(final Path targetPath) throws KmgFundMsgException {
 
-        return this.initialize(targetPath, ".java"); //$NON-NLS-1$
+        final boolean result = this.initialize(targetPath, FileIteratorLogicImpl.DEFAULT_FILE_EXTENSION);
+        return result;
 
     }
 

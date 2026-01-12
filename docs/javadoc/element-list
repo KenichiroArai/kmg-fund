@@ -1,4 +1,6 @@
 kmg.fund
+kmg.fund.domain.logic
+kmg.fund.domain.logic.impl
 kmg.fund.domain.types
 kmg.fund.infrastructure.cmn
 kmg.fund.infrastructure.cmn.msg
