@@ -1310,6 +1310,7 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
      *
      * @return MockedStatic&lt;KmgMessageUtils&gt; モック化されたKmgMessageUtils（try-with-resourcesで管理すること）
      */
+    @Override
     protected MockedStatic<KmgMessageUtils> setupKmgMessageUtilsMock() {
 
         final MockedStatic<KmgMessageUtils> mockedKmgMessageUtils = Mockito.mockStatic(KmgMessageUtils.class);
