@@ -35,7 +35,7 @@ import kmg.fund.infrastructure.exception.KmgFundMsgException;
  *
  * @since 0.2.3
  *
- * @version 0.2.3
+ * @version 0.2.5
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -1355,7 +1355,7 @@ public class FileIteratorLogicImplTest extends AbstractKmgTest {
 
                     Files.delete(path);
 
-                } catch (final IOException e) {
+                } catch (@SuppressWarnings("unused") final IOException e) {
 
                     // テストコードのため、例外は無視
 
