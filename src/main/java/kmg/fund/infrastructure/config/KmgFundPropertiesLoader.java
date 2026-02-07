@@ -104,7 +104,6 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
         } catch (final IOException e) {
 
-            e.printStackTrace();
             return;
 
         }
