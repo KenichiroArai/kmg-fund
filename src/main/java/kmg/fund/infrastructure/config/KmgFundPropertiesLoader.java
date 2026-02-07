@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.springframework.boot.EnvironmentPostProcessor;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
@@ -39,7 +39,7 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.2.5
  */
 @Component
 @Order(10)
