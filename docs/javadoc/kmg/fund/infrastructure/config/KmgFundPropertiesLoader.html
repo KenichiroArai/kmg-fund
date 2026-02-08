@@ -91,14 +91,14 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>すべての実装されたインタフェース:</dt>
-<dd><code>org.springframework.boot.env.EnvironmentPostProcessor</code></dd>
+<dd><code>org.springframework.boot.EnvironmentPostProcessor</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="annotations">@Component
 @Order(10)
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">KmgFundPropertiesLoader</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a>
-implements org.springframework.boot.env.EnvironmentPostProcessor</span></div>
+implements org.springframework.boot.EnvironmentPostProcessor</span></div>
 <div class="block">KMG基盤プロパティローダー
  <p>
  Fundは、Foundationの略。
@@ -115,7 +115,7 @@ implements org.springframework.boot.env.EnvironmentPostProcessor</span></div>
 <dt>導入されたバージョン:</dt>
 <dd>0.1.0</dd>
 <dt>バージョン:</dt>
-<dd>0.1.0</dd>
+<dd>0.2.5</dd>
 <dt>作成者:</dt>
 <dd>KenichiroArai</dd>
 </dl>
@@ -335,7 +335,7 @@ implements org.springframework.boot.env.EnvironmentPostProcessor</span></div>
  </ol></div>
 <dl class="notes">
 <dt>定義:</dt>
-<dd><code>postProcessEnvironment</code>&nbsp;インタフェース内&nbsp;<code>org.springframework.boot.env.EnvironmentPostProcessor</code></dd>
+<dd><code>postProcessEnvironment</code>&nbsp;インタフェース内&nbsp;<code>org.springframework.boot.EnvironmentPostProcessor</code></dd>
 <dt>パラメータ:</dt>
 <dd><code>environment</code> - Spring環境設定オブジェクト</dd>
 <dd><code>application</code> - Springアプリケーションオブジェクト</dd>
