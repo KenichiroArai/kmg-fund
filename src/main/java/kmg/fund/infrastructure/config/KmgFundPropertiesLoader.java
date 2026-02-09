@@ -39,7 +39,7 @@ import kmg.fund.domain.types.KmgApplicationPropertyKeyTypes;
  *
  * @since 0.1.0
  *
- * @version 0.2.5
+ * @version 0.2.6
  */
 @Component
 @Order(10)
@@ -102,7 +102,7 @@ public class KmgFundPropertiesLoader implements EnvironmentPostProcessor {
 
             properties.load(inputStream);
 
-        } catch (final IOException e) {
+        } catch (@SuppressWarnings("unused") final IOException e) {
 
             return;
 
