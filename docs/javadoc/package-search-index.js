@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"kmg.fund.infrastructure.cmn"},{"l":"kmg.fund.infrastructure.cmn.msg"},{"l":"すべてのパッケージ","u":"allpackages-index.html"}];updateSearchResults();
+packageSearchIndex = [{"l":"kmg.fund.infrastructure.cmn"},{"l":"kmg.fund.infrastructure.cmn.msg"},{"l":"すべてのパッケージ","u":"allpackages-index.html","k":"18"}];updateSearchResults();
