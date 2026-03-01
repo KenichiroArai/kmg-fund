@@ -7,13 +7,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.2</version>
+        <version>4.0.3</version>
         <relativePath />
     </parent>
 
     <groupId>kmg.fund</groupId>
     <artifactId>kmg-fund</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
     <packaging>jar</packaging>
     <name>kmg-fund</name>
     <description>KMG基盤</description>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>kmg.core</groupId>
             <artifactId>kmg-core</artifactId>
-            <version>0.3.0</version>
+            <version>0.3.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
